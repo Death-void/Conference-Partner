@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myhuiban.mapper.ConferenceMapper">
+    <select id="findAll" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference
+    </select>
+
+    <select id="findById" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO conference(uniqueId, name, abbreviation, CCF, CORE, QUALIS, submissionDeadline, notificationDate, conferenceDate, location, frequency)
+        VALUES (#{uniqueId}, #{name}, #{abbreviation}, #{CCF}, #{CORE}, #{QUALIS}, #{submissionDeadline}, #{notificationDate}, #{conferenceDate}, #{location}, #{frequency})
+    </insert>
+
+    <update id="update">
+        UPDATE conference
+        SET uniqueId=#{uniqueId}, name=#{name}, abbreviation=#{abbreviation}, CCF=#{CCF}, CORE=#{CORE}, QUALIS=#{QUALIS},
+            submissionDeadline=#{submissionDeadline}, notificationDate=#{notificationDate}, conferenceDate=#{conferenceDate},
+            location=#{location}, frequency=#{frequency}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM conference WHERE id = #{id}
+    </delete>
+</mapper>

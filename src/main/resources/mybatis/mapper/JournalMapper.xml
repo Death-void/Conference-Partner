@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myhuiban.mapper.JournalMapper">
+    <select id="findAll" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal
+    </select>
+
+    <select id="findById" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal WHERE id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO journal(uniqueId, name, specialIssue, CCF, submissionDeadline, impactFactor, publisher)
+        VALUES (#{uniqueId}, #{name}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor}, #{publisher})
+    </insert>
+
+    <update id="update">
+        UPDATE journal
+        SET uniqueId=#{uniqueId}, name=#{name}, specialIssue=#{specialIssue}, CCF=#{CCF}, submissionDeadline=#{submissionDeadline},
+            impactFactor=#{impactFactor}, publisher=#{publisher}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM journal WHERE id = #{id}
+    </delete>
+</mapper>

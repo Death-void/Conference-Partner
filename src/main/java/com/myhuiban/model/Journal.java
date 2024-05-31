@@ -12,9 +12,6 @@ public class Journal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 期刊ID
 
-    @Column(nullable = false, unique = true)
-    private String uniqueId; // 唯一标识
-
     @Column(nullable = false)
     private String name; // 期刊名称
 
@@ -33,14 +30,6 @@ public class Journal {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUniqueId() {
-        return uniqueId;
-    }
-
-    public void setUniqueId(String uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
     public String getName() {

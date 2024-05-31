@@ -5,11 +5,11 @@
 
 <mapper namespace="com.myhuiban.mapper.UserMapper">
     <select id="findByUsername" resultType="com.myhuiban.model.User">
-        SELECT * FROM user WHERE userName = #{userName}
+        SELECT * FROM user WHERE user_name = #{userName}
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user(uniqueId, userName, email, institution, registrationTime, password)
-        VALUES (#{uniqueId}, #{userName}, #{email}, #{institution}, #{registrationTime}, #{password})
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.myhuiban.model.User">
+        INSERT INTO user(user_name, email, institution, registration_time, password)
+        VALUES (#{userName}, #{email}, #{institution}, #{registrationTime}, #{password})
     </insert>
 </mapper>

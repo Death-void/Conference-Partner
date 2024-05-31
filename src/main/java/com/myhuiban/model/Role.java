@@ -11,9 +11,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 角色ID
 
-    @Column(nullable = false, unique = true)
-    private String uniqueId; // 唯一标识
-
     @Column(nullable = false)
     private String role; // 角色
 

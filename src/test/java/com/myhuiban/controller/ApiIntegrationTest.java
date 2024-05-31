@@ -37,12 +37,10 @@ public class ApiIntegrationTest {
     @Test
     public void testRegisterUser() {
         User user = new User();
-        user.setUniqueId("uniqueIdTest1");
-        user.setUserName("testUser");
+        user.setUserName("UserTest");
         user.setEmail("testUser@example.com");
-        user.setPassword("testPassword");
+        user.setPassword("123456");
         user.setInstitution("Test Institution");
-
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
 
@@ -56,11 +54,10 @@ public class ApiIntegrationTest {
     @Test
     public void testLoginUser() {
         User user = new User();
-        user.setUniqueId("uniqueIdTest2");
-        user.setUserName("loginUser");
-        user.setEmail("loginUser@example.com");
-        user.setPassword(userService.registerUser(user).getPassword());
-        user.setInstitution("Test Institution");
+        user.setUserName("userTest");
+//        user.setEmail("loginUser@example.com");
+        user.setPassword("123456");
+//        user.setInstitution("Test Institution");
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json");
@@ -76,7 +73,6 @@ public class ApiIntegrationTest {
     @Test
     public void testCreateConference() {
         Conference conference = new Conference();
-        conference.setUniqueId("confIdTest1");
         conference.setName("Test Conference");
         conference.setAbbreviation("TC");
         conference.setCCF("A");

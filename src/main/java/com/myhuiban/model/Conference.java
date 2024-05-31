@@ -12,9 +12,6 @@ public class Conference {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 会议ID
 
-    @Column(nullable = false, unique = true)
-    private String uniqueId; // 唯一标识
-
     @Column(nullable = false)
     private String name; // 会议名称
 
@@ -43,9 +40,6 @@ public class Conference {
         this.id = id;
     }
 
-    public void setUniqueId(String uniqueId) {
-        this.uniqueId = uniqueId;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -89,10 +83,6 @@ public class Conference {
 
     public void setFrequency(int frequency) {
         this.frequency = frequency;
-    }
-
-    public String getUniqueId() {
-        return uniqueId;
     }
 
     public String getName() {

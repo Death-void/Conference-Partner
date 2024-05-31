@@ -13,13 +13,13 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO journal(uniqueId, name, specialIssue, CCF, submissionDeadline, impactFactor, publisher)
-        VALUES (#{uniqueId}, #{name}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor}, #{publisher})
+        INSERT INTO journal(name, specialIssue, CCF, submission_deadline, impact_factor, publisher)
+        VALUES (#{name}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor}, #{publisher})
     </insert>
 
     <update id="update">
         UPDATE journal
-        SET uniqueId=#{uniqueId}, name=#{name}, specialIssue=#{specialIssue}, CCF=#{CCF}, submissionDeadline=#{submissionDeadline},
+        SET name=#{name}, specialIssue=#{specialIssue}, CCF=#{CCF}, submissionDeadline=#{submissionDeadline},
             impactFactor=#{impactFactor}, publisher=#{publisher}
         WHERE id = #{id}
     </update>

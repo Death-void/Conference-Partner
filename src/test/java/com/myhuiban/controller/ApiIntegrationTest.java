@@ -37,7 +37,7 @@ public class ApiIntegrationTest {
     @Test
     public void testRegisterUser() {
         User user = new User();
-        user.setUserName("UserTest");
+        user.setUserName("UserTest2");
         user.setEmail("testUser@example.com");
         user.setPassword("123456");
         user.setInstitution("Test Institution");

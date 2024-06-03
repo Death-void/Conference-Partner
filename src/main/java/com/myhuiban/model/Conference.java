@@ -15,7 +15,11 @@ public class Conference {
     @Column(nullable = false)
     private String name; // 会议名称
 
+    private String website; // 会议网站
+
     private String abbreviation; // 会议简称
+
+    private String callForPapers; // 会议征稿
 
     private String CCF; // CCF级别
     private String CORE; // CORE级别
@@ -24,11 +28,13 @@ public class Conference {
     private LocalDate submissionDeadline; // 提交截止日期
     private LocalDate notificationDate; // 通知日期
     private LocalDate conferenceDate; // 会议日期
-    private LocalDate locationDate; // 会议地点日期
 
     private String location; // 会议地点
     private int frequency; // 届数
 
+    private Long viewCount; // 浏览数
+
+    private Boolean isPostponed; // 是否延期
 
     // Getters 和 Setters 方法
 
@@ -53,6 +59,38 @@ public class Conference {
         this.CCF = CCF;
     }
 
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getCallForPapers() {
+        return callForPapers;
+    }
+
+    public void setCallForPapers(String callForPapers) {
+        this.callForPapers = callForPapers;
+    }
+
+    public Long getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(Long viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public Boolean getIsPostponed() {
+        return isPostponed;
+    }
+
+    public void setIsPostponed(Boolean postponed) {
+        isPostponed = postponed;
+    }
+
     public void setCORE(String CORE) {
         this.CORE = CORE;
     }
@@ -71,10 +109,6 @@ public class Conference {
 
     public void setConferenceDate(LocalDate conferenceDate) {
         this.conferenceDate = conferenceDate;
-    }
-
-    public void setLocationDate(LocalDate locationDate) {
-        this.locationDate = locationDate;
     }
 
     public void setLocation(String location) {
@@ -115,10 +149,6 @@ public class Conference {
 
     public LocalDate getConferenceDate() {
         return conferenceDate;
-    }
-
-    public LocalDate getLocationDate() {
-        return locationDate;
     }
 
     public String getLocation() {

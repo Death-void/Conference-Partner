@@ -1,4 +1,4 @@
-DROP DATABASE myhuiban
+DROP DATABASE myhuiban;
 
 CREATE DATABASE myhuiban;
 USE myhuiban;
@@ -26,36 +26,49 @@ INSERT INTO role (role) VALUES
                             ('ROLE_ADMIN');
 
 CREATE TABLE conference (
-                            id BIGINT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+                            id BIGINT AUTO_INCREMENT PRIMARY KEY,
                             name VARCHAR(255) NOT NULL,
+                            website VARCHAR(255),
                             abbreviation VARCHAR(255),
-                            ccf VARCHAR(255),
-                            core VARCHAR(255),
-                            qualis VARCHAR(255),
+                            call_for_papers TEXT,
+                            CCF VARCHAR(10),
+                            CORE VARCHAR(10),
+                            QUALIS VARCHAR(10),
                             submission_deadline DATE,
                             notification_date DATE,
                             conference_date DATE,
                             location VARCHAR(255),
-                            frequency INT
+                            frequency INT,
+                            view_count BIGINT,
+                            is_postponed BOOLEAN
 );
 
-INSERT INTO conference (name, abbreviation, ccf, core, qualis, submission_deadline, notification_date, conference_date, location, frequency) VALUES
-                                                                                                                                                 ('Conference 1', 'Conf1', 'A', 'B', 'C', '2024-06-01', '2024-07-01', '2024-08-01', 'Location 1', 10),
-                                                                                                                                                 ('Conference 2', 'Conf2', 'A', 'B', 'C', '2024-06-02', '2024-07-02', '2024-08-02', 'Location 2', 11);
+
+INSERT INTO conference (name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS, submission_deadline, notification_date, conference_date, location, frequency, view_count, is_postponed)
+VALUES
+    ('International Conference on Machine Learning', 'http://icml.cc', 'ICML', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-01', '2024-07-01', '2024-08-01', 'San Francisco, USA', 38, 1500, FALSE),
+    ('Conference on Neural Information Processing Systems', 'http://neurips.cc', 'NeurIPS', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-15', '2024-07-15', '2024-08-15', 'Montreal, Canada', 35, 2000, FALSE);
+
 
 CREATE TABLE journal (
-                         id BIGINT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
                          name VARCHAR(255) NOT NULL,
-                         special_issue VARCHAR(255),
-                         ccf VARCHAR(255),
+                         website VARCHAR(255),
+                         special_issue TEXT,
+                         CCF VARCHAR(10),
                          submission_deadline DATE,
-                         impact_factor VARCHAR(255),
-                         publisher VARCHAR(255)
+                         impact_factor VARCHAR(10),
+                         publisher VARCHAR(255),
+                         ISSN VARCHAR(20),
+                         view_count BIGINT
 );
 
-INSERT INTO journal (name, special_issue, ccf, submission_deadline, impact_factor, publisher) VALUES
-                                                                                                  ('Journal 1', 'Special Issue 1', 'A', '2024-06-01', '5.0', 'Publisher 1'),
-                                                                                                  ('Journal 2', 'Special Issue 2', 'A', '2024-06-02', '6.0', 'Publisher 2');
+INSERT INTO journal (name, website, special_issue, CCF, submission_deadline, impact_factor, publisher, ISSN, view_count)
+VALUES
+    ('Journal of Machine Learning Research', 'http://jmlr.org', 'Special Issue on Deep Learning', 'A', '2024-06-01', '2.567', 'MIT Press', '1533-7928', 1200),
+    ('IEEE Transactions on Neural Networks', 'https://www.ieee.org', 'Special Issue on Reinforcement Learning', 'A*', '2024-07-01', '5.123', 'IEEE', '1045-9227', 1500);
+
+
 
 CREATE TABLE follow_journal (
                                 id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -81,16 +94,6 @@ INSERT INTO follow_conference (user_id, conference_id) VALUES
                                                            (1, 1),
                                                            (2, 2);
 
-CREATE TABLE browse (
-                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                        user_id BIGINT NOT NULL,
-                        browse_count INT NOT NULL,
-                        FOREIGN KEY (user_id) REFERENCES user(id)
-);
-
-INSERT INTO browse (user_id, browse_count) VALUES
-                                               (1, 5),
-                                               (2, 10);
 
 CREATE TABLE participate_conference (
                                         id BIGINT AUTO_INCREMENT PRIMARY KEY,

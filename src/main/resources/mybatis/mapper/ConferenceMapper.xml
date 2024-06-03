@@ -4,28 +4,53 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.myhuiban.mapper.ConferenceMapper">
+
+    <!-- 根据ID查找会议 -->
+    <select id="findById" parameterType="Long" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference WHERE id = #{id}
+    </select>
+
+    <!-- 查找所有会议 -->
     <select id="findAll" resultType="com.myhuiban.model.Conference">
         SELECT * FROM conference
     </select>
 
-    <select id="findById" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference WHERE id = #{id}
-    </select>
-
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO conference( name, abbreviation, CCF, CORE, QUALIS, submission_deadline, notification_date, conference_date, location, frequency)
-        VALUES (#{name}, #{abbreviation}, #{CCF}, #{CORE}, #{QUALIS}, #{submissionDeadline}, #{notificationDate}, #{conferenceDate}, #{location}, #{frequency})
+    <!-- 插入会议 -->
+    <insert id="insert" parameterType="com.myhuiban.model.Conference" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO conference (
+            name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS,
+            submission_deadline, notification_date, conference_date,
+            location, frequency, view_count, is_postponed
+        ) VALUES (
+                     #{name}, #{website}, #{abbreviation}, #{callForPapers}, #{CCF}, #{CORE}, #{QUALIS},
+                     #{submissionDeadline}, #{notificationDate}, #{conferenceDate},
+                     #{location}, #{frequency}, #{viewCount}, #{isPostponed}
+                 )
     </insert>
 
-    <update id="update">
+    <!-- 更新会议 -->
+    <update id="update" parameterType="com.myhuiban.model.Conference">
         UPDATE conference
-        SET name=#{name}, abbreviation=#{abbreviation}, CCF=#{CCF}, CORE=#{CORE}, QUALIS=#{QUALIS},
-            submission_deadline=#{submissionDeadline}, notification_date=#{notificationDate}, conference_date=#{conferenceDate},
-            location=#{location}, frequency=#{frequency}
+        SET name = #{name},
+            website = #{website},
+            abbreviation = #{abbreviation},
+            call_for_papers = #{callForPapers},
+            CCF = #{CCF},
+            CORE = #{CORE},
+            QUALIS = #{QUALIS},
+            submission_deadline = #{submissionDeadline},
+            notification_date = #{notificationDate},
+            conference_date = #{conferenceDate},
+            location = #{location},
+            frequency = #{frequency},
+            view_count = #{viewCount},
+            is_postponed = #{isPostponed}
         WHERE id = #{id}
     </update>
 
-    <delete id="delete">
+    <!-- 删除会议 -->
+    <delete id="delete" parameterType="Long">
         DELETE FROM conference WHERE id = #{id}
     </delete>
+
 </mapper>

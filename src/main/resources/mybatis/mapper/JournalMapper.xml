@@ -4,27 +4,46 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.myhuiban.mapper.JournalMapper">
+
+    <!-- 查找所有期刊 -->
     <select id="findAll" resultType="com.myhuiban.model.Journal">
         SELECT * FROM journal
     </select>
 
-    <select id="findById" resultType="com.myhuiban.model.Journal">
+    <!-- 根据ID查找期刊 -->
+    <select id="findById" parameterType="Long" resultType="com.myhuiban.model.Journal">
         SELECT * FROM journal WHERE id = #{id}
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO journal(name, specialIssue, CCF, submission_deadline, impact_factor, publisher)
-        VALUES (#{name}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor}, #{publisher})
+    <!-- 插入期刊 -->
+    <insert id="insert" parameterType="com.myhuiban.model.Journal" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO journal (
+            name, website, special_issue, CCF, submission_deadline, impact_factor,
+            publisher, ISSN, view_count
+        ) VALUES (
+                     #{name}, #{website}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor},
+                     #{publisher}, #{ISSN}, #{viewCount}
+                 )
     </insert>
 
-    <update id="update">
+    <!-- 更新期刊 -->
+    <update id="update" parameterType="com.myhuiban.model.Journal">
         UPDATE journal
-        SET name=#{name}, specialIssue=#{specialIssue}, CCF=#{CCF}, submissionDeadline=#{submissionDeadline},
-            impactFactor=#{impactFactor}, publisher=#{publisher}
+        SET name = #{name},
+            website = #{website},
+            special_issue = #{specialIssue},
+            CCF = #{CCF},
+            submission_deadline = #{submissionDeadline},
+            impact_factor = #{impactFactor},
+            publisher = #{publisher},
+            ISSN = #{ISSN},
+            view_count = #{viewCount}
         WHERE id = #{id}
     </update>
 
-    <delete id="delete">
+    <!-- 删除期刊 -->
+    <delete id="delete" parameterType="Long">
         DELETE FROM journal WHERE id = #{id}
     </delete>
+
 </mapper>

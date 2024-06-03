@@ -12,15 +12,43 @@ public class Journal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 期刊ID
 
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getISSN() {
+        return ISSN;
+    }
+
+    public void setISSN(String ISSN) {
+        this.ISSN = ISSN;
+    }
+
+    public Long getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(Long viewCount) {
+        this.viewCount = viewCount;
+    }
+
     @Column(nullable = false)
     private String name; // 期刊名称
 
+    private String website; // 网站
     private String specialIssue; // 特刊
     private String CCF; // CCF级别
 
     private LocalDate submissionDeadline; // 提交截止日期
     private String impactFactor; // 影响因子
     private String publisher; // 出版商
+    private String ISSN; // 国际标准期刊号
+
+    private Long viewCount; // 浏览次数
 
     // Getters 和 Setters 方法
 

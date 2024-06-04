@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myhuiban.mapper.FollowConferenceMapper">
+
+    <!-- 根据用户ID查找该用户关注的会议 -->
+    <select id="findAllByUserId" parameterType="Long" resultType="Long">
+        SELECT conference_id
+        FROM follow_conference
+        WHERE user_id = #{id}
+    </select>
+
+    <!-- 根据会议ID统计总关注数量 -->
+    <select id="countByConferenceId" parameterType="Long" resultType="Integer">
+        SELECT count(*)
+        FROM follow_conference
+        WHERE conference_id = #{id}
+    </select>
+
+
+</mapper>

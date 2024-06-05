@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myhuiban.mapper.ParticipateConferenceMapper">
+
+    <!-- 参加会议 -->
+    <insert id="insert" parameterType="com.myhuiban.model.ParticipateConference" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO participate_conference(user_id, conference_id)
+        VALUES (#{userId}, #{conferenceId})
+    </insert>
+
+    <!-- 删除参加会议 -->
+    <delete id="delete" parameterType="Long">
+        DELETE FROM participate_conference WHERE id = #{id}
+    </delete>
+
+    <!-- 查找用户参加会议情况 -->
+    <select id="find" parameterType="com.myhuiban.model.ParticipateConference" resultType="com.myhuiban.model.ParticipateConference">
+        SELECT *
+        FROM participate_conference
+        WHERE conference_id = #{conferenceId}
+          AND user_id = #{userId}
+    </select>
+
+    <!-- 根据用户ID查找该用户参加的会议 -->
+    <select id="findAllByUserId" parameterType="Long" resultType="Long">
+        SELECT conference_id
+        FROM participate_conference
+        WHERE user_id = #{id}
+    </select>
+
+    <!-- 根据会议ID统计总参加数量 -->
+    <select id="countByConferenceId" parameterType="Long" resultType="Integer">
+        SELECT count(*)
+        FROM participate_conference
+        WHERE conference_id = #{id}
+    </select>
+
+</mapper>

@@ -1,11 +1,14 @@
 package com.myhuiban.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
  * 关注期刊实体类
  */
 @Entity
+@Data
 public class FollowJournal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +19,4 @@ public class FollowJournal {
 
     @Column(nullable = false)
     private Long journalId; // 期刊ID
-
-    // Getters 和 Setters 方法
 }

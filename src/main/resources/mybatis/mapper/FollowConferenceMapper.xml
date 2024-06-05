@@ -24,5 +24,13 @@
         WHERE conference_id = #{id}
     </select>
 
+    <select id="find" parameterType="com.myhuiban.model.FollowConference"
+            resultType="com.myhuiban.model.FollowConference">
+        SELECT *
+        FROM follow_conference
+        WHERE journal_id = #{conferenceId}
+          AND user_id = #{userId}
+    </select>
+
 
 </mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myhuiban.mapper.JournalMapper">
+
+    <!-- 查找所有期刊 -->
+    <select id="findAll" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal
+    </select>
+
+    <!-- 根据ID查找期刊 -->
+    <select id="findById" parameterType="Long" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal WHERE id = #{id}
+    </select>
+
+    <!-- 插入期刊 -->
+    <insert id="insert" parameterType="com.myhuiban.model.Journal" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO journal (
+            name, website, special_issue, CCF, submission_deadline, impact_factor,
+            publisher, ISSN, view_count
+        ) VALUES (
+                     #{name}, #{website}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor},
+                     #{publisher}, #{ISSN}, #{viewCount}
+                 )
+    </insert>
+
+    <!-- 更新期刊 -->
+    <update id="update" parameterType="com.myhuiban.model.Journal">
+        UPDATE journal
+        SET name = #{name},
+            website = #{website},
+            special_issue = #{specialIssue},
+            CCF = #{CCF},
+            submission_deadline = #{submissionDeadline},
+            impact_factor = #{impactFactor},
+            publisher = #{publisher},
+            ISSN = #{ISSN},
+            view_count = #{viewCount}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除期刊 -->
+    <delete id="delete" parameterType="Long">
+        DELETE FROM journal WHERE id = #{id}
+    </delete>
+
+</mapper>

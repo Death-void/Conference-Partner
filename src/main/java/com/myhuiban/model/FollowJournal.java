@@ -19,6 +19,4 @@ public class FollowJournal {
 
     @Column(nullable = false)
     private Long journalId; // 期刊ID
-
-    // Getters 和 Setters 方法
 }

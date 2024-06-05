@@ -14,5 +14,7 @@ public interface FollowJournalMapper {
 
     void insert(FollowJournal followJournal);
 
+    void delete(Long id);
+
     FollowJournal find(FollowJournal followJournal);
 }

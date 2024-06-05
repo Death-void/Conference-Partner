@@ -28,9 +28,13 @@
             resultType="com.myhuiban.model.FollowConference">
         SELECT *
         FROM follow_conference
-        WHERE journal_id = #{conferenceId}
+        WHERE conference_id = #{conferenceId}
           AND user_id = #{userId}
     </select>
 
+    <!-- 取消关注会议 -->
+    <delete id="delete" parameterType="Long">
+        DELETE FROM follow_conference WHERE id = #{id}
+    </delete>
 
 </mapper>

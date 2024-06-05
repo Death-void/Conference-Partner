@@ -42,6 +42,16 @@ public class FollowController {
         return followService.createFollowConference(followConference);
     }
 
+    @ApiOperation(value = "用户取消关注会议", response = FollowConference.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功取消关注会议"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @PostMapping("/conference/followDelete")
+    public FollowConference deleteFollowConference(@RequestBody FollowConference followConference) {
+        return followService.deleteFollowConference(followConference);
+    }
+
     @ApiOperation(value = "获取会议总关注数量", response = Integer.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "成功获取会议关注数量"),
@@ -70,6 +80,16 @@ public class FollowController {
     @PostMapping("/journal/follow")
     public FollowJournal createFollowJournal(@RequestBody FollowJournal followJournal) {
         return followService.createFollowJournal(followJournal);
+    }
+
+    @ApiOperation(value = "用户取消关注期刊", response = FollowJournal.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功取消关注期刊"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @PostMapping("/journal/followDelete")
+    public FollowJournal deleteFollowJournal(@RequestBody FollowJournal followJournal) {
+        return followService.deleteFollowJournal(followJournal);
     }
 
     @ApiOperation(value = "获取期刊总关注数量", response = Integer.class)

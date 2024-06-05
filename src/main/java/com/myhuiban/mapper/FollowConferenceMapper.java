@@ -1,7 +1,6 @@
 package com.myhuiban.mapper;
 
 import com.myhuiban.model.FollowConference;
-import com.myhuiban.model.FollowJournal;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,6 +13,8 @@ public interface FollowConferenceMapper {
     int countByConferenceId(Long id);
 
     void insert(FollowConference followConference);
+
+    void delete(Long id);
 
     FollowConference find(FollowConference followConference);
 }

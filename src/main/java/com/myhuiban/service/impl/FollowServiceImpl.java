@@ -55,6 +55,14 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
+    public FollowConference deleteFollowConference(FollowConference followConference) {
+        FollowConference find = followConferenceMapper.find(followConference);
+        if (find != null)
+            followConferenceMapper.delete(find.getId());
+        return followConference;
+    }
+
+    @Override
     public List<Journal> getAllFollowJournalByUserId(Long userId) {
         List<Long> journalIdList = followJournalMapper.findAllByUserId(userId);
         List<Journal> journalList = new ArrayList<>();
@@ -75,6 +83,14 @@ public class FollowServiceImpl implements FollowService {
             return find;
 
         followJournalMapper.insert(followJournal);
+        return followJournal;
+    }
+
+    @Override
+    public FollowJournal deleteFollowJournal(FollowJournal followJournal) {
+        FollowJournal find = followJournalMapper.find(followJournal);
+        if (find != null)
+            followJournalMapper.delete(find.getId());
         return followJournal;
     }
 }

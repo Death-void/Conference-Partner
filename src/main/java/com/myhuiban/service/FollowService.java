@@ -15,9 +15,13 @@ public interface FollowService {
 
     FollowConference createFollowConference(FollowConference followConference);
 
+    FollowConference deleteFollowConference(FollowConference followConference);
+
     List<Journal> getAllFollowJournalByUserId(Long userId);
 
     int getJournalFollowNumber(Long journalId);
 
     FollowJournal createFollowJournal(FollowJournal followJournal);
+
+    FollowJournal deleteFollowJournal(FollowJournal followJournal);
 }

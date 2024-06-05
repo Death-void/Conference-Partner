@@ -31,4 +31,9 @@
           AND user_id = #{userId}
     </select>
 
+    <!-- 取消关注期刊 -->
+    <delete id="delete" parameterType="Long">
+        DELETE FROM follow_journal WHERE id = #{id}
+    </delete>
+
 </mapper>

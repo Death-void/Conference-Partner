@@ -1,5 +1,6 @@
 package com.myhuiban.mapper;
 
+import com.myhuiban.model.FollowConference;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface FollowConferenceMapper {
     List<Long> findAllByUserId(Long id);
 
     int countByConferenceId(Long id);
+
+    void insert(FollowConference followConference);
 }

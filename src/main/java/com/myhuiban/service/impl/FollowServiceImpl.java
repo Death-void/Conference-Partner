@@ -3,6 +3,7 @@ package com.myhuiban.service.impl;
 import com.myhuiban.mapper.ConferenceMapper;
 import com.myhuiban.mapper.FollowConferenceMapper;
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.FollowConference;
 import com.myhuiban.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,11 @@ public class FollowServiceImpl implements FollowService {
     @Override
     public int getConferenceFollowNumber(Long conferenceId) {
         return followConferenceMapper.countByConferenceId(conferenceId);
+    }
+
+    @Override
+    public FollowConference createFollowConference(FollowConference followConference) {
+        followConferenceMapper.insert(followConference);
+        return followConference;
     }
 }

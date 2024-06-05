@@ -5,6 +5,11 @@
 
 <mapper namespace="com.myhuiban.mapper.FollowConferenceMapper">
 
+    <insert id="insert" parameterType="com.myhuiban.model.FollowConference" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO follow_conference(user_id, conference_id)
+        VALUES (#{userId}, #{conferenceId})
+    </insert>
+
     <!-- 根据用户ID查找该用户关注的会议 -->
     <select id="findAllByUserId" parameterType="Long" resultType="Long">
         SELECT conference_id

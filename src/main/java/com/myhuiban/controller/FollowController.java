@@ -1,6 +1,7 @@
 package com.myhuiban.controller;
 
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.FollowConference;
 import com.myhuiban.service.FollowService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,9 +25,19 @@ public class FollowController {
             @ApiResponse(code = 200, message = "成功获取会议列表"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
-    @GetMapping("/user/{id}")
+    @GetMapping("/conference/user/{id}")
     public List<Conference> getAllFollowConferences(@PathVariable Long id) {
         return followService.getAllFollowConferenceByUserId(id);
+    }
+
+    @ApiOperation(value = "用户关注会议", response = FollowConference.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功关注会议"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @PostMapping("/conference/follow")
+    public FollowConference createFollowConferences(@RequestBody FollowConference followConference) {
+        return followService.createFollowConference(followConference);
     }
 
     @ApiOperation(value = "获取会议总关注数量", response = Integer.class)

@@ -92,7 +92,8 @@ class Nav extends React.Component {
             const username = values.username;
             const password = values.password;
             const email = values.email;
-            this.props.registerAsync({username: username,password: password,email: email});
+            const institution = values.institution;
+            this.props.registerAsync({username: username,password: password,email: email, institution: institution});
             this.setState({
                 visibleRegister: false
             });

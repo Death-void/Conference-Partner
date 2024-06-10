@@ -1,3 +1,1 @@
-# tell-front
-
-$env:NODE_OPTIONS = "--openssl-legacy-provider"
+windows set: $env:NODE_OPTIONS = "--openssl-legacy-provider"

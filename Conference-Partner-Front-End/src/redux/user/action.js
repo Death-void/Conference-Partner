@@ -165,10 +165,12 @@ function fetchLogin(data,dispatch) {
 
 // 注册
 function fetchRegister(data,dispatch) {
-    Axios.post('/register', {
-        username: data.username,
+    console.log(data)
+    Axios.post('/auth/register', {
+        userName: data.username,
         password: data.password,
-        email: data.email
+        email: data.email,
+        institution: data.institution
     }).then(({data}) => {
         if (data.code === 200) {
             localStorage.setItem("token", data.detail.token);

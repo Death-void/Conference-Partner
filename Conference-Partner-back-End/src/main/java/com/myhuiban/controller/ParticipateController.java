@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/participate")
+@CrossOrigin(origins = "http://localhost:3000") 
 @Api(value = "参与管理系统", description = "参与管理系统中的操作")
 public class ParticipateController {
 

@@ -40,7 +40,9 @@ class CollectionCreateForm  extends Component{
                         })(<Input type="email" />)}
                     </FormItem>
                     <FormItem label="组织">
-                        {getFieldDecorator('institution')(<Input />)}
+                        {getFieldDecorator('institution', {
+                            rules: [{ required: true, message: '请输入您的组织!' }],
+                        })(<Input />)}
                     </FormItem>
                 </Form>
             </Modal>

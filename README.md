@@ -1,6 +1,6 @@
 # Conference-Partner
 ## Front-end Request:
-- [ ] CORS policy in back end
+- [x] CORS policy in back end
     - like in mock:
     ```
     var Mock = require("mockjs")
@@ -42,3 +42,29 @@
             "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiY3JlYXRlZCI6MTcxNjI3NzkxMjYzOCwiZXhwIjoxNzE2ODgyNzEyfQ.IHzp-ww5lCGMqyUiEWNUFFiPzuUlT8Osasu7La53qfivgqL2w9E78Su3Tbbl3zvxW9awrN1obzPP-6urr8RSAQ"
         }
     }
+
+- [] api:
+    - getConferenceNum
+    - getJournalNum
+    - getUserNum
+    - getPageVisitedNum : the number of time that all confrences and journals been visited
+
+    - getTopTenMessages: update conference, update journal, add user (time decreasing order) -> get all in pages
+    - getTopTenCallForPaper: deadline time increasing order -> get all in pages
+    - getTopTenConference: conference time increasing order -> get all in pages
+    - getTopTenJournal: deadline time increasing order -> get all in pages
+
+    - getTopTenConfVisited -> get all in pages
+    - getTopTenConfFollowed -> get all in pages
+    - getTopTenConfJoined -> get all in pages
+    - getTopTenJourVisited -> get all in pages
+    - getTopTenJourFollowed -> get all in pages
+
+    - getConfInCall: paging
+    - getConfFinished: paging
+
+    - getJourInCall: paging
+    - getJourNoDeadline: paging
+
+    - getUserInfo
+    - updateUserInfo

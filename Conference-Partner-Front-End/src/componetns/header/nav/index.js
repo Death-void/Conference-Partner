@@ -174,11 +174,12 @@ class Nav extends React.Component {
                 animation={{ x: -30, type: 'from', ease: 'easeOutQuad' }}
                 id={`${this.props.id}-logo`}
             >
-                <Link to="/"><h2>Conf-Partn</h2></Link>
+                <Link to="/"><h2>CP</h2></Link>
             </TweenOne>
             <div className="header1-nav">
                 <Link to="/" style={{paddingRight: "20px"}}>首页</Link>
-                <Link to="/themes" className="create-article">发现</Link>
+                <Link to="/themes" className="create-article">会议</Link>
+                <Link to="/themes" className="create-article">期刊</Link>
             </div>
             {isMobile ? (<div
                 className={`${this.props.className}-phone-nav${this.state.phoneOpen ? ' open' : ''}`}
@@ -223,7 +224,7 @@ class Nav extends React.Component {
                 {
                     this.props.state.user.loginUsername ?
                         <div>
-                            <Link to="/create" className="create-article">写文章</Link>
+                            <Link to="/create" className="create-article">搜索</Link>
                             <Dropdown overlay={userMenu} placement="bottomCenter">
                                 <a className="ant-dropdown-link" href="#" style={{padding: "0 10px"}}>
                                     <Avatar size={30} src={this.props.state.user.loginAvatar} key="0"/>

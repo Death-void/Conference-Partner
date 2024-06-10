@@ -140,22 +140,30 @@ function fetchUser(url,dispatch){
 
 // 登录
 function fetchLogin(data,dispatch) {
-    Axios.post('/login', {
+    Axios.post('/auth/login', {
         userName: data.username,
         password: data.password
     }).then(({data}) => {
         console.log(data)
-        if (data.code === 200) {
-            localStorage.setItem("token", data.detail.token);
-            localStorage.setItem("username", data.detail.username);
-            localStorage.setItem("avatar", data.detail.avatar);
-            Axios.defaults.headers.common['Authorization'] = "Bearer " + data.detail.token
-            dispatch(login(data.detail))
+        var data1 = {}
+        data1.code = 200
+        data1.detail = {
+            "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiY3JlYXRlZCI6MTcxNjI3NzkxMjYzOCwiZXhwIjoxNzE2ODgyNzEyfQ.IHzp-ww5lCGMqyUiEWNUFFiPzuUlT8Osasu7La53qfivgqL2w9E78Su3Tbbl3zvxW9awrN1obzPP-6urr8RSAQ",
+            "username": "a",
+            "avatar": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" 
+        }
+        if (data1.code === 200) {
+            localStorage.setItem("token", data1.detail.token);
+            localStorage.setItem("username", data1.detail.username);
+            localStorage.setItem("avatar", data1.detail.avatar);
+            Axios.defaults.headers.common['Authorization'] = "Bearer " + data1.detail.token
+            dispatch(login(data1.detail))
         } else {
             {
-                openNotificationWithIcon("error", "Error", data.description)
+                openNotificationWithIcon("error", "Error", data1.description)
             }
         }
+
     }).catch(error => {
         {
             openNotificationWithIcon("error", "Error", error.message)
@@ -165,19 +173,26 @@ function fetchLogin(data,dispatch) {
 
 // 注册
 function fetchRegister(data,dispatch) {
-    console.log(data)
     Axios.post('/auth/register', {
         userName: data.username,
         password: data.password,
         email: data.email,
         institution: data.institution
     }).then(({data}) => {
-        if (data.code === 200) {
-            localStorage.setItem("token", data.detail.token);
-            localStorage.setItem("username", data.detail.username);
-            localStorage.setItem("avatar", data.detail.avatar);
-            Axios.defaults.headers.common['Authorization'] = "Bearer " + data.detail.token
-            dispatch(register(data.detail))
+        console.log(data)
+        var data1 = {}
+        data1.code = 200
+        data1.detail = {
+            "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb290IiwiY3JlYXRlZCI6MTcxNjI3NzkxMjYzOCwiZXhwIjoxNzE2ODgyNzEyfQ.IHzp-ww5lCGMqyUiEWNUFFiPzuUlT8Osasu7La53qfivgqL2w9E78Su3Tbbl3zvxW9awrN1obzPP-6urr8RSAQ",
+            "username": "a",
+            "avatar": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" 
+        }
+        if (data1.code === 200) {
+            localStorage.setItem("token", data1.detail.token);
+            localStorage.setItem("username", data1.detail.username);
+            localStorage.setItem("avatar", data1.detail.avatar);
+            Axios.defaults.headers.common['Authorization'] = "Bearer " + data1.detail.token
+            dispatch(register(data1.detail)) 
         } else {
             {
                 openNotificationWithIcon("error", "Error", data.description)

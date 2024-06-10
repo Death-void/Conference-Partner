@@ -9,6 +9,8 @@ import DefaultLayout from './componetns/layout/DefaultLayout';
 import IndexHome from './componetns/home/index';
 import ArticleHome from './componetns/article/index';
 import ThemeHome from './componetns/theme/index';
+import ConferenceHome from './componetns/conference/index';
+import JournalHome from './componetns/journal/index';
 import ThemeDetailHome from './componetns/theme/detail/index';
 import UserDetailHome from './componetns/user/index';
 import About from './componetns/about/index';
@@ -23,6 +25,8 @@ ReactDOM.render(
                 <DefaultLayout exact path='/' component={IndexHome} />
                 <DefaultLayout path='/channel/:channelName' component={IndexHome} />
                 <DefaultLayout path='/themes' component={ThemeHome} />
+                <DefaultLayout path='/conference' component={ConferenceHome} />
+                <DefaultLayout path='/journal' component={JournalHome} />
                 <DefaultLayout path='/article/:id' component={ArticleHome} />
                 <DefaultLayout path='/theme/:themeName' component={ThemeDetailHome} />
                 <DefaultLayout path='/user/:username' component={UserDetailHome} />

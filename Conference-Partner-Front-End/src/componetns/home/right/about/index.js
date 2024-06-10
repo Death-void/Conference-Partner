@@ -21,9 +21,9 @@ class About extends Component{
                             <li className="item"><Link to="/about">免责声明</Link></li>
                         </ul>
                         <div className="company">
-                            <p className="J-company-name"> © 2018 TELL</p>
+                            <p className="J-company-name"> © 2024 CP</p>
                             <div>
-                                <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">琼ICP备18002390号-5</a>
+                                <a href="http://www.miibeian.gov.cn/" target="_blank" ga_event="click_about">琼ICP备xxxxxxxx号-x</a>
                             </div>
                         </div>
                     </div>

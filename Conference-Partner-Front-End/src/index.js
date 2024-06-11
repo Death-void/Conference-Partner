@@ -1,41 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter,Switch} from 'react-router-dom';
-import {Provider} from 'react-redux';
-
+import React,  { Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
-import store from './store/store';
-import DefaultLayout from './componetns/layout/DefaultLayout';
-import IndexHome from './componetns/home/index';
-import ArticleHome from './componetns/article/index';
-import ThemeHome from './componetns/theme/index';
-import ConferenceHome from './componetns/conference/index';
-import JournalHome from './componetns/journal/index';
-import ThemeDetailHome from './componetns/theme/detail/index';
-import UserDetailHome from './componetns/user/index';
-import About from './componetns/about/index';
-import NotFound from './componetns/error/notFound';
-import Create from './componetns/article/create7';
-import Settings from './componetns/user/settings';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import store from './app/store'
+import { Provider } from 'react-redux'
+import SuspenseContent from './containers/SuspenseContent';
 
-ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <Switch>
-                <DefaultLayout exact path='/' component={IndexHome} />
-                <DefaultLayout path='/channel/:channelName' component={IndexHome} />
-                <DefaultLayout path='/themes' component={ThemeHome} />
-                <DefaultLayout path='/conference' component={ConferenceHome} />
-                <DefaultLayout path='/journal' component={JournalHome} />
-                <DefaultLayout path='/article/:id' component={ArticleHome} />
-                <DefaultLayout path='/theme/:themeName' component={ThemeDetailHome} />
-                <DefaultLayout path='/user/:username' component={UserDetailHome} />
-                <DefaultLayout path='/settings' component={Settings} />
-                <DefaultLayout path='/about' component={About} />
-                <DefaultLayout path='/create' component={Create} />
-                <DefaultLayout component={NotFound} />
-            </Switch>
-        </BrowserRouter>
-    </Provider>,
-    document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  // <React.StrictMode>
+    <Suspense fallback={<SuspenseContent />}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </Suspense>
+  // </React.StrictMode>
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

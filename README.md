@@ -46,7 +46,7 @@
     }
 
 - [] api:
-    
+  
     ### 首页
     - searchConfByName
     
@@ -305,7 +305,38 @@
     
     ### 用户页
     - getUserInfo
+    url：
+    /getUserInfo/{id}
+    response:
+    {
+    	"id": 1,
+    	"userName": "user1",
+    	"email": "user1@example.com",
+    	"password": "$2a$10$7Q7rOd/oPSK.s4xPSzX5M.3Ow5nxjG5B27I7jN5XBItuMwBsSlD6a",
+    	"institution": "Institution1",
+    	"registrationTime": "2023-05-29T10:00:00"
+    }
     - updateUserInfo
+    url:
+    /updateUserInfo/{id}
+    payload:
+    {
+    	"id": 1,
+    	"userName": "user1",
+    	"email": "user1@example.com",
+    	"password": "123",
+    	"institution": "Institution1",
+    	"registrationTime": "2023-05-29T10:00:00"
+    }
+    response:
+    {
+    	"id": 1,
+    	"userName": "user1",
+    	"email": "user1@example.com",
+    	"password": "$2a$10$nIMYpQTmKrVikZb9zzrKmO0djhbzZKMlMxra6SXnQfsN9dVRMCqGK",
+    	"institution": "Institution1",
+    	"registrationTime": "2023-05-29T10:00:00"
+    }
 
 
     ### 具体会议页

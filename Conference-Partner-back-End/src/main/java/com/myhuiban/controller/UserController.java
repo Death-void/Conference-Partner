@@ -1,12 +1,14 @@
 package com.myhuiban.controller;
 
 import com.myhuiban.model.Journal;
+import com.myhuiban.model.User;
 import com.myhuiban.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +24,23 @@ public class UserController {
     @GetMapping("/getUserNum")
     public ResponseEntity<Integer> getUserNum() {
         return ResponseEntity.ok(userService.getUserNum());
+    }
+
+    @GetMapping("/getUserInfo/{id}")
+    public ResponseEntity<User> getUserInfo(@PathVariable Long id) {
+        User user = userService.getUserInfo(id);
+        return ResponseEntity.ok(user);
+    }
+
+//    现在的版本不是很安全，没有确保只能修改自己，只确保了只能修改对应id的用户
+    @PutMapping("/updateUserInfo/{id}")
+    public ResponseEntity<User> updateUserInfo(@PathVariable Long id, @RequestBody User updatedUser) {
+        // 在这里可能需要验证传入的userId是否与updatedUser中的userId相匹配
+        if (!id.equals(updatedUser.getId())) {
+            // 如果不匹配，返回400 Bad Request错误
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        userService.updateUserInfo(updatedUser);
+        return ResponseEntity.ok(updatedUser);
     }
 }

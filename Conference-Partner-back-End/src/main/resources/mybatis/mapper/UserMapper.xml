@@ -16,4 +16,14 @@
     <select id="getUserNum" resultType="int">
         SELECT COUNT(*) FROM user
     </select>
+
+    <select id="findById" resultType="com.myhuiban.model.User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <update id="updateUserInfo" parameterType="com.myhuiban.model.User">
+        UPDATE user
+        SET user_name=#{userName}, email=#{email}, institution=#{institution}, registration_time=#{registrationTime}, password=#{password}
+        WHERE id=#{id}
+    </update>
 </mapper>

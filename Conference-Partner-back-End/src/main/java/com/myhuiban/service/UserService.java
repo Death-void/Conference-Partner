@@ -7,4 +7,6 @@ public interface UserService {
     User findByUsername(String userName);
     boolean checkPassword(String rawPassword, String encodedPassword);
     int getUserNum();
+    User getUserInfo(Long id);
+    void updateUserInfo(User updatedUser);
 }

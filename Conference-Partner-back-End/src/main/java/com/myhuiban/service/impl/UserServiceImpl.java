@@ -31,6 +31,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserInfo(Long id) {
+        return userMapper.findById(id);
+    }
+
+    @Override
+    public void updateUserInfo(User updatedUser) {
+        updatedUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
+        userMapper.updateUserInfo(updatedUser);
+    }
+
+    @Override
     public User findByUsername(String userName) {
         return userMapper.findByUsername(userName);
     }

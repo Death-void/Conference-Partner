@@ -44,6 +44,7 @@
     }
 
 - [] api:
+    ### 首页
     - searchConfJourByName
     - getConferenceNum
     - getJournalNum
@@ -189,11 +190,22 @@
     ]
     ```
 
+    ### 会议页
     - getConfInCall: paging
     - getConfFinished: paging
 
+    ### 期刊页
     - getJourInCall: paging
     - getJourNoDeadline: paging
 
+    ### 用户页
     - getUserInfo
     - updateUserInfo
+    
+
+    ### 具体会议页
+    - getFollowersInConference
+    - getJoinersInConference
+
+    ### 具体期刊页
+    - getFollowersInJournal

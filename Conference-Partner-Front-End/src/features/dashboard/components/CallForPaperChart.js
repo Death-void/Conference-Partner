@@ -56,7 +56,7 @@ function CallForPaperChart(){
                                     <td>{u.CORE ? <span className="bg-blue-500 badge px-2  text-white">{u.CORE}</span> : null }</td>
                                     <td>{u.QUALIS ? <span className="bg-blue-500 badge px-2  text-white">{u.QUALIS}</span> : null }</td>
                                     <td>{u.shortName}</td>
-                                    <td>{u.fullName}</td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${100}`}>{u.fullName}</button></td>
                                     <td>{u.delay ? <span className="bg-red-700 badge px-2 text-white">{u.delay}</span> : null }</td>
                                     <td>{u.deadline}</td>
                                     <td>{u.notifyDate}</td>

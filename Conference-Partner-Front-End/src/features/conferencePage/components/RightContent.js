@@ -6,7 +6,7 @@ import ConferenceInfo from "./ConferenceInfo"
 import Recommend from "./Recommend"
 import RelatedConference from "./RelatedConference"
 import RelatedJournal from "./RelatedJournal"
-import {UserPlusIcon, GlobeAsiaAustraliaIcon, PencilSquareIcon, GifIcon} from "@heroicons/react/24/outline"
+import {UserPlusIcon, GlobeAsiaAustraliaIcon, PencilSquareIcon, GiftIcon} from "@heroicons/react/24/outline"
 
 const confInfo = {
     id : 1,
@@ -121,8 +121,8 @@ function RightContent(){
                 </BodyCard>
             </div>
 
-            <div>
-                <TitleCard title={<><GifIcon className="h-6 w-6 inline-block mr-2"/>惊喜</>}>
+            <div className="mt-10">
+                <TitleCard title={<><GiftIcon className="h-6 w-6 inline-block mr-2"/>惊喜</>}>
                     
                 </TitleCard>
             </div>

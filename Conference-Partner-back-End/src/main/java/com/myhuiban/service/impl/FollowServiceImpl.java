@@ -4,10 +4,7 @@ import com.myhuiban.mapper.ConferenceMapper;
 import com.myhuiban.mapper.FollowConferenceMapper;
 import com.myhuiban.mapper.FollowJournalMapper;
 import com.myhuiban.mapper.JournalMapper;
-import com.myhuiban.model.Conference;
-import com.myhuiban.model.FollowConference;
-import com.myhuiban.model.FollowJournal;
-import com.myhuiban.model.Journal;
+import com.myhuiban.model.*;
 import com.myhuiban.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,5 +89,21 @@ public class FollowServiceImpl implements FollowService {
         if (find != null)
             followJournalMapper.delete(find.getId());
         return followJournal;
+    }
+
+    @Override
+    public List<FollowConferenceDetail> getTopTenFollowConference() {
+        List<FollowConferenceDetail> detailList = followConferenceMapper.findTopTen();
+        for (FollowConferenceDetail detail : detailList)
+            detail.setConference(conferenceMapper.findById(detail.getConferenceId()));
+        return detailList;
+    }
+
+    @Override
+    public List<FollowJournalDetail> getTopTenFollowJournal() {
+        List<FollowJournalDetail> detailList = followJournalMapper.findTopTen();
+        for (FollowJournalDetail detail : detailList)
+            detail.setJournal(journalMapper.findById(detail.getJournalId()));
+        return detailList;
     }
 }

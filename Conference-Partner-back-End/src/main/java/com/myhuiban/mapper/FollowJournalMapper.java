@@ -1,6 +1,7 @@
 package com.myhuiban.mapper;
 
 import com.myhuiban.model.FollowJournal;
+import com.myhuiban.model.FollowJournalDetail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface FollowJournalMapper {
     void delete(Long id);
 
     FollowJournal find(FollowJournal followJournal);
+
+    List<FollowJournalDetail> findTopTen();
 }

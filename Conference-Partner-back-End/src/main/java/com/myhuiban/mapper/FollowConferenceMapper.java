@@ -1,6 +1,7 @@
 package com.myhuiban.mapper;
 
 import com.myhuiban.model.FollowConference;
+import com.myhuiban.model.FollowConferenceDetail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface FollowConferenceMapper {
     void delete(Long id);
 
     FollowConference find(FollowConference followConference);
+
+    List<FollowConferenceDetail> findTopTen();
 }

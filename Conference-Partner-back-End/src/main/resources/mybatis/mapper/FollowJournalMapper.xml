@@ -36,4 +36,11 @@
         DELETE FROM follow_journal WHERE id = #{id}
     </delete>
 
+    <!-- 关注数量排名前十的期刊 -->
+    <select id="findTopTen" resultType="com.myhuiban.model.FollowJournalDetail">
+        SELECT Journal_id, count(*) AS follow_num
+        FROM follow_journal
+        GROUP BY journal_id
+        ORDER BY follow_num DESC
+    </select>
 </mapper>

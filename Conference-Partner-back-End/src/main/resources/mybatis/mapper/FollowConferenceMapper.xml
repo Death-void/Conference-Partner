@@ -37,4 +37,11 @@
         DELETE FROM follow_conference WHERE id = #{id}
     </delete>
 
+    <!-- 关注数量排名前十的会议 -->
+    <select id="findTopTen" resultType="com.myhuiban.model.FollowConferenceDetail">
+        SELECT conference_id, count(*) AS follow_num
+        FROM follow_conference
+        GROUP BY conference_id
+        ORDER BY follow_num DESC
+    </select>
 </mapper>

@@ -1,9 +1,6 @@
 package com.myhuiban.controller;
 
-import com.myhuiban.model.Conference;
-import com.myhuiban.model.FollowConference;
-import com.myhuiban.model.FollowJournal;
-import com.myhuiban.model.Journal;
+import com.myhuiban.model.*;
 import com.myhuiban.service.FollowService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/follow")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "关注管理系统", description = "关注管理系统中的操作")
 public class FollowController {
 
@@ -101,5 +98,25 @@ public class FollowController {
     @GetMapping("/journal/{id}")
     public int getJournalFollowNumber(@PathVariable Long id) {
         return followService.getJournalFollowNumber(id);
+    }
+
+    @ApiOperation(value = "获取关注数量排名前十的会议", response = List.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功获取会议"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @GetMapping("/conference/topTen")
+    public List<FollowConferenceDetail> getTopTenFollowConference() {
+        return followService.getTopTenFollowConference();
+    }
+
+    @ApiOperation(value = "获取关注数量排名前十期刊", response = Integer.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功获取期刊"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @GetMapping("/journal/topTen")
+    public List<FollowJournalDetail> getTopTenFollowJournal() {
+        return followService.getTopTenFollowJournal();
     }
 }

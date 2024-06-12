@@ -2,6 +2,7 @@ package com.myhuiban.controller;
 
 import com.myhuiban.model.User;
 import com.myhuiban.service.UserService;
+import com.myhuiban.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
@@ -9,17 +10,30 @@ import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "认证管理系统", description = "认证管理系统中的操作")
 public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @ApiOperation(value = "注册新用户", response = String.class)
     @ApiResponses(value = {
@@ -31,7 +45,7 @@ public class AuthController {
         if (userService.findByUsername(user.getUserName()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("用户名已存在");
         }
-        userService.registerUser(user);
+        userService.registerUser(user); // 确保registerUser方法加密密码
         return ResponseEntity.status(HttpStatus.CREATED).body("用户注册成功");
     }
 
@@ -41,11 +55,34 @@ public class AuthController {
             @ApiResponse(code = 401, message = "用户名或密码错误")
     })
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        User foundUser = userService.findByUsername(user.getUserName());
-        if (foundUser == null || !userService.checkPassword(user.getPassword(), foundUser.getPassword())) {
+    public ResponseEntity<?> login(@RequestBody User user) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword())
+            );
+        } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("用户名或密码错误");
         }
-        return ResponseEntity.ok("登录成功");
+
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
+        final String jwt = jwtUtil.generateToken(userDetails.getUsername());
+
+        return ResponseEntity.ok().body(new AuthResponse(jwt));
+    }
+    @PostMapping("/test")
+    public ResponseEntity<?> test(@RequestBody User user) {
+        return ResponseEntity.status(HttpStatus.OK).body(user.getUserName());
+    }
+
+    static class AuthResponse {
+        private final String token; //jwt token
+
+        public AuthResponse(String token) {
+            this.token = token;
+        }
+
+        public String getToken() {
+            return token;
+        }
     }
 }

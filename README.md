@@ -31,7 +31,9 @@
     
     module.exports = router;
     ```
+    
 - [ ] set session token (authorization) in back end
+
 - [ ] Response data should be in json format
     - /register : {"userName":"string", "password":"string", "institution":"string", "email":"string"} -> {
         "code": 200,
@@ -44,12 +46,115 @@
     }
 
 - [] api:
+    
     ### 首页
-    - searchConfJourByName
+    - searchConfByName
+    
+    ```
+    url:
+    /conferences/searchConfByName
+    payload:
+    string name
+    response:
+    
+    ```
+    
+    - searchJourByName
+    
+    ```
+    url:
+    /journals/searchJourByName
+    payload:
+    String name
+    response:
+    [
+    	{
+    		"id": 2,
+    		"name": "IEEE Transactions on Neural Networks",
+    		"website": "https://www.ieee.org",
+    		"specialIssue": "Special Issue on Reinforcement Learning",
+    		"submissionDeadline": "2024-07-01",
+    		"impactFactor": "5.123",
+    		"publisher": "IEEE",
+    		"viewCount": 1500,
+    		"ccf": "A*",
+    		"issn": "1045-9227"
+    	}
+    ]
+    ```
+    
+    - searchJourConfByName
+    
+    ```
+    url:
+    /api/searchJourConfByName
+    payload:
+    string name
+    response:
+    {
+    	"conferences": [],
+    	"journals": [
+    		{
+    			"id": 2,
+    			"name": "IEEE Transactions on Neural Networks",
+    			"website": "https://www.ieee.org",
+    			"specialIssue": "Special Issue on Reinforcement Learning",
+    			"submissionDeadline": "2024-07-01",
+    			"impactFactor": "5.123",
+    			"publisher": "IEEE",
+    			"viewCount": 1500,
+    			"ccf": "A*",
+    			"issn": "1045-9227"
+    		}
+    	]
+    }
+    ```
+    
     - getConferenceNum
+    
+    ```
+    url:
+    /conferences/getConferenceNum
+    payload:
+    None
+    response:
+    3
+    ```
+    
     - getJournalNum
+    
+    ```
+    url:
+    /journals/getJournalNum
+    payload:
+    None
+    response:
+    5
+    ```
+    
     - getUserNum
+    
+    ```
+    url:
+    /user/getUserNum
+    payload:
+    None
+    response:
+    3
+    ```
+    
     - getPageVisitedNum : the number of time that all confrences and journals been visited
+    
+    ```
+    url:
+    /api/getPageVisitedNum
+    payload:
+    None
+    response:
+    6600
+    ```
+    
+    
 
 
     - getTopTenMessages: update conference, update journal, add user (time decreasing order) -> get all in pages
@@ -66,7 +171,7 @@
         {date : "2024-06-02", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
         {date : "2024-06-01", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
         ]
-
+    
     ```
     - getTopTenCallForPaper: deadline time increasing order -> get all in pages
     ```
@@ -113,7 +218,7 @@
             {CCF: "b", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
         ]
     ```
-
+    
     - getTopTenConfVisited -> get all in pages
     ```
         const userSourceData = [
@@ -189,23 +294,23 @@
         {shortName: "ICRA", follow: 123456},
     ]
     ```
-
+    
     ### 会议页
     - getConfInCall: paging
     - getConfFinished: paging
-
+    
     ### 期刊页
     - getJourInCall: paging
     - getJourNoDeadline: paging
-
+    
     ### 用户页
     - getUserInfo
     - updateUserInfo
-    
+
 
     ### 具体会议页
     - getFollowersInConference
     - getJoinersInConference
-
+    
     ### 具体期刊页
     - getFollowersInJournal

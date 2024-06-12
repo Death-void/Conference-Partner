@@ -19,6 +19,7 @@ const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const Conference = lazy(() => import('../pages/protected/Conference'))
 const Journal = lazy(() => import('../pages/protected/Journal'))
+const ConferencePage = lazy(() => import('../pages/protected/ConferencePage'))
 
 
 const routes = [
@@ -29,6 +30,10 @@ const routes = [
   {
     path: '/conference', // the url
     component: Conference, // view rendered
+  },
+  {
+    path: '/conferencePage/:id', // the url
+    component: ConferencePage, // view rendered
   },
   {
     path: '/journal', // the url

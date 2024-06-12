@@ -14,6 +14,9 @@ import { useDispatch } from 'react-redux'
 import {showNotification} from '../common/headerSlice'
 import DoughnutChart from './components/DoughnutChart'
 import { useState } from 'react'
+import CallForPaperPaging from './components/CallForPaperPaging'
+import CallForPaperFinishedPaging from './components/CallForPaperFinishedPaging'
+import PaginatedItems from './components/PaginateItems'
 
 const statsData = [
     {title : "会议", value : "34.7k", icon : <UserGroupIcon className='w-8 h-8'/>, description : ""},
@@ -36,40 +39,19 @@ function Conference(){
 
     return(
         <>
-        {/** ---------------------- Select Period Content ------------------------- */}
-            <DashboardTopBar updateDashboardPeriod={updateDashboardPeriod}/>
-        
-        {/** ---------------------- Different stats content 1 ------------------------- */}
-            <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
-                {
-                    statsData.map((d, k) => {
-                        return (
-                            <DashboardStats key={k} {...d} colorIndex={k}/>
-                        )
-                    })
-                }
-            </div>
-
-
-
-        {/** ---------------------- Different charts ------------------------- */}
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <LineChart />
-                <BarChart />
-            </div>
-            
-        {/** ---------------------- Different stats content 2 ------------------------- */}
-        
-            <div className="grid lg:grid-cols-2 mt-10 grid-cols-1 gap-6">
-                <AmountStats />
-                <PageStats />
-            </div>
 
         {/** ---------------------- User source channels table  ------------------------- */}
         
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <UserChannels />
-                <DoughnutChart />
+            {/* <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
+                <PaginatedItems />
+            </div> */}
+
+            <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
+                <CallForPaperPaging />
+            </div>
+
+            <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
+                <CallForPaperFinishedPaging />
             </div>
         </>
     )

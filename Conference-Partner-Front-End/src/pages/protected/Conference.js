@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setPageTitle } from '../../features/common/headerSlice'
-import Dashboard from '../../features/dashboard/index'
+import Conference from '../../features/conference/index'
 
 function InternalPage(){
     const dispatch = useDispatch()
@@ -12,7 +12,7 @@ function InternalPage(){
 
 
     return(
-        <Dashboard />
+        <Conference />
     )
 }
 

@@ -34,11 +34,13 @@ function ConferenceInfo(){
                 </div>
                 <br/>
                 <div className="flex justify-center">
-                    <a href={confInfo.url} className="hover:underline text-blue-500">{confInfo.url}</a>
-                </div>
-                <div className="flex justify-center">
                     <table className="flex justify-center w-auto border-0">
                         <tbody className="text-center  space-y-5">
+                            <tr>
+                                <td colSpan={3}>
+                                    <a href={confInfo.url} className="hover:underline text-blue-500">{confInfo.url}</a>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>截稿日期：</td>
                                 <td></td>

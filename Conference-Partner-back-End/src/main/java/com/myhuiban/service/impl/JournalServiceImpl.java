@@ -21,6 +21,17 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
+    public List<Journal> searchByName(String name) {
+        return journalMapper.searchByName(name);
+    }
+
+    @Override
+    public int getJournalVisitedNum() {
+        return journalMapper.getJournalVisitedNum();
+    }
+
+
+    @Override
     public Journal updateJournal(Journal journal) {
         journalMapper.update(journal);
         return journal;
@@ -39,5 +50,10 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public Journal getJournalById(Long id) {
         return journalMapper.findById(id);
+    }
+
+    @Override
+    public int getJournalNum() {
+        return journalMapper.getJournalNum();
     }
 }

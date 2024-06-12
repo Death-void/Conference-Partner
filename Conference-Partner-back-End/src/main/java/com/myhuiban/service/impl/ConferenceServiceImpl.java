@@ -21,6 +21,16 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
+    public List<Conference> searchByName(String name) {
+        return conferenceMapper.searchByName(name);
+    }
+
+    @Override
+    public int getConferenceVisitedNum() {
+        return conferenceMapper.getConferenceVisitedNum();
+    }
+
+    @Override
     public Conference updateConference(Conference conference) {
         conferenceMapper.update(conference);
         return conference;
@@ -39,5 +49,10 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public Conference getConferenceById(Long id) {
         return conferenceMapper.findById(id);
+    }
+
+    @Override
+    public int getConferenceNum() {
+        return conferenceMapper.getConferenceNum();
     }
 }

@@ -12,4 +12,8 @@
         INSERT INTO user(user_name, email, institution, registration_time, password)
         VALUES (#{userName}, #{email}, #{institution}, #{registrationTime}, #{password})
     </insert>
+
+    <select id="getUserNum" resultType="int">
+        SELECT COUNT(*) FROM user
+    </select>
 </mapper>

@@ -7,8 +7,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.directory.SearchResult;
 import java.util.List;
 
 @RestController
@@ -76,4 +78,16 @@ public class ConferenceController {
     public Conference getConferenceById(@PathVariable Long id) {
         return conferenceService.getConferenceById(id);
     }
+
+    @GetMapping("/searchConfByName")
+    public ResponseEntity<?> searchConfJourByName(@RequestParam String name) {
+        List<Conference> conferences = conferenceService.searchByName(name);
+        return ResponseEntity.ok(conferences);
+    }
+
+    @GetMapping("/getConferenceNum")
+    public ResponseEntity<Integer> getConferenceNum() {
+        return ResponseEntity.ok(conferenceService.getConferenceNum());
+    }
+
 }

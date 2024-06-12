@@ -53,4 +53,15 @@
         DELETE FROM conference WHERE id = #{id}
     </delete>
 
+    <select id="getConferenceNum" resultType="int">
+        SELECT COUNT(*) FROM conference
+    </select>
+
+    <select id="searchByName" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="getConferenceVisitedNum" resultType="int">
+        SELECT SUM(view_count) FROM conference
+    </select>
 </mapper>

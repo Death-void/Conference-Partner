@@ -17,4 +17,10 @@ public interface ConferenceMapper {
     void update(Conference conference);
 
     void delete(Long id);
+
+    int getConferenceNum();
+
+    List<Conference> searchByName(String name);
+
+    int getConferenceVisitedNum();
 }

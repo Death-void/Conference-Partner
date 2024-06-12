@@ -9,4 +9,6 @@ public interface UserMapper {
     User findByUsername(String username);
 
     void insert(User user);
+
+    int getUserNum();
 }

@@ -10,4 +10,7 @@ public interface ConferenceService {
     void deleteConference(Long id);
     List<Conference> getAllConferences();
     Conference getConferenceById(Long id);
+    int getConferenceNum();
+    List<Conference> searchByName(String name);
+    int getConferenceVisitedNum();
 }

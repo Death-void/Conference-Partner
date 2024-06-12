@@ -10,4 +10,7 @@ public interface JournalService {
     void deleteJournal(Long id);
     List<Journal> getAllJournals();
     Journal getJournalById(Long id);
+    int getJournalNum();
+    List<Journal> searchByName(String name);
+    int getJournalVisitedNum();
 }

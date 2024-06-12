@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -75,5 +76,16 @@ public class JournalController {
     @GetMapping("/{id}")
     public Journal getJournalById(@PathVariable Long id) {
         return journalService.getJournalById(id);
+    }
+
+    @GetMapping("/searchJourByName")
+    public ResponseEntity<?> searchConfJourByName(@RequestParam String name) {
+        List<Journal> journals = journalService.searchByName(name);
+        return ResponseEntity.ok(journals);
+    }
+
+    @GetMapping("/getJournalNum")
+    public ResponseEntity<Integer> getJournalNum() {
+        return ResponseEntity.ok(journalService.getJournalNum());
     }
 }

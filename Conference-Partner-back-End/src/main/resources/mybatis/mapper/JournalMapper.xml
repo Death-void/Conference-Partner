@@ -46,4 +46,16 @@
         DELETE FROM journal WHERE id = #{id}
     </delete>
 
+    <select id="getJournalNum" resultType="int">
+        SELECT COUNT(*) FROM journal
+    </select>
+
+    <select id="searchByName" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="getJournalVisitedNum" resultType="int">
+        SELECT SUM(view_count) FROM journal
+    </select>
+
 </mapper>

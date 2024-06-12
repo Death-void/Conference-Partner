@@ -17,4 +17,10 @@ public interface JournalMapper {
     void update(Journal journal);
 
     void delete(Long id);
+
+    List<Journal> searchByName(String name);
+
+    int getJournalNum();
+
+    int getJournalVisitedNum();
 }

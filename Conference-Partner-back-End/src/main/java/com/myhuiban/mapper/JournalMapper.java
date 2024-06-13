@@ -1,7 +1,7 @@
 package com.myhuiban.mapper;
 
 import com.myhuiban.model.Journal;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -23,4 +23,6 @@ public interface JournalMapper {
     int getJournalNum();
 
     int getJournalVisitedNum();
+
+    List<Journal> findTopTenVisit();
 }

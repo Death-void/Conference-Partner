@@ -13,4 +13,6 @@ public interface JournalService {
     int getJournalNum();
     List<Journal> searchByName(String name);
     int getJournalVisitedNum();
+
+    List<Journal> getTopTenVisitJournals();
 }

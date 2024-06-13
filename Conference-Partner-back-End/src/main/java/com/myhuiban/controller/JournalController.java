@@ -87,4 +87,15 @@ public class JournalController {
     public ResponseEntity<Integer> getJournalNum() {
         return ResponseEntity.ok(journalService.getJournalNum());
     }
+
+    @ApiOperation(value = "获取浏览前十的期刊", response = Journal.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功获取期刊"),
+            @ApiResponse(code = 404, message = "期刊未找到"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @GetMapping("/visit/topTen")
+    public List<Journal> getTopTenVisitConferences() {
+        return journalService.getTopTenVisitJournals();
+    }
 }

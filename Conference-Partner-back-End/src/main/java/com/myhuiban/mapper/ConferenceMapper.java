@@ -28,4 +28,6 @@ public interface ConferenceMapper {
     List<Conference> getConfInCall(LocalDate currentDate);
 
     List<Conference> getConfFinished(LocalDate currentDate);
+
+    List<Conference> findTopTenVisit();
 }

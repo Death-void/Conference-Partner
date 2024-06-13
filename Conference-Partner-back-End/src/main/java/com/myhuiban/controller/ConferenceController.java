@@ -4,13 +4,12 @@ import com.myhuiban.model.Conference;
 import com.myhuiban.service.ConferenceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.directory.SearchResult;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -102,5 +101,16 @@ public class ConferenceController {
         LocalDate currentDate = LocalDate.now();
         List<Conference> conferencesFinished = conferenceService.getConfFinished(currentDate);
         return ResponseEntity.ok(conferencesFinished);
+    }
+
+    @ApiOperation(value = "获取浏览前十的会议", response = Conference.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功获取会议"),
+            @ApiResponse(code = 404, message = "会议未找到"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @GetMapping("/visit/topTen")
+    public List<Conference> getTopTenVisitConferences() {
+        return conferenceService.getTopTenVisitConferences();
     }
 }

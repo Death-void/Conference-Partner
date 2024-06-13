@@ -7,55 +7,67 @@
 
     <!-- 查找所有期刊 -->
     <select id="findAll" resultType="com.myhuiban.model.Journal">
-        SELECT * FROM journal
+        SELECT *
+        FROM journal
     </select>
 
     <!-- 根据ID查找期刊 -->
     <select id="findById" parameterType="Long" resultType="com.myhuiban.model.Journal">
-        SELECT * FROM journal WHERE id = #{id}
+        SELECT *
+        FROM journal
+        WHERE id = #{id}
     </select>
 
     <!-- 插入期刊 -->
     <insert id="insert" parameterType="com.myhuiban.model.Journal" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO journal (
-            name, website, special_issue, CCF, submission_deadline, impact_factor,
-            publisher, ISSN, view_count
-        ) VALUES (
-                     #{name}, #{website}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor},
-                     #{publisher}, #{ISSN}, #{viewCount}
-                 )
+        INSERT INTO journal (name, website, special_issue, CCF, submission_deadline, impact_factor,
+                             publisher, ISSN, view_count)
+        VALUES (#{name}, #{website}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor},
+                #{publisher}, #{ISSN}, #{viewCount})
     </insert>
 
     <!-- 更新期刊 -->
     <update id="update" parameterType="com.myhuiban.model.Journal">
         UPDATE journal
-        SET name = #{name},
-            website = #{website},
-            special_issue = #{specialIssue},
-            CCF = #{CCF},
+        SET name                = #{name},
+            website             = #{website},
+            special_issue       = #{specialIssue},
+            CCF                 = #{CCF},
             submission_deadline = #{submissionDeadline},
-            impact_factor = #{impactFactor},
-            publisher = #{publisher},
-            ISSN = #{ISSN},
-            view_count = #{viewCount}
+            impact_factor       = #{impactFactor},
+            publisher           = #{publisher},
+            ISSN                = #{ISSN},
+            view_count          = #{viewCount}
         WHERE id = #{id}
     </update>
 
     <!-- 删除期刊 -->
     <delete id="delete" parameterType="Long">
-        DELETE FROM journal WHERE id = #{id}
+        DELETE
+        FROM journal
+        WHERE id = #{id}
     </delete>
 
     <select id="getJournalNum" resultType="int">
-        SELECT COUNT(*) FROM journal
+        SELECT COUNT(*)
+        FROM journal
     </select>
 
     <select id="searchByName" resultType="com.myhuiban.model.Journal">
-        SELECT * FROM journal WHERE name LIKE CONCAT('%', #{name}, '%')
+        SELECT *
+        FROM journal
+        WHERE name LIKE CONCAT('%', #{name}, '%')
     </select>
 
     <select id="getJournalVisitedNum" resultType="int">
-        SELECT SUM(view_count) FROM journal
+        SELECT SUM(view_count)
+        FROM journal
     </select>
 
+    <!-- 浏览前十的期刊 -->
+    <select id="findTopTenVisit" resultType="com.myhuiban.model.Journal">
+        SELECT *
+        FROM journal
+        ORDER BY view_count DESC LIMIT 10
+    </select>
 </mapper>

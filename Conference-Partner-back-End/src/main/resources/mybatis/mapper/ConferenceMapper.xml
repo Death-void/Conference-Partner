@@ -7,69 +7,86 @@
 
     <!-- 根据ID查找会议 -->
     <select id="findById" parameterType="Long" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference WHERE id = #{id}
+        SELECT *
+        FROM conference
+        WHERE id = #{id}
     </select>
 
     <!-- 查找所有会议 -->
     <select id="findAll" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference
+        SELECT *
+        FROM conference
     </select>
 
     <!-- 插入会议 -->
     <insert id="insert" parameterType="com.myhuiban.model.Conference" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO conference (
-            name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS,
-            submission_deadline, notification_date, conference_date,
-            location, frequency, view_count, is_postponed
-        ) VALUES (
-                     #{name}, #{website}, #{abbreviation}, #{callForPapers}, #{CCF}, #{CORE}, #{QUALIS},
-                     #{submissionDeadline}, #{notificationDate}, #{conferenceDate},
-                     #{location}, #{frequency}, #{viewCount}, #{isPostponed}
-                 )
+        INSERT INTO conference (name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS,
+                                submission_deadline, notification_date, conference_date,
+                                location, frequency, view_count, is_postponed)
+        VALUES (#{name}, #{website}, #{abbreviation}, #{callForPapers}, #{CCF}, #{CORE}, #{QUALIS},
+                #{submissionDeadline}, #{notificationDate}, #{conferenceDate},
+                #{location}, #{frequency}, #{viewCount}, #{isPostponed})
     </insert>
 
     <!-- 更新会议 -->
     <update id="update" parameterType="com.myhuiban.model.Conference">
         UPDATE conference
-        SET name = #{name},
-            website = #{website},
-            abbreviation = #{abbreviation},
-            call_for_papers = #{callForPapers},
-            CCF = #{CCF},
-            CORE = #{CORE},
-            QUALIS = #{QUALIS},
+        SET name                = #{name},
+            website             = #{website},
+            abbreviation        = #{abbreviation},
+            call_for_papers     = #{callForPapers},
+            CCF                 = #{CCF},
+            CORE                = #{CORE},
+            QUALIS              = #{QUALIS},
             submission_deadline = #{submissionDeadline},
-            notification_date = #{notificationDate},
-            conference_date = #{conferenceDate},
-            location = #{location},
-            frequency = #{frequency},
-            view_count = #{viewCount},
-            is_postponed = #{isPostponed}
+            notification_date   = #{notificationDate},
+            conference_date     = #{conferenceDate},
+            location            = #{location},
+            frequency           = #{frequency},
+            view_count          = #{viewCount},
+            is_postponed        = #{isPostponed}
         WHERE id = #{id}
     </update>
 
     <!-- 删除会议 -->
     <delete id="delete" parameterType="Long">
-        DELETE FROM conference WHERE id = #{id}
+        DELETE
+        FROM conference
+        WHERE id = #{id}
     </delete>
 
+    <!-- 浏览前十的会议 -->
+    <select id="findTopTenVisit" resultType="com.myhuiban.model.Conference">
+        SELECT *
+        FROM conference
+        ORDER BY view_count DESC LIMIT 10
+    </select>
+
     <select id="getConferenceNum" resultType="int">
-        SELECT COUNT(*) FROM conference
+        SELECT COUNT(*)
+        FROM conference
     </select>
 
     <select id="searchByName" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference WHERE name LIKE CONCAT('%', #{name}, '%')
+        SELECT *
+        FROM conference
+        WHERE name LIKE CONCAT('%', #{name}, '%')
     </select>
 
     <select id="getConferenceVisitedNum" resultType="int">
-        SELECT SUM(view_count) FROM conference
+        SELECT SUM(view_count)
+        FROM conference
     </select>
 
     <select id="getConfInCall" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference WHERE submission_deadline > #{currentDate}
+        SELECT *
+        FROM conference
+        WHERE submission_deadline > #{currentDate}
     </select>
 
     <select id="getConfFinished" resultType="com.myhuiban.model.Conference">
-        SELECT * FROM conference WHERE #{currentDate} >= submission_deadline
+        SELECT *
+        FROM conference
+        WHERE #{currentDate} >= submission_deadline
     </select>
 </mapper>

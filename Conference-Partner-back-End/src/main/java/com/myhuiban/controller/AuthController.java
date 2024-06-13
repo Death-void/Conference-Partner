@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "认证管理系统", description = "认证管理系统中的操作")
 public class AuthController {
 

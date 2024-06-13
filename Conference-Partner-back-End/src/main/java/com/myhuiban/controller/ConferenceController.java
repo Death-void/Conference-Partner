@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/conferences")
-@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "会议管理系统", description = "会议管理系统中的操作")
 public class ConferenceController {
 

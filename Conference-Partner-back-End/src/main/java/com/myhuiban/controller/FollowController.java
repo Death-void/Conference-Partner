@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/follow")
-
 @Api(value = "关注管理系统", description = "关注管理系统中的操作")
 public class FollowController {
 

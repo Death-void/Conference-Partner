@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
-
 @Api(value = "用户管理系统", description = "用户管理系统中的操作")
 public class UserController {
 

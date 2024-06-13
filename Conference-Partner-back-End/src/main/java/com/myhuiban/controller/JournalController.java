@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/journals")
-
+@CrossOrigin(origins = "http://localhost:3000")
 @Api(value = "期刊管理系统", description = "期刊管理系统中的操作")
 public class JournalController {
 

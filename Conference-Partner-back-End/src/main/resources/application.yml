@@ -32,3 +32,6 @@ mybatis:
 jwt:
   secret: your_jwt_secret
   expiration: 3600000
+
+# application.properties
+

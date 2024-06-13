@@ -25,10 +25,11 @@ function Login(){
         else{
             setLoading(true)
             // Call API to check user credentials and save token in localstorage
+
             axios.post('/auth/login', loginObj).then((res) => {
-                console.log(res)
                 if(res.status === 200){
-                    localStorage.setItem("token", res.data)
+                    localStorage.setItem("token", res.data.token)
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
                     window.location.href = '/app/dashboard'
                 }

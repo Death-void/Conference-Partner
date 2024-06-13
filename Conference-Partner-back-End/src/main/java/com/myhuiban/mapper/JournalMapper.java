@@ -31,4 +31,6 @@ public interface JournalMapper {
     List<Journal> getJourFinished(LocalDate currentDate);
 
     List<Long> getFollowersInJournal(Long journalId);
+
+    List<Journal> findTopTenVisit();
 }

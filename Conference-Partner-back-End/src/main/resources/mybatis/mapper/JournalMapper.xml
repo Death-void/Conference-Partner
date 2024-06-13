@@ -69,4 +69,12 @@
     <select id="getFollowersInJournal" resultType="java.lang.Long">
         SELECT user_id FROM follow_journal WHERE journal_id = #{journalId}
     </select>
+
+    <!-- 浏览前十的期刊 -->
+    <select id="findTopTenVisit" resultType="com.myhuiban.model.Journal">
+        SELECT *
+        FROM journal
+        ORDER BY view_count DESC LIMIT 10
+    </select>
+
 </mapper>

@@ -115,4 +115,15 @@ public class ConferenceController {
         List<Long> joiners = conferenceService.getJoinersInConference(conferenceId);
         return ResponseEntity.ok(joiners);
     }
+
+    @ApiOperation(value = "获取浏览前十的会议", response = Conference.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功获取会议"),
+            @ApiResponse(code = 404, message = "会议未找到"),
+            @ApiResponse(code = 500, message = "服务器内部错误")
+    })
+    @GetMapping("/visit/topTen")
+    public List<Conference> getTopTenVisitConferences() {
+        return conferenceService.getTopTenVisitConferences();
+    }
 }

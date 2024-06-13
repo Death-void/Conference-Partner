@@ -18,4 +18,5 @@ public interface ConferenceService {
     List<Conference> getConfFinished(LocalDate currentDate);
     List<Long> getFollowersInConference(Long conferenceId);
     List<Long> getJoinersInConference(Long conferenceId);
+    List<Conference> getTopTenVisitConferences();
 }

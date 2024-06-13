@@ -73,4 +73,8 @@ public class JournalServiceImpl implements JournalService {
         return journalMapper.getFollowersInJournal(journalId);
     }
 
+    @Override
+    public List<Journal> getTopTenVisitJournals() {
+        return journalMapper.findTopTenVisit();
+    }
 }

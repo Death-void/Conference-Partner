@@ -32,4 +32,6 @@ public interface ConferenceMapper {
     List<Long> getFollowersInConference(Long conferenceId);
 
     List<Long> getJoinersInConference(Long conferenceId);
+
+    List<Conference> findTopTenVisit();
 }

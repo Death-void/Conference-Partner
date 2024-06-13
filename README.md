@@ -297,8 +297,72 @@
     
     ### 会议页
     - getConfInCall: paging
+    url:
+    /conferences/getConfInCall/
+    payload:
+    None
+    response:
+    [
+    	{
+    		"id": 2,
+    		"name": "Conference on Neural Information Processing Systems",
+    		"website": "http://neurips.cc",
+    		"abbreviation": "NeurIPS",
+    		"callForPapers": "Call for papers details...",
+    		"submissionDeadline": "2024-06-15",
+    		"notificationDate": "2024-07-15",
+    		"conferenceDate": "2024-08-15",
+    		"location": "Montreal, Canada",
+    		"frequency": 35,
+    		"viewCount": 2000,
+    		"isPostponed": false,
+    		"core": "A*",
+    		"ccf": "A",
+    		"qualis": "A1"
+    	}
+    ]
     - getConfFinished: paging
-    
+    url:
+    conferences/getConfFinished
+    payload:
+    None
+    response:
+    [
+    	{
+    		"id": 1,
+    		"name": "International Conference on Machine Learning",
+    		"website": "http://icml.cc",
+    		"abbreviation": "ICML",
+    		"callForPapers": "Call for papers details...",
+    		"submissionDeadline": "2024-06-01",
+    		"notificationDate": "2024-07-01",
+    		"conferenceDate": "2024-08-01",
+    		"location": "San Francisco, USA",
+    		"frequency": 38,
+    		"viewCount": 1500,
+    		"isPostponed": false,
+    		"ccf": "A",
+    		"qualis": "A1",
+    		"core": "A*"
+    	},
+    	{
+    		"id": 3,
+    		"name": "Test Conference",
+    		"website": "http://testconference.com",
+    		"abbreviation": "TC",
+    		"callForPapers": "Call for papers details...",
+    		"submissionDeadline": "2024-05-31",
+    		"notificationDate": "2024-06-30",
+    		"conferenceDate": "2024-07-31",
+    		"location": "San Francisco, USA",
+    		"frequency": 1,
+    		"viewCount": 100,
+    		"isPostponed": false,
+    		"ccf": "A",
+    		"qualis": "A1",
+    		"core": "A*"
+    	}
+    ]
     ### 期刊页
     - getJourInCall: paging
     - getJourNoDeadline: paging

@@ -2,6 +2,7 @@ package com.myhuiban.service;
 
 import com.myhuiban.model.Conference;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ConferenceService {
@@ -13,4 +14,6 @@ public interface ConferenceService {
     int getConferenceNum();
     List<Conference> searchByName(String name);
     int getConferenceVisitedNum();
+    List<Conference> getConfInCall(LocalDate currentDate);
+    List<Conference> getConfFinished(LocalDate currentDate);
 }

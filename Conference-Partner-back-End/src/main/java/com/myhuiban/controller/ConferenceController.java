@@ -11,11 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.naming.directory.SearchResult;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/conferences")
-@CrossOrigin(origins = "http://localhost:3000") 
+
 @Api(value = "会议管理系统", description = "会议管理系统中的操作")
 public class ConferenceController {
 
@@ -90,4 +91,17 @@ public class ConferenceController {
         return ResponseEntity.ok(conferenceService.getConferenceNum());
     }
 
+    @GetMapping("/getConfInCall")
+    public ResponseEntity<?> getConfInCall() {
+        LocalDate currentDate = LocalDate.now();
+        List<Conference> conferencesInCall = conferenceService.getConfInCall(currentDate);
+        return ResponseEntity.ok(conferencesInCall);
+    }
+
+    @GetMapping("/getConfFinished")
+    public ResponseEntity<?> getConfFinished() {
+        LocalDate currentDate = LocalDate.now();
+        List<Conference> conferencesFinished = conferenceService.getConfFinished(currentDate);
+        return ResponseEntity.ok(conferencesFinished);
+    }
 }

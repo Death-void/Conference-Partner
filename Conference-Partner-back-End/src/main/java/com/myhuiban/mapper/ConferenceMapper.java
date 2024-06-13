@@ -3,6 +3,7 @@ package com.myhuiban.mapper;
 import com.myhuiban.model.Conference;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -23,4 +24,8 @@ public interface ConferenceMapper {
     List<Conference> searchByName(String name);
 
     int getConferenceVisitedNum();
+
+    List<Conference> getConfInCall(LocalDate currentDate);
+
+    List<Conference> getConfFinished(LocalDate currentDate);
 }

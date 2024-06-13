@@ -6,6 +6,7 @@ import com.myhuiban.service.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -28,6 +29,16 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public int getConferenceVisitedNum() {
         return conferenceMapper.getConferenceVisitedNum();
+    }
+
+    @Override
+    public List<Conference> getConfInCall(LocalDate currentDate) {
+        return conferenceMapper.getConfInCall(currentDate);
+    }
+
+    @Override
+    public List<Conference> getConfFinished(LocalDate currentDate) {
+        return conferenceMapper.getConfFinished(currentDate);
     }
 
     @Override

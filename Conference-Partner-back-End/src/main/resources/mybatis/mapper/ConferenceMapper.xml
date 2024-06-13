@@ -64,4 +64,12 @@
     <select id="getConferenceVisitedNum" resultType="int">
         SELECT SUM(view_count) FROM conference
     </select>
+
+    <select id="getConfInCall" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference WHERE submission_deadline > #{currentDate}
+    </select>
+
+    <select id="getConfFinished" resultType="com.myhuiban.model.Conference">
+        SELECT * FROM conference WHERE #{currentDate} >= submission_deadline
+    </select>
 </mapper>

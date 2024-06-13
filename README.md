@@ -221,33 +221,116 @@
     
     - getTopTenConfVisited -> get all in pages
     ```
-        const userSourceData = [
-            {shortName: "ICRA", visit: 1423534},
-            {shortName: "IROS", visit: 123456},
-            {shortName: "CVPR", visit: 123456},
-            {shortName: "ICCV", visit: 123456},
-            {shortName: "ECCV", visit: 123456},
-            {shortName: "ICML", visit: 123456},
-            {shortName: "NeurIPS", visit: 123456},
-            {shortName: "AAAI", visit: 123456},
-            {shortName: "ACL", visit: 123456},
-            {shortName: "ICLR", visit: 123456},
-        ]
+    url:
+    /conferences/visit/topTen
+    payload:
+    None
+    response:
+    [
+        {
+            "id": 2,
+            "name": "Conference on Neural Information Processing Systems",
+            "website": "http://neurips.cc",
+            "abbreviation": "NeurIPS",
+            "callForPapers": "Call for papers details...",
+            "submissionDeadline": "2024-06-15",
+            "notificationDate": "2024-07-15",
+            "conferenceDate": "2024-08-15",
+            "location": "Montreal, Canada",
+            "frequency": 35,
+            "viewCount": 2000,
+            "isPostponed": false,
+            "ccf": "A",
+            "core": "A*",
+            "qualis": "A1"
+        },
+        {
+            "id": 1,
+            "name": "International Conference on Machine Learning",
+            "website": "http://icml.cc",
+            "abbreviation": "ICML",
+            "callForPapers": "Call for papers details...",
+            "submissionDeadline": "2024-06-01",
+            "notificationDate": "2024-07-01",
+            "conferenceDate": "2024-08-01",
+            "location": "San Francisco, USA",
+            "frequency": 38,
+            "viewCount": 1500,
+            "isPostponed": false,
+            "ccf": "A",
+            "core": "A*",
+            "qualis": "A1"
+        },
+        {
+            "id": 3,
+            "name": "CVPR",
+            "website": null,
+            "abbreviation": "CVPR",
+            "callForPapers": null,
+            "submissionDeadline": null,
+            "notificationDate": null,
+            "conferenceDate": null,
+            "location": null,
+            "frequency": 0,
+            "viewCount": null,
+            "isPostponed": null,
+            "ccf": null,
+            "core": null,
+            "qualis": null
+        }
+    ]
     ```
     - getTopTenConfFollowed -> get all in pages
     ```
-        const userSourceData = [
-            {shortName: "ICRA", follow: 9999},
-            {shortName: "IROS", follow: 123456},
-            {shortName: "CVPR", follow: 123456},
-            {shortName: "ICCV", follow: 123456},
-            {shortName: "ECCV", follow: 123456},
-            {shortName: "ICML", follow: 123456},
-            {shortName: "NeurIPS", follow: 123456},
-            {shortName: "AAAI", follow: 123456},
-            {shortName: "ACL", follow: 123456},
-            {shortName: "ICRA", follow: 123456},
-        ]
+    url:
+    /follow/conference/topTen
+    payload:
+    None
+    response:
+    [
+        {
+            "conferenceId": 2,
+            "followNum": 2,
+            "conference": {
+                "id": 2,
+                "name": "Conference on Neural Information Processing Systems",
+                "website": "http://neurips.cc",
+                "abbreviation": "NeurIPS",
+                "callForPapers": "Call for papers details...    ",
+                "submissionDeadline": "2024-06-15",
+                "notificationDate": "2024-07-15",
+                "conferenceDate": "2024-08-15",
+                "location": "Montreal, Canada",
+                "frequency": 35,
+                "viewCount": 2000,
+                "isPostponed": false,
+                "ccf": "A",
+                "core": "A*",
+                "qualis": "A1"
+            }
+        },
+        {
+            "conferenceId": 3,
+            "followNum": 1,
+            "conference": {
+                "id": 3,
+                "name": "CVPR",
+                "website": null,
+                "abbreviation": "CVPR",
+                "callForPapers": null,
+                "submissionDeadline": null,
+                "notificationDate": null,
+                "conferenceDate": null,
+                "location": null,
+                "frequency": 0,
+                "viewCount": null,
+                "isPostponed": null,
+                "ccf": null,
+                "core": null,
+                "qualis": null
+            }
+        }
+    ]
     ```
     - getTopTenConfJoined -> get all in pages
     ```
@@ -266,32 +349,102 @@
     ```
     - getTopTenJourVisited -> get all in pages
     ```
-        const userSourceData = [
-            {shortName: "ICRA", visit: 1423534},
-            {shortName: "IROS", visit: 123456},
-            {shortName: "CVPR", visit: 123456},
-            {shortName: "ICCV", visit: 123456},
-            {shortName: "ECCV", visit: 123456},
-            {shortName: "ICML", visit: 123456},
-            {shortName: "NeurIPS", visit: 123456},
-            {shortName: "AAAI", visit: 123456},
-            {shortName: "ACL", visit: 123456},
-            {shortName: "ICLR", visit: 123456},
-        ]
+    url:
+    /journals/visit/topTen
+    payload:
+    None
+    response:
+    [
+        {
+            "id": 2,
+            "name": "IEEE Transactions on Neural Networks",
+            "website": "https://www.ieee.org",
+            "specialIssue": "Special Issue on Reinforcement Learning",
+            "submissionDeadline": "2024-07-01",
+            "impactFactor": "5.123",
+            "publisher": "IEEE",
+            "viewCount": 1500,
+            "issn": "1045-9227",
+            "ccf": "A*"
+        },
+        {
+            "id": 1,
+            "name": "Journal of Machine Learning Research",
+            "website": "http://jmlr.org",
+            "specialIssue": "Special Issue on Deep Learning",
+            "submissionDeadline": "2024-06-01",
+            "impactFactor": "2.567",
+            "publisher": "MIT Press",
+            "viewCount": 1200,
+            "issn": "1533-7928",
+            "ccf": "A"
+        },
+        {
+            "id": 3,
+            "name": "Journal1",
+            "website": null,
+            "specialIssue": null,
+            "submissionDeadline": null,
+            "impactFactor": null,
+            "publisher": null,
+            "viewCount": null,
+            "issn": null,
+            "ccf": null
+        },
+        {
+            "id": 4,
+            "name": "Journal2",
+            "website": null,
+            "specialIssue": null,
+            "submissionDeadline": null,
+            "impactFactor": null,
+            "publisher": null,
+            "viewCount": null,
+            "issn": null,
+            "ccf": null
+        }
+    ]
     ```
     - getTopTenJourFollowed -> get all in pages
     ```
-        const userSourceData = [
-        {shortName: "ICRA", follow: 9999},
-        {shortName: "IROS", follow: 123456},
-        {shortName: "CVPR", follow: 123456},
-        {shortName: "ICCV", follow: 123456},
-        {shortName: "ECCV", follow: 123456},
-        {shortName: "ICML", follow: 123456},
-        {shortName: "NeurIPS", follow: 123456},
-        {shortName: "AAAI", follow: 123456},
-        {shortName: "ACL", follow: 123456},
-        {shortName: "ICRA", follow: 123456},
+    url:
+    /follow/journal/topTen
+    payload:
+    None
+    response:
+    [
+        {
+            "journalId": 1,
+            "followNum": 1,
+            "journal": {
+                "id": 1,
+                "name": "Journal of Machine Learning Research",
+                "website": "http://jmlr.org",
+                "specialIssue": "Special Issue on Deep Learning",
+                "submissionDeadline": "2024-06-01",
+                "impactFactor": "2.567",
+                "publisher": "MIT Press",
+                "viewCount": 1200,
+                "issn": "1533-7928",
+                "ccf": "A"
+            }
+        },
+        {
+            "journalId": 2,
+            "followNum": 1,
+            "journal": {
+                "id": 2,
+                "name": "IEEE Transactions on Neural Networks",
+                "website": "https://www.ieee.org",
+                "specialIssue": "Special Issue on Reinforcement Learning",
+                "submissionDeadline": "2024-07-01",
+                "impactFactor": "5.123",
+                "publisher": "IEEE",
+                "viewCount": 1500,
+                "issn": "1045-9227",
+                "ccf": "A*"
+            }
+        }
     ]
     ```
     

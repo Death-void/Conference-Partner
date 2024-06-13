@@ -33,7 +33,9 @@
 
     <!-- 取消关注期刊 -->
     <delete id="delete" parameterType="Long">
-        DELETE FROM follow_journal WHERE id = #{id}
+        DELETE
+        FROM follow_journal
+        WHERE id = #{id}
     </delete>
 
     <!-- 关注数量排名前十的期刊 -->
@@ -41,6 +43,7 @@
         SELECT Journal_id, count(*) AS follow_num
         FROM follow_journal
         GROUP BY journal_id
-        ORDER BY follow_num DESC
+        ORDER BY follow_num DESC LIMIT 10
     </select>
+
 </mapper>

@@ -72,4 +72,12 @@
     <select id="getConfFinished" resultType="com.myhuiban.model.Conference">
         SELECT * FROM conference WHERE #{currentDate} >= submission_deadline
     </select>
+
+    <select id="getFollowersInConference" resultType="java.lang.Long">
+        SELECT user_id FROM follow_conference WHERE conference_id = #{conferenceId}
+    </select>
+
+    <select id="getJoinersInConference" resultType="java.lang.Long">
+        SELECT user_id FROM participate_conference WHERE conference_id = #{conferenceId}
+    </select>
 </mapper>

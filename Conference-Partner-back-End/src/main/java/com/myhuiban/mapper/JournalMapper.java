@@ -1,8 +1,10 @@
 package com.myhuiban.mapper;
 
+import com.myhuiban.model.Conference;
 import com.myhuiban.model.Journal;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -23,4 +25,10 @@ public interface JournalMapper {
     int getJournalNum();
 
     int getJournalVisitedNum();
+
+    List<Journal> getJourInCall(LocalDate currentDate);
+
+    List<Journal> getJourFinished(LocalDate currentDate);
+
+    List<Long> getFollowersInJournal(Long journalId);
 }

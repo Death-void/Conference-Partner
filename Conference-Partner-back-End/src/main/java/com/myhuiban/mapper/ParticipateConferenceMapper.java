@@ -17,4 +17,6 @@ public interface ParticipateConferenceMapper {
     int countByConferenceId(Long id);
 
     ParticipateConference find(ParticipateConference participateConference);
+
+    List<Long> getJoinersInConference(Long conferenceId);
 }

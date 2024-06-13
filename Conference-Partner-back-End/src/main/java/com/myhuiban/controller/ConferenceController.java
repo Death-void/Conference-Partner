@@ -103,4 +103,16 @@ public class ConferenceController {
         List<Conference> conferencesFinished = conferenceService.getConfFinished(currentDate);
         return ResponseEntity.ok(conferencesFinished);
     }
+
+    @GetMapping("/getFollowersInConference")
+    public ResponseEntity<List<Long>> getFollowersInConference(@RequestParam Long conferenceId) {
+        List<Long> followers = conferenceService.getFollowersInConference(conferenceId);
+        return ResponseEntity.ok(followers);
+    }
+
+    @GetMapping("/getJoinersInConference")
+    public ResponseEntity<List<Long>> getJoinersInConference(@RequestParam Long conferenceId) {
+        List<Long> joiners = conferenceService.getJoinersInConference(conferenceId);
+        return ResponseEntity.ok(joiners);
+    }
 }

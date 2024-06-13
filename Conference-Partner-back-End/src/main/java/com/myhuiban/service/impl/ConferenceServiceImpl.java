@@ -42,6 +42,16 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
+    public List<Long> getFollowersInConference(Long conferenceId) {
+        return conferenceMapper.getFollowersInConference(conferenceId);
+    }
+
+    @Override
+    public List<Long> getJoinersInConference(Long conferenceId) {
+        return conferenceMapper.getJoinersInConference(conferenceId);
+    }
+
+    @Override
     public Conference updateConference(Conference conference) {
         conferenceMapper.update(conference);
         return conference;

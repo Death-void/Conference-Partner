@@ -364,8 +364,78 @@
     	}
     ]
     ### 期刊页
-    - getJourInCall: paging
-    - getJourNoDeadline: paging
+    - getJourInCall: 
+    url:
+    /journals/getJourInCall
+    response:
+    [
+    	{
+    		"id": 2,
+    		"name": "IEEE Transactions on Neural Networks",
+    		"website": "https://www.ieee.org",
+    		"specialIssue": "Special Issue on Reinforcement Learning",
+    		"submissionDeadline": "2024-07-01",
+    		"impactFactor": "5.123",
+    		"publisher": "IEEE",
+    		"viewCount": 1500,
+    		"ccf": "A*",
+    		"issn": "1045-9227"
+    	}
+    ]
+    - getJourFinished: 
+    url:
+    journals/getJourFinished
+    response:
+    [
+    	{
+    		"id": 1,
+    		"name": "Journal of Machine Learning Research",
+    		"website": "http://jmlr.org",
+    		"specialIssue": "Special Issue on Deep Learning",
+    		"submissionDeadline": "2024-06-01",
+    		"impactFactor": "2.567",
+    		"publisher": "MIT Press",
+    		"viewCount": 1200,
+    		"ccf": "A",
+    		"issn": "1533-7928"
+    	},
+    	{
+    		"id": 3,
+    		"name": "Updated Journal",
+    		"website": "http://testjournal.com",
+    		"specialIssue": "Special Issue on AI",
+    		"submissionDeadline": "2024-05-31",
+    		"impactFactor": "5.123",
+    		"publisher": "Test Publisher",
+    		"viewCount": 100,
+    		"ccf": "A",
+    		"issn": "1234-5678"
+    	},
+    	{
+    		"id": 5,
+    		"name": "Test Journal",
+    		"website": "http://testjournal.com",
+    		"specialIssue": "Special Issue on AI",
+    		"submissionDeadline": "2024-05-31",
+    		"impactFactor": "5.123",
+    		"publisher": "Test Publisher",
+    		"viewCount": 100,
+    		"ccf": "A",
+    		"issn": "1234-5678"
+    	},
+    	{
+    		"id": 6,
+    		"name": "Test Journal",
+    		"website": "http://testjournal.com",
+    		"specialIssue": "Special Issue on AI",
+    		"submissionDeadline": "2024-05-31",
+    		"impactFactor": "5.123",
+    		"publisher": "Test Publisher",
+    		"viewCount": 100,
+    		"ccf": "A",
+    		"issn": "1234-5678"
+    	}
+    ]
     
     ### 用户页
     - getUserInfo
@@ -405,7 +475,30 @@
 
     ### 具体会议页
     - getFollowersInConference
+    url:
+    /conferences/getFollowersInConference
+    payload:
+    conferenceId Long
+    response:
+    [
+    	1
+    ]
     - getJoinersInConference
-    
+    url:
+    /conferences/getJoinersInConference
+    payload:
+    conferenceId Long
+    response:
+    [
+    	1
+    ]
     ### 具体期刊页
     - getFollowersInJournal
+    url:
+    /journals/getFollowersInJournal
+    payload:
+    journalId Long
+    response:
+    [
+    	1
+    ]

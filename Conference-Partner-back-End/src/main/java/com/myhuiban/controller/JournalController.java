@@ -1,5 +1,6 @@
 package com.myhuiban.controller;
 
+import com.myhuiban.model.Conference;
 import com.myhuiban.model.Journal;
 import com.myhuiban.service.JournalService;
 import io.swagger.annotations.Api;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -86,5 +88,25 @@ public class JournalController {
     @GetMapping("/getJournalNum")
     public ResponseEntity<Integer> getJournalNum() {
         return ResponseEntity.ok(journalService.getJournalNum());
+    }
+
+    @GetMapping("/getJourInCall")
+    public ResponseEntity<List<Journal>> getJourInCall() {
+        LocalDate currentDate = LocalDate.now();
+        List<Journal> journalsInCall = journalService.getJourInCall(currentDate);
+        return ResponseEntity.ok(journalsInCall);
+    }
+
+    @GetMapping("/getJourFinished")
+    public ResponseEntity<List<Journal>> getJourFinished() {
+        LocalDate currentDate = LocalDate.now();
+        List<Journal> journalsFinished = journalService.getJourFinished(currentDate);
+        return ResponseEntity.ok(journalsFinished);
+    }
+
+    @GetMapping("/getFollowersInJournal")
+    public ResponseEntity<List<Long>> getFollowersInJournal(@RequestParam Long journalId) {
+        List<Long> followers = journalService.getFollowersInJournal(journalId);
+        return ResponseEntity.ok(followers);
     }
 }

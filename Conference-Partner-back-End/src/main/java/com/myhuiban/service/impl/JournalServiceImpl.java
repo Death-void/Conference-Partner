@@ -6,6 +6,7 @@ import com.myhuiban.service.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -28,6 +29,16 @@ public class JournalServiceImpl implements JournalService {
     @Override
     public int getJournalVisitedNum() {
         return journalMapper.getJournalVisitedNum();
+    }
+
+    @Override
+    public List<Journal> getJourInCall(LocalDate currentDate) {
+        return journalMapper.getJourInCall(currentDate);
+    }
+
+    @Override
+    public List<Journal> getJourFinished(LocalDate currentDate) {
+        return journalMapper.getJourFinished(currentDate);
     }
 
 
@@ -56,4 +67,10 @@ public class JournalServiceImpl implements JournalService {
     public int getJournalNum() {
         return journalMapper.getJournalNum();
     }
+
+    @Override
+    public List<Long> getFollowersInJournal(Long journalId) {
+        return journalMapper.getFollowersInJournal(journalId);
+    }
+
 }

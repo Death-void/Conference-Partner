@@ -28,4 +28,8 @@ public interface ConferenceMapper {
     List<Conference> getConfInCall(LocalDate currentDate);
 
     List<Conference> getConfFinished(LocalDate currentDate);
+
+    List<Long> getFollowersInConference(Long conferenceId);
+
+    List<Long> getJoinersInConference(Long conferenceId);
 }

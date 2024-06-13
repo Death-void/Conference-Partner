@@ -58,4 +58,15 @@
         SELECT SUM(view_count) FROM journal
     </select>
 
+    <select id="getJourInCall" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal WHERE submission_deadline > #{currentDate}
+    </select>
+
+    <select id="getJourFinished" resultType="com.myhuiban.model.Journal">
+        SELECT * FROM journal WHERE #{currentDate} >= submission_deadline
+    </select>
+
+    <select id="getFollowersInJournal" resultType="java.lang.Long">
+        SELECT user_id FROM follow_journal WHERE journal_id = #{journalId}
+    </select>
 </mapper>

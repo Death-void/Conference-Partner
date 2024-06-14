@@ -39,7 +39,7 @@ function LeftContent(){
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <InputText labelTitle="First Name" defaultValue="Yian" updateFormValue={updateFormValue}/>
                     <InputText labelTitle="Last Name" defaultValue="Yang" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Email Id" defaultValue="alex@dashwind.com" updateFormValue={updateFormValue}/>
+                    <InputText labelTitle="Email Id" defaultValue="alex@Conference Partner.com" updateFormValue={updateFormValue}/>
                     <InputText labelTitle="Institution" defaultValue="ECNU" updateFormValue={updateFormValue}/>
                     <InputText labelTitle="New Password" defaultValue="" updateFormValue={updateFormValue}/>
                     <InputText labelTitle="Verify New Password" defaultValue="" updateFormValue={updateFormValue}/>

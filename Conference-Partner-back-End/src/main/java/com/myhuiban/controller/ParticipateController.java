@@ -3,6 +3,7 @@ package com.myhuiban.controller;
 import com.myhuiban.model.Conference;
 import com.myhuiban.model.FollowConferenceDetail;
 import com.myhuiban.model.ParticipateConference;
+import com.myhuiban.model.ParticipateConferenceDetail;
 import com.myhuiban.service.ParticipateService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -63,7 +64,7 @@ public class ParticipateController {
 
     @ApiOperation(value = "获取全部会议按参与者数量排序")
     @GetMapping("/conference/allParticipate")
-    public List<Conference> getAllParticipateConference() {
+    public List<ParticipateConferenceDetail> getAllParticipateConference() {
         return participateService.getAllParticipateConference();
     }
 }

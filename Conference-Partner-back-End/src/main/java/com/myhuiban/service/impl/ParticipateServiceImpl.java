@@ -3,7 +3,9 @@ package com.myhuiban.service.impl;
 import com.myhuiban.mapper.ConferenceMapper;
 import com.myhuiban.mapper.ParticipateConferenceMapper;
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.FollowConferenceDetail;
 import com.myhuiban.model.ParticipateConference;
+import com.myhuiban.model.ParticipateConferenceDetail;
 import com.myhuiban.service.ParticipateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +54,10 @@ public class ParticipateServiceImpl implements ParticipateService {
     }
 
     @Override
-    public List<Conference> getAllParticipateConference() {
-        return participateConferenceMapper.getAllParticipateConference();
+    public List<ParticipateConferenceDetail> getAllParticipateConference() {
+        List<ParticipateConferenceDetail> detailList =  participateConferenceMapper.getAllParticipateConference();
+        for (ParticipateConferenceDetail detail : detailList)
+            detail.setConference(conferenceMapper.findById(detail.getConferenceId()));
+        return detailList;
     }
 }

@@ -2,6 +2,7 @@ package com.myhuiban.mapper;
 
 import com.myhuiban.model.Conference;
 import com.myhuiban.model.ParticipateConference;
+import com.myhuiban.model.ParticipateConferenceDetail;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,5 +22,5 @@ public interface ParticipateConferenceMapper {
 
     List<Long> getJoinersInConference(Long conferenceId);
 
-    List<Conference> getAllParticipateConference();
+    List<ParticipateConferenceDetail> getAllParticipateConference();
 }

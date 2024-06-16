@@ -2,6 +2,7 @@ package com.myhuiban.service;
 
 import com.myhuiban.model.Conference;
 import com.myhuiban.model.ParticipateConference;
+import com.myhuiban.model.ParticipateConferenceDetail;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface ParticipateService {
 
     ParticipateConference deleteParticipateConference(ParticipateConference participateConference);
 
-    List<Conference> getAllParticipateConference();
+    List<ParticipateConferenceDetail> getAllParticipateConference();
 }

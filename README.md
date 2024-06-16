@@ -501,7 +501,11 @@
 
     - getConfJoiners
 
-    -getConfFollowers
+    - getConfFollowers
+
+    - getRelatedConferences
+     
+    - getRelatedJournals
 
     ### 期刊页
     - getJourInCall: 

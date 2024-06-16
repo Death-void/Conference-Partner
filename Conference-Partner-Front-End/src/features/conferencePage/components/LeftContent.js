@@ -6,8 +6,6 @@ import RelatedJournal from "./RelatedJournal"
 
 function LeftContent(props){
 
-    console.log(props.confData)
-
     return(
         <div>
 

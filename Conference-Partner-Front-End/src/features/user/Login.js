@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import LandingIntro from './LandingIntro'
 import ErrorText from  '../../components/Typography/ErrorText'
@@ -31,6 +31,18 @@ function Login(){
                     localStorage.setItem("token", res.data.token)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
+
+                    // axios.get('/api/getPageVisitedNum').then((res) => {
+                    //     console.log(res)
+                        
+                    //     if(res.status === 200){
+                           
+                    //     }
+                    // }).catch((err) => {
+                    //     setLoading(false)
+                    //     setErrorMessage("Invalid credentials")
+                    // })
+
                     window.location.href = '/app/dashboard'
                 }
             }).catch((err) => {

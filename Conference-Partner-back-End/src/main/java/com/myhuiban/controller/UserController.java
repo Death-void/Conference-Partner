@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,7 +32,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-//    现在的版本不是很安全，没有确保只能修改自己，只确保了只能修改对应id的用户
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/updateUserInfo/{id}")
     public ResponseEntity<User> updateUserInfo(@PathVariable Long id, @RequestBody User updatedUser) {
         // 在这里可能需要验证传入的userId是否与updatedUser中的userId相匹配

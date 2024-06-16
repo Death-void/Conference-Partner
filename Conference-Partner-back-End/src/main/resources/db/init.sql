@@ -9,12 +9,16 @@ CREATE TABLE user (
                       email VARCHAR(255) NOT NULL,
                       password VARCHAR(255) NOT NULL,
                       institution VARCHAR(255),
-                      registration_time TIMESTAMP
+                      registration_time TIMESTAMP,
+                      role VARCHAR(255) NOT NULL
 );
 
-INSERT INTO user (user_name, email, password, institution, registration_time) VALUES
-                                                                                  ('user1', 'user1@example.com', '$2a$10$7Q7rOd/oPSK.s4xPSzX5M.3Ow5nxjG5B27I7jN5XBItuMwBsSlD6a', 'Institution1', '2023-05-29 10:00:00'),
-                                                                                  ('user2', 'user2@example.com', '$2a$10$6V3BnA9L1QfJujVuA5vX8O5G74PIROdBdS1Q/.IRrfD.ZMt5F7O0C', 'Institution2', '2023-05-29 11:00:00');
+-- 插入初始用户数据
+INSERT INTO user (user_name, email, password, institution, registration_time, role)
+VALUES
+    ('admin', 'admin@example.com', '$2a$10$DowJonesIndexMayRise', 'Admin Institution', '2024-01-01 12:00:00', 'ROLE_ADMIN'),
+    ('user', 'user@example.com', '$2a$10$DowJonesIndexMayFall', 'User Institution', '2024-01-01 12:00:00', 'ROLE_USER');
+
 
 CREATE TABLE role (
                       id BIGINT AUTO_INCREMENT PRIMARY KEY UNIQUE,

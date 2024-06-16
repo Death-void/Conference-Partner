@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -28,6 +29,7 @@ public class JournalController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public Journal createJournal(@RequestBody Journal journal) {
         return journalService.createJournal(journal);
@@ -40,6 +42,7 @@ public class JournalController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public Journal updateJournal(@PathVariable Long id, @RequestBody Journal journal) {
         journal.setId(id);
@@ -53,6 +56,7 @@ public class JournalController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteJournal(@PathVariable Long id) {
         journalService.deleteJournal(id);

@@ -19,7 +19,16 @@ public class User {
 
     private LocalDateTime registrationTime; // 注册时间
 
-    // Getters 和 Setters 方法
+    private String role; // 用户角色'
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+// Getters 和 Setters 方法
 
     public Long getId() {
         return id;

@@ -9,8 +9,8 @@
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.myhuiban.model.User">
-        INSERT INTO user(user_name, email, institution, registration_time, password)
-        VALUES (#{userName}, #{email}, #{institution}, #{registrationTime}, #{password})
+        INSERT INTO user(user_name, email, institution, registration_time, password, role)
+        VALUES (#{userName}, #{email}, #{institution}, #{registrationTime}, #{password}, #{role})
     </insert>
 
     <select id="getUserNum" resultType="int">

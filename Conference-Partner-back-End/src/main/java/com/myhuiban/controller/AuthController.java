@@ -68,10 +68,6 @@ public class AuthController {
 
         return ResponseEntity.ok().body(new AuthResponse(jwt));
     }
-    @PostMapping("/test")
-    public ResponseEntity<?> test(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.OK).body(user.getUserName());
-    }
 
     static class AuthResponse {
         private final String token; //jwt token

@@ -9,11 +9,14 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.naming.directory.SearchResult;
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.security.core.Authentication;
 
 @RestController
 @RequestMapping("/conferences")
@@ -32,7 +35,12 @@ public class ConferenceController {
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Conference createConference(@RequestBody Conference conference) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        conference.setLastModifiedDate(LocalDate.now());
+        conference.setLastModifiedUser(currentUserName);
         return conferenceService.createConference(conference);
     }
 
@@ -43,10 +51,15 @@ public class ConferenceController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
-    @PutMapping("/{id}/{userName}")
-    public Conference updateConference(@PathVariable Long id, @RequestBody Conference conference, @PathVariable String userName) {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{id}")
+    public Conference updateConference(@PathVariable Long id, @RequestBody Conference conference) {
+        // 获取当前认证的用户
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+
         conference.setId(id);
-        conference.setLastModifiedUser(userName);
+        conference.setLastModifiedUser(currentUserName);
         conference.setLastModifiedDate(LocalDate.now());
         return conferenceService.updateConference(conference);
     }
@@ -58,6 +71,7 @@ public class ConferenceController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteConference(@PathVariable Long id) {
         conferenceService.deleteConference(id);

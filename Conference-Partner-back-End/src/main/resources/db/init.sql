@@ -40,15 +40,16 @@ CREATE TABLE conference (
                             location VARCHAR(255),
                             frequency INT,
                             view_count BIGINT,
-                            is_postponed BOOLEAN
+                            is_postponed BOOLEAN,
+                            last_modified_date DATE,
+                            last_modified_user VARCHAR(255)
 );
 
 
-INSERT INTO conference (name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS, submission_deadline, notification_date, conference_date, location, frequency, view_count, is_postponed)
+INSERT INTO conference (name, website, abbreviation, call_for_papers, CCF, CORE, QUALIS, submission_deadline, notification_date, conference_date, location, frequency, view_count, is_postponed, last_modified_date, last_modified_user)
 VALUES
-    ('International Conference on Machine Learning', 'http://icml.cc', 'ICML', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-01', '2024-07-01', '2024-08-01', 'San Francisco, USA', 38, 1500, FALSE),
-    ('Conference on Neural Information Processing Systems', 'http://neurips.cc', 'NeurIPS', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-15', '2024-07-15', '2024-08-15', 'Montreal, Canada', 35, 2000, FALSE);
-
+    ('International Conference on Machine Learning', 'http://icml.cc', 'ICML', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-01', '2024-07-01', '2024-08-01', 'San Francisco, USA', 38, 1500, FALSE, '2024-06-10', 'user1'),
+    ('Conference on Neural Information Processing Systems', 'http://neurips.cc', 'NeurIPS', 'Call for papers details...', 'A', 'A*', 'A1', '2024-06-15', '2024-07-15', '2024-08-15', 'Montreal, Canada', 35, 2000, FALSE, '2024-06-10', 'user1');
 
 CREATE TABLE journal (
                          id BIGINT AUTO_INCREMENT PRIMARY KEY,

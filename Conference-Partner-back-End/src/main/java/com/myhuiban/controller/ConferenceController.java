@@ -2,6 +2,7 @@ package com.myhuiban.controller;
 
 import com.myhuiban.model.Conference;
 import com.myhuiban.service.ConferenceService;
+import com.myhuiban.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
@@ -21,6 +22,8 @@ public class ConferenceController {
 
     @Autowired
     private ConferenceService conferenceService;
+    @Autowired
+    private UserService userService;
 
     @ApiOperation(value = "创建新会议", response = Conference.class)
     @ApiResponses(value = {
@@ -40,9 +43,11 @@ public class ConferenceController {
             @ApiResponse(code = 400, message = "请求格式错误"),
             @ApiResponse(code = 500, message = "服务器内部错误")
     })
-    @PutMapping("/{id}")
-    public Conference updateConference(@PathVariable Long id, @RequestBody Conference conference) {
+    @PutMapping("/{id}/{userName}")
+    public Conference updateConference(@PathVariable Long id, @RequestBody Conference conference, @PathVariable String userName) {
         conference.setId(id);
+        conference.setLastModifiedUser(userName);
+        conference.setLastModifiedDate(LocalDate.now());
         return conferenceService.updateConference(conference);
     }
 

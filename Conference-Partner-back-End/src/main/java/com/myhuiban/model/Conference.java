@@ -36,4 +36,7 @@ public class Conference {
     private Long viewCount; // 浏览数
 
     private Boolean isPostponed; // 是否延期
+
+    private LocalDate lastModifiedDate; // 最后修改日期
+    private String lastModifiedUser; //最后修改用户
 }

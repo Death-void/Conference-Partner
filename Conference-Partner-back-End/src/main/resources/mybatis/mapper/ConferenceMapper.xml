@@ -44,7 +44,9 @@
             location            = #{location},
             frequency           = #{frequency},
             view_count          = #{viewCount},
-            is_postponed        = #{isPostponed}
+            is_postponed        = #{isPostponed},
+            last_modified_date  = #{lastModifiedDate},
+            last_modified_user  = #{lastModifiedUser}
         WHERE id = #{id}
     </update>
 

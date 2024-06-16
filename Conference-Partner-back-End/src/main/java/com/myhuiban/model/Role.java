@@ -1,10 +1,13 @@
 package com.myhuiban.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
  * 角色实体类
  */
+@Data
 @Entity
 public class Role {
     @Id
@@ -14,5 +17,4 @@ public class Role {
     @Column(nullable = false)
     private String role; // 角色
 
-    // Getters 和 Setters 方法
 }

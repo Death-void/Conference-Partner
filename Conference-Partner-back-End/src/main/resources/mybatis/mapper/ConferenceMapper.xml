@@ -90,12 +90,14 @@
         SELECT *
         FROM conference
         WHERE submission_deadline > #{currentDate}
+        ORDER BY submission_deadline DESC
     </select>
 
     <select id="getConfFinished" resultType="com.myhuiban.model.Conference">
         SELECT *
         FROM conference
         WHERE #{currentDate} >= submission_deadline
+        ORDER BY submission_deadline DESC
     </select>
 
     <select id="getFollowersInConference" resultType="java.lang.Long">

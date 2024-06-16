@@ -46,4 +46,11 @@
         GROUP BY conference_id
         ORDER BY follow_num DESC LIMIT 10
     </select>
+
+    <select id="findAll" resultType="com.myhuiban.model.FollowConferenceDetail">
+        SELECT conference_id, count(*) AS follow_num
+        FROM follow_conference
+        GROUP BY conference_id
+        ORDER BY follow_num DESC
+    </select>
 </mapper>

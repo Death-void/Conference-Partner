@@ -106,4 +106,20 @@ public class FollowServiceImpl implements FollowService {
             detail.setJournal(journalMapper.findById(detail.getJournalId()));
         return detailList;
     }
+
+    @Override
+    public List<FollowConferenceDetail> getAllFollowConference() {
+        List<FollowConferenceDetail> detailList = followConferenceMapper.findAll();
+        for (FollowConferenceDetail detail : detailList)
+            detail.setConference(conferenceMapper.findById(detail.getConferenceId()));
+        return detailList;
+    }
+
+    @Override
+    public List<FollowJournalDetail> getAllFollowJournal() {
+        List<FollowJournalDetail> detailList = followJournalMapper.findAll();
+        for (FollowJournalDetail detail : detailList)
+            detail.setJournal(journalMapper.findById(detail.getJournalId()));
+        return detailList;
+    }
 }

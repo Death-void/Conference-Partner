@@ -20,4 +20,6 @@ public interface FollowJournalMapper {
     FollowJournal find(FollowJournal followJournal);
 
     List<FollowJournalDetail> findTopTen();
+
+    List<FollowJournalDetail> findAll();
 }

@@ -81,4 +81,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public List<Conference> getTopTenVisitConferences() {
         return conferenceMapper.findTopTenVisit();
     }
+
+    @Override
+    public List<Conference> getAllVisitConferences() {
+        return conferenceMapper.findAllVisit();
+    }
 }

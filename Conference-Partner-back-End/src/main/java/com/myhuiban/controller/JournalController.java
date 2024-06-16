@@ -120,4 +120,9 @@ public class JournalController {
     public List<Journal> getTopTenVisitConferences() {
         return journalService.getTopTenVisitJournals();
     }
+
+    @GetMapping("/visit/all")
+    public List<Journal> getAllVisitConferences() {
+        return journalService.getAllVisitJournals();
+    }
 }

@@ -118,4 +118,14 @@ public class FollowController {
     public List<FollowJournalDetail> getTopTenFollowJournal() {
         return followService.getTopTenFollowJournal();
     }
+
+    @GetMapping("/conference/all")
+    public List<FollowConferenceDetail> getAllFollowConference() {
+        return followService.getAllFollowConference();
+    }
+
+    @GetMapping("/journal/all")
+    public List<FollowJournalDetail> getAllFollowJournal() {
+        return followService.getAllFollowJournal();
+    }
 }

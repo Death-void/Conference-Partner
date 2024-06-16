@@ -19,4 +19,5 @@ public interface ConferenceService {
     List<Long> getFollowersInConference(Long conferenceId);
     List<Long> getJoinersInConference(Long conferenceId);
     List<Conference> getTopTenVisitConferences();
+    List<Conference> getAllVisitConferences();
 }

@@ -25,4 +25,8 @@ public interface FollowService {
     List<FollowConferenceDetail> getTopTenFollowConference();
 
     List<FollowJournalDetail> getTopTenFollowJournal();
+
+    List<FollowConferenceDetail> getAllFollowConference();
+
+    List<FollowJournalDetail> getAllFollowJournal();
 }

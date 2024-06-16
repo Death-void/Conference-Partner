@@ -77,4 +77,10 @@
         ORDER BY view_count DESC LIMIT 10
     </select>
 
+    <select id="findAllVisit" resultType="com.myhuiban.model.Journal">
+        SELECT *
+        FROM journal
+        ORDER BY view_count DESC
+    </select>
+
 </mapper>

@@ -50,4 +50,9 @@ public class ParticipateServiceImpl implements ParticipateService {
             participateConferenceMapper.delete(find.getId());
         return participateConference;
     }
+
+    @Override
+    public List<Conference> getAllParticipateConference() {
+        return participateConferenceMapper.getAllParticipateConference();
+    }
 }

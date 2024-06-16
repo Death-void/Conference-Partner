@@ -143,4 +143,9 @@ public class ConferenceController {
     public List<Conference> getTopTenVisitConferences() {
         return conferenceService.getTopTenVisitConferences();
     }
+
+    @GetMapping("/visit/all")
+    public List<Conference> getAllVisitConferences() {
+        return conferenceService.getAllVisitConferences();
+    }
 }

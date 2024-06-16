@@ -46,4 +46,12 @@
         ORDER BY follow_num DESC LIMIT 10
     </select>
 
+    <select id="findAll" resultType="com.myhuiban.model.FollowJournalDetail">
+        SELECT Journal_id, count(*) AS follow_num
+        FROM follow_journal
+        GROUP BY journal_id
+        ORDER BY follow_num DESC
+    </select>
+
+
 </mapper>

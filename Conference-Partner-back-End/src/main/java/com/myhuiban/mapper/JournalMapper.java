@@ -33,4 +33,6 @@ public interface JournalMapper {
     List<Long> getFollowersInJournal(Long journalId);
 
     List<Journal> findTopTenVisit();
+
+    List<Journal> findAllVisit();
 }

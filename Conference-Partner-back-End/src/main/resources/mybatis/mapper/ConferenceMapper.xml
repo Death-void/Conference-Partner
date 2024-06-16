@@ -64,6 +64,12 @@
         ORDER BY view_count DESC LIMIT 10
     </select>
 
+    <select id="findAllVisit" resultType="com.myhuiban.model.Conference">
+        SELECT *
+        FROM conference
+        ORDER BY view_count DESC
+    </select>
+
     <select id="getConferenceNum" resultType="int">
         SELECT COUNT(*)
         FROM conference

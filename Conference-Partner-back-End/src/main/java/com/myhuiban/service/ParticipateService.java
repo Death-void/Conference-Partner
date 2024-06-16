@@ -15,4 +15,5 @@ public interface ParticipateService {
 
     ParticipateConference deleteParticipateConference(ParticipateConference participateConference);
 
+    List<Conference> getAllParticipateConference();
 }

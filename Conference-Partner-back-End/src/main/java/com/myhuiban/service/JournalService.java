@@ -19,4 +19,5 @@ public interface JournalService {
     List<Journal> getJourFinished(LocalDate currentDate);
     List<Long> getFollowersInJournal(Long journalId);
     List<Journal> getTopTenVisitJournals();
+    List<Journal> getAllVisitJournals();
 }

@@ -38,4 +38,10 @@
         WHERE conference_id = #{id}
     </select>
 
+    <select id="getAllParticipateConference" resultType="com.myhuiban.model.FollowConferenceDetail">
+        SELECT conference_id, count(*) AS participate_num
+        FROM participate_conference
+        GROUP BY conference_id
+        ORDER BY participate_num DESC
+    </select>
 </mapper>

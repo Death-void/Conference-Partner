@@ -20,4 +20,6 @@ public interface FollowConferenceMapper {
     FollowConference find(FollowConference followConference);
 
     List<FollowConferenceDetail> findTopTen();
+
+    List<FollowConferenceDetail> findAll();
 }

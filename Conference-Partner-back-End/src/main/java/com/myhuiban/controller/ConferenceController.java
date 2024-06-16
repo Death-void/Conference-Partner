@@ -116,6 +116,18 @@ public class ConferenceController {
         return ResponseEntity.ok(joiners);
     }
 
+    @GetMapping("/getFollowersCount")
+    public ResponseEntity<Integer> getFollowersCount(@RequestParam Long conferenceId) {
+        List<Long> followers = conferenceService.getFollowersInConference(conferenceId);
+        return ResponseEntity.ok(followers.size());
+    }
+
+    @GetMapping("/getJoinersCount")
+    public ResponseEntity<Integer> getJoinersCount(@RequestParam Long conferenceId) {
+        List<Long> joiners = conferenceService.getJoinersInConference(conferenceId);
+        return ResponseEntity.ok(joiners.size());
+    }
+
     @ApiOperation(value = "获取浏览前十的会议", response = Conference.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "成功获取会议"),

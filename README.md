@@ -432,193 +432,222 @@
     
     ### 会议页
     - getConfInCall: paging
-    url:
-    /conferences/getConfInCall/
-    payload:
-    None
-    response:
-    [
-    	{
-    		"id": 2,
-    		"name": "Conference on Neural Information Processing Systems",
-    		"website": "http://neurips.cc",
-    		"abbreviation": "NeurIPS",
-    		"callForPapers": "Call for papers details...",
-    		"submissionDeadline": "2024-06-15",
-    		"notificationDate": "2024-07-15",
-    		"conferenceDate": "2024-08-15",
-    		"location": "Montreal, Canada",
-    		"frequency": 35,
-    		"viewCount": 2000,
-    		"isPostponed": false,
-    		"core": "A*",
-    		"ccf": "A",
-    		"qualis": "A1"
-    	}
-    ]
+    
+      ```
+      url:
+      /conferences/getConfInCall/
+      payload:
+      None
+      response:
+      [
+      {
+      	"id": 2,
+      	"name": "Conference on Neural Information Processing Systems",
+      	"website": "http://neurips.cc",
+      	"abbreviation": "NeurIPS",
+      	"callForPapers": "Call for papers details...",
+      	"submissionDeadline": "2024-06-15",
+      	"notificationDate": "2024-07-15",
+      	"conferenceDate": "2024-08-15",
+      	"location": "Montreal, Canada",
+      	"frequency": 35,
+      	"viewCount": 2000,
+      	"isPostponed": false,
+      	"core": "A*",
+      	"ccf": "A",
+      	"qualis": "A1"
+      }
+      ]
+      ```
+    
+      
+    
     - getConfFinished: paging
-    url:
-    conferences/getConfFinished
-    payload:
-    None
-    response:
-    [
-    	{
-    		"id": 1,
-    		"name": "International Conference on Machine Learning",
-    		"website": "http://icml.cc",
-    		"abbreviation": "ICML",
-    		"callForPapers": "Call for papers details...",
-    		"submissionDeadline": "2024-06-01",
-    		"notificationDate": "2024-07-01",
-    		"conferenceDate": "2024-08-01",
-    		"location": "San Francisco, USA",
-    		"frequency": 38,
-    		"viewCount": 1500,
-    		"isPostponed": false,
-    		"ccf": "A",
-    		"qualis": "A1",
-    		"core": "A*"
-    	},
-    	{
-    		"id": 3,
-    		"name": "Test Conference",
-    		"website": "http://testconference.com",
-    		"abbreviation": "TC",
-    		"callForPapers": "Call for papers details...",
-    		"submissionDeadline": "2024-05-31",
-    		"notificationDate": "2024-06-30",
-    		"conferenceDate": "2024-07-31",
-    		"location": "San Francisco, USA",
-    		"frequency": 1,
-    		"viewCount": 100,
-    		"isPostponed": false,
-    		"ccf": "A",
-    		"qualis": "A1",
-    		"core": "A*"
-    	}
-    ]
-
+    
+      ```
+      url:
+      conferences/getConfFinished
+      payload:
+      None
+      response:
+      [
+      {
+      	"id": 1,
+      	"name": "International Conference on Machine Learning",
+      	"website": "http://icml.cc",
+      	"abbreviation": "ICML",
+      	"callForPapers": "Call for papers details...",
+      	"submissionDeadline": "2024-06-01",
+      	"notificationDate": "2024-07-01",
+      	"conferenceDate": "2024-08-01",
+      	"location": "San Francisco, USA",
+      	"frequency": 38,
+      	"viewCount": 1500,
+      	"isPostponed": false,
+      	"ccf": "A",
+      	"qualis": "A1",
+      	"core": "A*"
+      },
+      {
+      	"id": 3,
+      	"name": "Test Conference",
+      	"website": "http://testconference.com",
+      	"abbreviation": "TC",
+      	"callForPapers": "Call for papers details...",
+      	"submissionDeadline": "2024-05-31",
+      	"notificationDate": "2024-06-30",
+      	"conferenceDate": "2024-07-31",
+      	"location": "San Francisco, USA",
+  	"frequency": 1,
+      	"viewCount": 100,
+  	"isPostponed": false,
+      	"ccf": "A",
+  	"qualis": "A1",
+      	"core": "A*"
+      }
+      ]
+  ```
+    
+      
+    
     - getConfJoiners
-
+    
     - getConfFollowers
-
+    
     - getRelatedConferences
-     
+    
     - getRelatedJournals
-
+    
     ### 期刊页
     - getJourInCall: 
-    url:
-    /journals/getJourInCall
-    response:
-    [
-    	{
-    		"id": 2,
-    		"name": "IEEE Transactions on Neural Networks",
-    		"website": "https://www.ieee.org",
-    		"specialIssue": "Special Issue on Reinforcement Learning",
-    		"submissionDeadline": "2024-07-01",
-    		"impactFactor": "5.123",
-    		"publisher": "IEEE",
-    		"viewCount": 1500,
-    		"ccf": "A*",
-    		"issn": "1045-9227"
-    	}
-    ]
+    
+      ```
+      url:
+      /journals/getJourInCall
+      response:
+      [
+      {
+      	"id": 2,
+      	"name": "IEEE Transactions on Neural Networks",
+      	"website": "https://www.ieee.org",
+      	"specialIssue": "Special Issue on Reinforcement Learning",
+      	"submissionDeadline": "2024-07-01",
+      	"impactFactor": "5.123",
+      	"publisher": "IEEE",
+      	"viewCount": 1500,
+      	"ccf": "A*",
+      	"issn": "1045-9227"
+      }
+      ]
+      ```
+    
+      
+    
     - getJourFinished: 
-    url:
-    journals/getJourFinished
-    response:
-    [
-    	{
-    		"id": 1,
-    		"name": "Journal of Machine Learning Research",
-    		"website": "http://jmlr.org",
-    		"specialIssue": "Special Issue on Deep Learning",
-    		"submissionDeadline": "2024-06-01",
-    		"impactFactor": "2.567",
-    		"publisher": "MIT Press",
-    		"viewCount": 1200,
-    		"ccf": "A",
-    		"issn": "1533-7928"
-    	},
-    	{
-    		"id": 3,
-    		"name": "Updated Journal",
-    		"website": "http://testjournal.com",
-    		"specialIssue": "Special Issue on AI",
-    		"submissionDeadline": "2024-05-31",
-    		"impactFactor": "5.123",
-    		"publisher": "Test Publisher",
-    		"viewCount": 100,
-    		"ccf": "A",
-    		"issn": "1234-5678"
-    	},
-    	{
-    		"id": 5,
-    		"name": "Test Journal",
-    		"website": "http://testjournal.com",
-    		"specialIssue": "Special Issue on AI",
-    		"submissionDeadline": "2024-05-31",
-    		"impactFactor": "5.123",
-    		"publisher": "Test Publisher",
-    		"viewCount": 100,
-    		"ccf": "A",
-    		"issn": "1234-5678"
-    	},
-    	{
-    		"id": 6,
-    		"name": "Test Journal",
-    		"website": "http://testjournal.com",
-    		"specialIssue": "Special Issue on AI",
-    		"submissionDeadline": "2024-05-31",
-    		"impactFactor": "5.123",
-    		"publisher": "Test Publisher",
-    		"viewCount": 100,
-    		"ccf": "A",
-    		"issn": "1234-5678"
-    	}
-    ]
+    
+      ```
+      url:
+      journals/getJourFinished
+      response:
+      [
+      {
+      	"id": 1,
+      	"name": "Journal of Machine Learning Research",
+      	"website": "http://jmlr.org",
+      	"specialIssue": "Special Issue on Deep Learning",
+      	"submissionDeadline": "2024-06-01",
+      	"impactFactor": "2.567",
+      	"publisher": "MIT Press",
+      	"viewCount": 1200,
+      	"ccf": "A",
+      	"issn": "1533-7928"
+      },
+      {
+      	"id": 3,
+      	"name": "Updated Journal",
+      	"website": "http://testjournal.com",
+      	"specialIssue": "Special Issue on AI",
+      	"submissionDeadline": "2024-05-31",
+      	"impactFactor": "5.123",
+      	"publisher": "Test Publisher",
+      	"viewCount": 100,
+      	"ccf": "A",
+      	"issn": "1234-5678"
+      },
+      {
+      	"id": 5,
+      	"name": "Test Journal",
+      	"website": "http://testjournal.com",
+      	"specialIssue": "Special Issue on AI",
+      	"submissionDeadline": "2024-05-31",
+      	"impactFactor": "5.123",
+      	"publisher": "Test Publisher",
+      	"viewCount": 100,
+      	"ccf": "A",
+      	"issn": "1234-5678"
+      },
+      {
+      	"id": 6,
+      	"name": "Test Journal",
+      	"website": "http://testjournal.com",
+      	"specialIssue": "Special Issue on AI",
+      	"submissionDeadline": "2024-05-31",
+      	"impactFactor": "5.123",
+      	"publisher": "Test Publisher",
+      	"viewCount": 100,
+      	"ccf": "A",
+      	"issn": "1234-5678"
+      }
+      ]
+      ```
+    
+      
     
     ### 用户页
     - getUserInfo
-    url：
-    /getUserInfo/{id}
-    response:
-    {
-    	"id": 1,
-    	"userName": "user1",
-    	"email": "user1@example.com",
-    	"password": "$2a$10$7Q7rOd/oPSK.s4xPSzX5M.3Ow5nxjG5B27I7jN5XBItuMwBsSlD6a",
-    	"institution": "Institution1",
-    	"registrationTime": "2023-05-29T10:00:00"
-    }
-    - updateUserInfo
-    url:
-    /updateUserInfo/{id}
-    payload:
-    {
-    	"id": 1,
-    	"userName": "user1",
-    	"email": "user1@example.com",
-    	"password": "123",
-    	"institution": "Institution1",
-    	"registrationTime": "2023-05-29T10:00:00"
-    }
-    response:
-    {
-    	"id": 1,
-    	"userName": "user1",
-    	"email": "user1@example.com",
-    	"password": "$2a$10$nIMYpQTmKrVikZb9zzrKmO0djhbzZKMlMxra6SXnQfsN9dVRMCqGK",
-    	"institution": "Institution1",
-    	"registrationTime": "2023-05-29T10:00:00"
-    }
+    
+      ```
+      - url：
+        /getUserInfo/{id}
+        response:
+        {
+        "id": 1,
+        "userName": "user1",
+        "email": "user1@example.com",
+        "password": "$2a$10$7Q7rOd/oPSK.s4xPSzX5M.3Ow5nxjG5B27I7jN5XBItuMwBsSlD6a",
+        "institution": "Institution1",
+        "registrationTime": "2023-05-29T10:00:00"
+        }
+      - updateUserInfo
+        url:
+        /updateUserInfo/{id}
+        payload:
+        {
+        "id": 1,
+        "userName": "user1",
+        "email": "user1@example.com",
+        "password": "123",
+        "institution": "Institution1",
+        "registrationTime": "2023-05-29T10:00:00"
+        }
+        response:
+        {
+        "id": 1,
+        "userName": "user1",
+        "email": "user1@example.com",
+        "password": "$2a$10$nIMYpQTmKrVikZb9zzrKmO0djhbzZKMlMxra6SXnQfsN9dVRMCqGK",
+        "institution": "Institution1",
+        "registrationTime": "2023-05-29T10:00:00"
+        }
+      ```
+    
+      
+
+### 具体会议页
+
+- getFollowersInConference
 
 
-    ### 具体会议页
-    - getFollowersInConference
     url:
     /conferences/getFollowersInConference
     payload:
@@ -627,31 +656,69 @@
     [
     	1
     ]
-    - getJoinersInConference
-    url:
-    /conferences/getJoinersInConference
-    payload:
-    conferenceId Long
-    response:
-    [
-    	1
-    ]
-    ### 具体期刊页
-    - getFollowersInJournal
-    url:
-    /journals/getFollowersInJournal
-    payload:
-    journalId Long
-    response:
-    [
-    	1
-    ]
+
+-  getJoinersInConference
+
+```
+url:
+/conferences/getJoinersInConference
+payload:
+conferenceId Long
+response:
+[
+	1
+]
+```
+
+- getFollowersCount
+
+```
+url:
+/conferences/getFollowersCount
+payload:
+conferenceId Long
+response:
+[
+	1
+]
+```
+
+- getJoinersCount
+
+```
+url:
+/conferences/getJoinersCount
+payload:
+conferenceId Long
+response:
+[
+	1
+]
+```
 
 
+
+### 具体期刊页
+
+- getFollowersInJournal
+
+  ```
+  url:
+  /journals/getFollowersInJournal
+  payload:
+  journalId Long
+  response:
+  [
+  1
+  ]
+  ```
+
+  
 
 
     # issues
     register api:  response token: res.data.token like in login api
+    
+    会议信息➕：lastModifiedDate : "2024-06-10",lastModifiedUser : "Dou Sun"
+    
 
-    会议信息➕：followCount, joinCount， lastModifiedDate : "2024-06-10",
-    lastModifiedUser : "Dou Sun",

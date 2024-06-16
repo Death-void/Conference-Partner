@@ -1,20 +1,31 @@
 import InboxArrowDownIcon from "@heroicons/react/24/outline/InboxArrowDownIcon"
 import TitleCard from "../../../components/Cards/TitleCard"
 
-const userSourceData = [
-    {shortName: "ICRA", join: 99},
-    {shortName: "IROS", join: 123456},
-    {shortName: "CVPR", join: 123456},
-    {shortName: "ICCV", join: 123456},
-    {shortName: "ECCV", join: 123456},
-    {shortName: "ICML", join: 123456},
-    {shortName: "NeurIPS", join: 123456},
-    {shortName: "AAAI", join: 123456},
-    {shortName: "ACL", join: 123456},
-    {shortName: "ICLR", join: 123456},
-]
+import { useState} from "react"
+import axios from "axios"
+import { useEffect } from "react"
 
 function MostConfJoin(){
+
+    const [confData, setConfData] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [userSourceData, setUserSourceData] = useState([])
+
+
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/follow/conference/topTen`).then((res) => {
+            if(res.status === 200){
+                setUserSourceData(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
+
     return(
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>最多参加</>}>
              {/** Table Data */}
@@ -33,7 +44,7 @@ function MostConfJoin(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.shortName}</td>
+                                        <td>{u.conference.abbreviation}</td>
                                         <td>{u.join ?  <span className="bg-green-700 badge px-2 text-white">{u.join}</span> : null}</td>
                                     </tr>
                                 )

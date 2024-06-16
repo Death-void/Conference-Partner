@@ -10,10 +10,10 @@ const jourInfo = {
     id : 1,
     name: "IEEE Software",
     url : "https://www.computer.org/csdl/magazine/so",
-    factor: "9.088",
+    impactFactor: "9.088",
     publisher: "IEEE",
     ISSN: "0740-7459",
-    visit: 100,
+    viewCount: 100,
     follow: 100,
 
 }
@@ -42,7 +42,7 @@ function JournalInfo(){
                             <tr>
                                 <td>影响因子：</td>
                                 <td></td>
-                                <td>{jourInfo.factor}</td>
+                                <td>{jourInfo.impactFactor}</td>
                             </tr>
                             <tr>
                                 <td>出版商：</td>
@@ -57,7 +57,7 @@ function JournalInfo(){
                             <tr>
                                 <td>浏览：</td>
                                 <td></td>
-                                <td>{jourInfo.visit ? <span className="bg-green-700 badge px-2 text-white">{jourInfo.visit}</span> : null }</td>    
+                                <td>{jourInfo.viewCount ? <span className="bg-green-700 badge px-2 text-white">{jourInfo.viewCount}</span> : null }</td>    
                             </tr>
                             <tr>
                                 <td>关注：</td>

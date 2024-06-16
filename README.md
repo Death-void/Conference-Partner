@@ -158,31 +158,31 @@
     - getTopTenCallForPaper: deadline time increasing order -> get all in pages
     ```
         const userSourceData = [
-            {CCF: "", CORE: "c", QUALIS: "", shortName: "AIR", fullName: "International Conference on Artificial Intelligence and Robots", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICML", fullName: "International Conference on Machine Learning", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "ICCV", fullName: "International Conference on Computer Vision", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B4", shortName: "ICML", fullName: "International Conference on Machine Learning", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B5", shortName: "ICCV", fullName: "International Conference on Computer Vision", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICML", fullName: "International Conference on Machine Learning", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "", CORE: "c", QUALIS: "", abbreviation: "AIR", fullName: "International Conference on Artificial Intelligence and Robots", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A1", abbreviation: "ICML", fullName: "International Conference on Machine Learning", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B2", abbreviation: "ICCV", fullName: "International Conference on Computer Vision", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B3", abbreviation: "ICRA", fullName: "International Conference on Robotics and Automation", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A2", abbreviation: "CVPR", fullName: "Computer Vision and Pattern Recognition", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B4", abbreviation: "ICML", fullName: "International Conference on Machine Learning", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B5", abbreviation: "ICCV", fullName: "International Conference on Computer Vision", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A1", abbreviation: "ICRA", fullName: "International Conference on Robotics and Automation", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B2", abbreviation: "CVPR", fullName: "Computer Vision and Pattern Recognition", delay: "", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B3", abbreviation: "ICML", fullName: "International Conference on Machine Learning", delay: "Delay", deadline: "2024-06-10", notifyDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
         ]
     ```
     - getTopTenConference: conference time increasing order -> get all in pages
     ```
         const userSourceData = [
-            {CCF: "", CORE: "c", QUALIS: "", shortName: "AIR", fullName: "International Conference on Artificial Intelligence and Robots", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B4", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B5", shortName: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-            {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "", CORE: "c", QUALIS: "", abbreviation: "AIR", fullName: "International Conference on Artificial Intelligence and Robots", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A1", abbreviation: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B2", abbreviation: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B3", abbreviation: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A2", abbreviation: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B4", abbreviation: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B5", abbreviation: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "a", CORE: "a", QUALIS: "A1", abbreviation: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "c", CORE: "b", QUALIS: "B2", abbreviation: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
+            {CCF: "b", CORE: "c", QUALIS: "B3", abbreviation: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
         ]
     ```
     - getTopTenJournal: deadline time increasing order -> get all in pages
@@ -317,16 +317,16 @@
     - getTopTenConfJoined -> get all in pages
     ```
         const userSourceData = [
-            {shortName: "ICRA", join: 99},
-            {shortName: "IROS", join: 123456},
-            {shortName: "CVPR", join: 123456},
-            {shortName: "ICCV", join: 123456},
-            {shortName: "ECCV", join: 123456},
-            {shortName: "ICML", join: 123456},
-            {shortName: "NeurIPS", join: 123456},
-            {shortName: "AAAI", join: 123456},
-            {shortName: "ACL", join: 123456},
-            {shortName: "ICLR", join: 123456},
+            {abbreviation: "ICRA", join: 99},
+            {abbreviation: "IROS", join: 123456},
+            {abbreviation: "CVPR", join: 123456},
+            {abbreviation: "ICCV", join: 123456},
+            {abbreviation: "ECCV", join: 123456},
+            {abbreviation: "ICML", join: 123456},
+            {abbreviation: "NeurIPS", join: 123456},
+            {abbreviation: "AAAI", join: 123456},
+            {abbreviation: "ACL", join: 123456},
+            {abbreviation: "ICLR", join: 123456},
         ]
     ```
     - getTopTenJourVisited -> get all in pages

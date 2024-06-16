@@ -34,7 +34,7 @@ function Login(){
                     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
 
-                    // axios.get('/api/getPageVisitedNum').then((res) => {
+                    // axios.get('/api/getPageviewCountedNum').then((res) => {
                     //     if(res.status === 200){
                     //     }
                     // }).catch((err) => {

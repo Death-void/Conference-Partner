@@ -13,7 +13,7 @@ import LeftContent from './components/LeftContent'
 import RightContent from './components/RightContent'
 import { useEffect } from 'react'
 import axios from 'axios'
-import { useState, setStateData } from 'react'
+import { useState } from 'react'
 
 
 

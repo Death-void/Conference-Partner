@@ -1,20 +1,31 @@
 import InboxArrowDownIcon from "@heroicons/react/24/outline/InboxArrowDownIcon"
 import TitleCard from "../../../components/Cards/TitleCard"
 
-const userSourceData = [
-    {shortName: "ICRA", follow: 9999},
-    {shortName: "IROS", follow: 123456},
-    {shortName: "CVPR", follow: 123456},
-    {shortName: "ICCV", follow: 123456},
-    {shortName: "ECCV", follow: 123456},
-    {shortName: "ICML", follow: 123456},
-    {shortName: "NeurIPS", follow: 123456},
-    {shortName: "AAAI", follow: 123456},
-    {shortName: "ACL", follow: 123456},
-    {shortName: "ICRA", follow: 123456},
-]
+import { useState} from "react"
+import axios from "axios"
+import { useEffect } from "react"
 
 function MostConfFollow(){
+
+    const [confData, setConfData] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [userSourceData, setUserSourceData] = useState([])
+
+
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/follow/conference/topTen`).then((res) => {
+            if(res.status === 200){
+                setUserSourceData(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
+
     return(
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>最多关注</>}>
              {/** Table Data */}
@@ -33,8 +44,8 @@ function MostConfFollow(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.shortName}</td>
-                                        <td>{u.follow ?  <span className="bg-green-700 badge px-2 text-white">{u.follow}</span> : null}</td>
+                                        <td>{u.conference.abbreviation}</td>
+                                        <td>{u.followNum ?  <span className="bg-green-700 badge px-2 text-white">{u.followNum}</span> : null}</td>
                                     </tr>
                                 )
                             })

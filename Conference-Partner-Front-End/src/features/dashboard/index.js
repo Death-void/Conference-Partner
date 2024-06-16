@@ -131,10 +131,9 @@ function Dashboard(){
 
         {/** ---------------------- User source channels table  ------------------------- */}
         
-            <div className="grid mt-4 grid-cols-1 gap-6">
+            {/* <div className="grid mt-4 grid-cols-1 gap-6">
                 <MessageChart />
-                {/* <DoughnutChart /> */}
-            </div>
+            </div> */}
 
             <div className="grid mt-4 grid-cols-1 gap-6">
                 <CallForPaperChart />

@@ -6328,7 +6328,7 @@ postcss-clamp@^4.1.0:
 postcss-color-functional-notation@^4.2.4:
   version "4.2.4"
   resolved "https://registry.npmjs.org/postcss-color-functional-notation/-/postcss-color-functional-notation-4.2.4.tgz"
-  integrity sha512-2yrTAUZUab9s6CpxkxC4rVgFEVaR6/2Pipvi6qcgvnYiVqZcbDHEoBDhrXzyb7Efh2CCfHQNtcqWcIruDTIUeg==
+  integrity sha512-2yrTAUZUab9s6CpxkxC4rVgFEVaR6/2Pipvi6qcgvnYiVqZcbDHEoBDhrXzyb7Efh2ccfHQNtcqWcIruDTIUeg==
   dependencies:
     postcss-value-parser "^4.2.0"
 

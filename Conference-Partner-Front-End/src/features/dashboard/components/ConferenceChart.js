@@ -1,42 +1,54 @@
 import InboxArrowDownIcon from "@heroicons/react/24/outline/InboxArrowDownIcon"
 import TitleCard from "../../../components/Cards/TitleCard"
+import { useState} from "react"
+import axios from "axios"
+import { useEffect } from "react"
 
-const userSourceData = [
-    {CCF: "", CORE: "c", QUALIS: "", shortName: "AIR", fullName: "International Conference on Artificial Intelligence and Robots", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "a", CORE: "a", QUALIS: "A2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "c", CORE: "b", QUALIS: "B4", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "b", CORE: "c", QUALIS: "B5", shortName: "ICCV", fullName: "International Conference on Computer Vision", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "a", CORE: "a", QUALIS: "A1", shortName: "ICRA", fullName: "International Conference on Robotics and Automation", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "c", CORE: "b", QUALIS: "B2", shortName: "CVPR", fullName: "Computer Vision and Pattern Recognition", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-    {CCF: "b", CORE: "c", QUALIS: "B3", shortName: "ICML", fullName: "International Conference on Machine Learning", conferenceDate: "2024-08-10", location: "Shanghai, China", session: 7, visit: 100},
-]
+
 
 function ConferenceChart(){
+
+    const [confData, setConfData] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [userSourceData, setUserSourceData] = useState([])
+
+
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/conferences/visit/topTen`).then((res) => {
+            if(res.status === 200){
+                setUserSourceData(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
+
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>会议</>}>
             {/** Table Data */}
             <div className="flex items-center text-sm">
-                <button className="text-blue-500">CCF:</button>
+                <button className="text-blue-500">ccf:</button>
                 <p className="ml-2">Conference Rank (A, B, C) from China Computer Federation (2022)</p>
             </div>
             <div className="flex items-center text-sm">
-                <button className="text-blue-500">CORE:</button>
+                <button className="text-blue-500">core:</button>
                 <p className="ml-2">Conference Rank (A*, A, B, C) from Computing Research and Education Association of Australasia (2020)</p>
             </div>
             <div className="flex items-center text-sm">
-                <button className="text-blue-500">QUALIS:</button>
+                <button className="text-blue-500">qualis:</button>
                 <p className="ml-2">Conference Rank (A1, A2, B1, B2, B3, B4, B5) from Brazilian Classification System for Conferences and Journals (2016)</p>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th className="text-base">CCF</th>
-                            <th className="text-base">CORE</th>
-                            <th className="text-base">QUALIS</th>
+                            <th className="text-base">ccf</th>
+                            <th className="text-base">core</th>
+                            <th className="text-base">qualis</th>
                             <th className="text-base">简称</th>
                             <th className="text-base">全称</th>
                             <th className="text-base">会议日期</th>
@@ -49,15 +61,15 @@ function ConferenceChart(){
                         {userSourceData.map((u, k) => {
                             return (
                                 <tr key={k}>
-                                    <td>{u.CCF ? <span className="bg-blue-500 badge px-2 text-white">{u.CCF}</span> : null }</td>
-                                    <td>{u.CORE ? <span className="bg-blue-500 badge px-2 text-white">{u.CORE}</span> : null }</td>
-                                    <td>{u.QUALIS ? <span className="bg-blue-500 badge px-2 text-white">{u.QUALIS}</span> : null }</td>
-                                    <td>{u.shortName}</td>
-                                    <td>{u.fullName}</td>
+                                    <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
+                                    <td>{u.core ? <span className="bg-blue-500 badge px-2 text-white">{u.core}</span> : null }</td>
+                                    <td>{u.qualis ? <span className="bg-blue-500 badge px-2 text-white">{u.qualis}</span> : null }</td>
+                                    <td>{u.abbreviation}</td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
                                     <td>{u.conferenceDate}</td>
                                     <td>{u.location}</td>
-                                    <td>{u.session ? <span className="bg-orange-500 badge px-2 text-white">{u.session}</span> : null}</td>
-                                    <td>{u.visit ? <span className="bg-green-700 badge px-2 text-white">{u.visit}</span> : null }</td>
+                                    <td>{u.frequency ? <span className="bg-orange-500 badge px-2 text-white">{u.frequency}</span> : null}</td>
+                                    <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
                                 </tr>
                             )
                         })}
@@ -65,7 +77,7 @@ function ConferenceChart(){
                 </table>
             </div>
             <div className="flex justify-center">
-                <button className="text-blue-500"> 更多>></button>
+                <button className="text-blue-500" onClick={() => window.location.href = `/app/conference`}> 更多>></button>
             </div>
         </TitleCard>
     )

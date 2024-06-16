@@ -7,26 +7,26 @@ import React, {
 } from 'react'
 
 const items = [
-    {CCF: "", shortName: "", fullName: "Materials Science and Engineering: R: Reports", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Software", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Software", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "", shortName: "", fullName: "Materials Science and Engineering: R: Reports", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Software", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "a", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "c", shortName: "", fullName: "IEEE Software", factor: "2.586", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
-    {CCF: "b", shortName: "", fullName: "IEEE Transactions on Software Engineering", factor: "3.286", publisher: "IEEE", ISSN: "0972-796X", visit: 100},
+    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
 ]
 
 
@@ -70,7 +70,7 @@ function CallForPaperJourFinishedPaging(){
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th className="text-base">CCF</th>
+                            <th className="text-base">ccf</th>
                             <th className="text-base">简称</th>
                             <th className="text-base">全称</th>
                             <th className="text-base">影响因子</th>
@@ -83,13 +83,13 @@ function CallForPaperJourFinishedPaging(){
                         {currentItems && currentItems.map((u, k) => {
                             return (
                                 <tr key={k}>
-                                    <td>{u.CCF ? <span className="bg-blue-500 badge px-2 text-white">{u.CCF}</span> : null }</td>
-                                    <td>{u.shortName}</td>
-                                    <td>{u.fullName}</td>
-                                    <td>{u.factor}</td>
+                                    <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
+                                    <td>{u.abbreviation}</td>
+                                    <td>{u.name}</td>
+                                    <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
                                     <td>{u.ISSN}</td>
-                                    <td>{u.visit ? <span className="bg-green-700 badge px-2 text-white">{u.visit}</span> : null }</td>
+                                    <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
                                 </tr>
                             )
                         })}

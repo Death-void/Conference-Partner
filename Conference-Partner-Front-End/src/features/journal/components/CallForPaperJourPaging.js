@@ -7,16 +7,16 @@ import React, {
 } from 'react'
 
 const items = [
-    {CCF: "", fullName: "IEEE Software", specialIssue: "Creativity in Software Engineering", deadline: "2024-06-10", factor: "2.586", publisher: "IEEE", visit: 100},
-    {CCF: "a", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "c", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "b", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "a", fullName: "IEEE Software", specialIssue: "Creativity in Software Engineering", deadline: "2024-06-10", factor: "2.586", publisher: "IEEE", visit: 100},
-    {CCF: "c", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "b", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "a", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
-    {CCF: "c", fullName: "IEEE Software", specialIssue: "Creativity in Software Engineering", deadline: "2024-06-10", factor: "2.586", publisher: "IEEE", visit: 100},
-    {CCF: "b", fullName: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", deadline: "2024-06-10", factor: "3.286", publisher: "IEEE", visit: 100},
+    {ccf: "", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
+    {ccf: "a", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "c", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "a", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
+    {ccf: "c", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "a", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
+    {ccf: "c", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
+    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
 ]
 
 
@@ -54,7 +54,7 @@ function CallForPaperJourPaging(){
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
             {/** Table Data */}
             <div className="flex items-center text-sm">
-                <button className="text-blue-500">CCF:</button>
+                <button className="text-blue-500">ccf:</button>
                 <p className="ml-2">Journal Rank (A, B, C) from China Computer Federation (2022)</p>
             </div>
             <div className="flex justify-end">
@@ -64,7 +64,7 @@ function CallForPaperJourPaging(){
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th className="text-base">CCF</th>
+                            <th className="text-base">ccf</th>
                             <th className="text-base">全称</th>
                             <th className="text-base">Special Issue</th>
                             <th className="text-base">截稿日期</th>
@@ -77,13 +77,13 @@ function CallForPaperJourPaging(){
                         {currentItems && currentItems.map((u, k) => {
                             return (
                                 <tr key={k}>
-                                    <td>{u.CCF ? <span className="bg-blue-500 badge px-2 text-white">{u.CCF}</span> : null }</td>
-                                    <td>{u.fullName}</td>
+                                    <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
+                                    <td>{u.name}</td>
                                     <td>{u.specialIssue}</td>
-                                    <td>{u.deadline}</td>
-                                    <td>{u.factor}</td>
+                                    <td>{u.submissionDeadline}</td>
+                                    <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
-                                    <td>{u.visit ? <span className="bg-green-700 badge px-2 text-white">{u.visit}</span> : null }</td>
+                                    <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
                                 </tr>
                             )
                         })}

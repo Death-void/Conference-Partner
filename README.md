@@ -655,3 +655,9 @@
     [
     	1
     ]
+
+
+
+
+    # issues
+    register api:  response token: res.data.token like in login api

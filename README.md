@@ -154,25 +154,7 @@
     6600
     ```
     
-    
 
-
-    - getTopTenMessages: update conference, update journal, add user (time decreasing order) -> get all in pages
-    ```
-        const userSourceData = [
-        {date : "2024-06-10", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-09", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-08", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-07", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-06", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-05", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-04", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-03", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-02", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        {date : "2024-06-01", type : "更新会议", content : "IEEE APSCON 2025: International IEEE Applied Sensing Conference"},
-        ]
-    
-    ```
     - getTopTenCallForPaper: deadline time increasing order -> get all in pages
     ```
         const userSourceData = [
@@ -516,6 +498,11 @@
     		"core": "A*"
     	}
     ]
+
+    - getConfJoiners
+
+    -getConfFollowers
+
     ### 期刊页
     - getJourInCall: 
     url:
@@ -661,3 +648,6 @@
 
     # issues
     register api:  response token: res.data.token like in login api
+
+    会议信息➕：followCount, joinCount， lastModifiedDate : "2024-06-10",
+    lastModifiedUser : "Dou Sun",

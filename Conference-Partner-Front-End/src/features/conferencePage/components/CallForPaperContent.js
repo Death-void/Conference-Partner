@@ -16,6 +16,8 @@ const callForPaperInfo = {
 
 function CallForPaperContent(){
 
+    
+
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
             {/** Table Data */}

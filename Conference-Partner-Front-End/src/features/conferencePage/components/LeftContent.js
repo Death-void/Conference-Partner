@@ -4,9 +4,9 @@ import Recommend from "./Recommend"
 import RelatedConference from "./RelatedConference"
 import RelatedJournal from "./RelatedJournal"
 
-function LeftContent(){
+function LeftContent(props){
 
-
+    console.log(props.confData)
 
     return(
         <div>
@@ -14,19 +14,19 @@ function LeftContent(){
         {/** ---------------------- User source channels table  ------------------------- */}
         
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <ConferenceInfo />
+                <ConferenceInfo confData={props.confData}/>
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <CallForPaperContent />
+                <CallForPaperContent confData={props.confData} />
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <RelatedConference />
+                <RelatedConference confData={props.confData} />
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <RelatedJournal />
+                <RelatedJournal confData={props.confData} />
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <Recommend />
+                <Recommend confData={props.confData} />
             </div>
         </div>
     )

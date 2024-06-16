@@ -26,6 +26,8 @@ function Login(){
             setLoading(true)
             // Call API to check user credentials and save token in localstorage
 
+            
+
             axios.post('/auth/login', loginObj).then((res) => {
                 if(res.status === 200){
                     localStorage.setItem("token", res.data.token)
@@ -33,10 +35,7 @@ function Login(){
                     setLoading(false)
 
                     // axios.get('/api/getPageVisitedNum').then((res) => {
-                    //     console.log(res)
-                        
                     //     if(res.status === 200){
-                           
                     //     }
                     // }).catch((err) => {
                     //     setLoading(false)

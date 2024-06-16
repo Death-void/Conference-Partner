@@ -3,13 +3,15 @@ import {Link} from 'react-router-dom'
 import LandingIntro from './LandingIntro'
 import ErrorText from  '../../components/Typography/ErrorText'
 import InputText from '../../components/Input/InputText'
+import axios from 'axios'
 
 function Register(){
 
     const INITIAL_REGISTER_OBJ = {
-        name : "",
+        userName : "",
         password : "",
-        emailId : ""
+        email : "",
+        institution: ""
     }
 
     const [loading, setLoading] = useState(false)
@@ -20,15 +22,24 @@ function Register(){
         e.preventDefault()
         setErrorMessage("")
 
-        if(registerObj.name.trim() === "")return setErrorMessage("Name is required! (use any value)")
-        if(registerObj.emailId.trim() === "")return setErrorMessage("Email Id is required! (use any value)")
+        if(registerObj.userName.trim() === "")return setErrorMessage("Name is required! (use any value)")
+        if(registerObj.email.trim() === "")return setErrorMessage("Email Id is required! (use any value)")
         if(registerObj.password.trim() === "")return setErrorMessage("Password is required! (use any value)")
         else{
             setLoading(true)
             // Call API to check user credentials and save token in localstorage
-            localStorage.setItem("token", "DumyTokenHere")
-            setLoading(false)
-            window.location.href = '/app/welcome'
+            axios.post('/auth/register', registerObj).then((res) => {
+                console.log(res)
+                if(res.status === 201){
+                    localStorage.setItem("token", res.data.token)
+                    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+                    setLoading(false)
+                    window.location.href = '/app/dashboard'
+                }
+            }).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
         }
     }
 
@@ -50,11 +61,13 @@ function Register(){
 
                         <div className="mb-4">
 
-                            <InputText defaultValue={registerObj.name} updateType="name" containerStyle="mt-4" labelTitle="Name" updateFormValue={updateFormValue}/>
+                            <InputText defaultValue={registerObj.userName} updateType="userName" containerStyle="mt-4" labelTitle="User Name" updateFormValue={updateFormValue}/>
 
-                            <InputText defaultValue={registerObj.emailId} updateType="emailId" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue}/>
+                            <InputText defaultValue={registerObj.email} updateType="email" containerStyle="mt-4" labelTitle="Email" updateFormValue={updateFormValue}/>
 
                             <InputText defaultValue={registerObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue}/>
+
+                            <InputText defaultValue={registerObj.institution} updateType="institution" containerStyle="mt-4" labelTitle="Institution" updateFormValue={updateFormValue}/>
 
                         </div>
 

@@ -23,6 +23,7 @@ import MostConfFollow from './components/MostConfFollow'
 import MostConfJoin from './components/MostConfJoin'
 import MostJourVisit from './components/MostJourVisit'
 import MostJourFollow from './components/MostJourFollow'
+import axios from 'axios'
 
 const statsData = [
     {title : "会议", value : "34.7k", icon : <UserGroupIcon className='w-8 h-8'/>, description : ""},
@@ -35,7 +36,23 @@ const statsData = [
 
 function Dashboard(){
 
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+
+    axios.get('/api/getPageVisitedNum').then((res) => {
+        console.log(res)
+        
+        if(res.status === 200){
+           
+        }
+    }).catch((err) => {
+        setLoading(false)
+        setErrorMessage("Invalid credentials")
+    })
+
     const dispatch = useDispatch()
+
+   
  
 
     const updateDashboardPeriod = (newRange) => {

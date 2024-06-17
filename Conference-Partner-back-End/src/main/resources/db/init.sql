@@ -72,7 +72,7 @@ CREATE TABLE follow_journal (
                                 user_id BIGINT NOT NULL,
                                 journal_id BIGINT NOT NULL,
                                 FOREIGN KEY (user_id) REFERENCES user(id),
-                                FOREIGN KEY (journal_id) REFERENCES journal(id)
+                                FOREIGN KEY (journal_id) REFERENCES journal(id) ON DELETE CASCADE
 );
 
 INSERT INTO follow_journal (user_id, journal_id) VALUES
@@ -84,7 +84,7 @@ CREATE TABLE follow_conference (
                                    user_id BIGINT NOT NULL,
                                    conference_id BIGINT NOT NULL,
                                    FOREIGN KEY (user_id) REFERENCES user(id),
-                                   FOREIGN KEY (conference_id) REFERENCES conference(id)
+                                   FOREIGN KEY (conference_id) REFERENCES conference(id) ON DELETE CASCADE
 );
 
 INSERT INTO follow_conference (user_id, conference_id) VALUES

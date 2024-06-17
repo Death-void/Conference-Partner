@@ -66,14 +66,20 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
-        return ResponseEntity.ok().body(new AuthResponse(jwt));
+        return ResponseEntity.ok().body(new AuthResponse(jwt,user.getId(),user.getRole()));
     }
 
     static class AuthResponse {
         private final String token; //jwt token
 
-        public AuthResponse(String token) {
+        private Long userId;
+
+        private String role;
+
+        public AuthResponse(String token, Long userId, String role) {
             this.token = token;
+            this.userId = userId;
+            this.role = role;
         }
 
         public String getToken() {

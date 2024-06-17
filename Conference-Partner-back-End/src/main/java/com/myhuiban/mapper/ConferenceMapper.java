@@ -37,5 +37,6 @@ public interface ConferenceMapper {
 
     List<Conference> findAllVisit();
 
+    @Update("UPDATE conference SET view_count = view_count + 1 WHERE id = #{id}")
     void incrementViewCount(Long id);
 }

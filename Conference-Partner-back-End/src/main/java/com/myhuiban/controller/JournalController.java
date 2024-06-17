@@ -129,4 +129,10 @@ public class JournalController {
     public List<Journal> getAllVisitConferences() {
         return journalService.getAllVisitJournals();
     }
+
+    @PutMapping("/{id}/incrementViewCount")
+    public ResponseEntity<Void> incrementJournalViewCount(@PathVariable Long id) {
+        journalService.incrementViewCount(id);
+        return ResponseEntity.ok().build();
+    }
 }

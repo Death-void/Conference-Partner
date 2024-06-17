@@ -36,4 +36,6 @@ public interface ConferenceMapper {
     List<Conference> findTopTenVisit();
 
     List<Conference> findAllVisit();
+
+    void incrementViewCount(Long id);
 }

@@ -35,4 +35,7 @@ public interface JournalMapper {
     List<Journal> findTopTenVisit();
 
     List<Journal> findAllVisit();
+
+    @Update("UPDATE journal SET view_count = view_count + 1 WHERE id = #{id}")
+    void incrementViewCount(Long id);
 }

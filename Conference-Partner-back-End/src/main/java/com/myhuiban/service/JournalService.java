@@ -20,4 +20,5 @@ public interface JournalService {
     List<Long> getFollowersInJournal(Long journalId);
     List<Journal> getTopTenVisitJournals();
     List<Journal> getAllVisitJournals();
+    void incrementViewCount(Long id);
 }

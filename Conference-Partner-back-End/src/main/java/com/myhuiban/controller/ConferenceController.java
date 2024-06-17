@@ -162,4 +162,10 @@ public class ConferenceController {
     public List<Conference> getAllVisitConferences() {
         return conferenceService.getAllVisitConferences();
     }
+
+    @PutMapping("/{id}/incrementViewCount")
+    public ResponseEntity<Void> incrementConferenceViewCount(@PathVariable Long id) {
+        conferenceService.incrementViewCount(id);
+        return ResponseEntity.ok().build();
+    }
 }

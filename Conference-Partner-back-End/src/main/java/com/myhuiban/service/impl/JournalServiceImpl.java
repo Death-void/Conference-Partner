@@ -82,4 +82,9 @@ public class JournalServiceImpl implements JournalService {
     public List<Journal> getAllVisitJournals() {
         return journalMapper.findAllVisit();
     }
+
+    @Override
+    public void incrementViewCount(Long id) {
+        journalMapper.incrementViewCount(id);
+    }
 }

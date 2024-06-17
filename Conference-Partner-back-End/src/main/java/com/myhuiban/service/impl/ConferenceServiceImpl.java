@@ -86,4 +86,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public List<Conference> getAllVisitConferences() {
         return conferenceMapper.findAllVisit();
     }
+
+    @Override
+    public void incrementViewCount(Long id) {
+        conferenceMapper.incrementViewCount(id);
+    }
 }

@@ -20,15 +20,6 @@ VALUES
     ('user', 'user@example.com', '$2a$10$DowJonesIndexMayFall', 'User Institution', '2024-01-01 12:00:00', 'ROLE_USER');
 
 
-CREATE TABLE role (
-                      id BIGINT AUTO_INCREMENT PRIMARY KEY UNIQUE,
-                      role VARCHAR(255) NOT NULL
-);
-
-INSERT INTO role (role) VALUES
-                            ('ROLE_USER'),
-                            ('ROLE_ADMIN');
-
 CREATE TABLE conference (
                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
                             name VARCHAR(255) NOT NULL,
@@ -65,14 +56,15 @@ CREATE TABLE journal (
                          impact_factor VARCHAR(10),
                          publisher VARCHAR(255),
                          ISSN VARCHAR(20),
-                         view_count BIGINT
+                         view_count BIGINT,
+                         last_modified_date DATE,
+                         last_modified_user VARCHAR(255)
 );
 
-INSERT INTO journal (name, website, special_issue, CCF, submission_deadline, impact_factor, publisher, ISSN, view_count)
+INSERT INTO journal (name, website, special_issue, CCF, submission_deadline, impact_factor, publisher, ISSN, view_count, last_modified_date, last_modified_user)
 VALUES
-    ('Journal of Machine Learning Research', 'http://jmlr.org', 'Special Issue on Deep Learning', 'A', '2024-06-01', '2.567', 'MIT Press', '1533-7928', 1200),
-    ('IEEE Transactions on Neural Networks', 'https://www.ieee.org', 'Special Issue on Reinforcement Learning', 'A*', '2024-07-01', '5.123', 'IEEE', '1045-9227', 1500);
-
+    ('Journal of Machine Learning Research', 'http://jmlr.org', 'Special Issue on Deep Learning', 'A', '2024-06-01', '5.12', 'MIT Press', '1532-4435', 1200, '2024-06-10', 'admin'),
+    ('Neural Networks', 'http://elsevier.com/locate/neunet', 'Special Issue on Reinforcement Learning', 'A', '2024-07-15', '4.73', 'Elsevier', '0893-6080', 800, '2024-06-10', 'admin');
 
 
 CREATE TABLE follow_journal (

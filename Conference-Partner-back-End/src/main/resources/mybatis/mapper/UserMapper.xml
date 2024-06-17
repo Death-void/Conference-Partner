@@ -23,7 +23,7 @@
 
     <update id="updateUserInfo" parameterType="com.myhuiban.model.User">
         UPDATE user
-        SET user_name=#{userName}, email=#{email}, institution=#{institution}, registration_time=#{registrationTime}, password=#{password}
+        SET user_name=#{userName}, email=#{email}, institution=#{institution}, registration_time=#{registrationTime}, password=#{password}, role=#{role}
         WHERE id=#{id}
     </update>
 </mapper>

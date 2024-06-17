@@ -19,7 +19,7 @@ public class User {
 
     private LocalDateTime registrationTime; // 注册时间
 
-    private String role; // 用户角色'
+    private String role = "ROLE_USER";
 
     public String getRole() {
         return role;

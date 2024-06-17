@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
     public void registerUser(User user) {
         user.setRegistrationTime(LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("ROLE_USER");
         userMapper.insert(user);
     }
 

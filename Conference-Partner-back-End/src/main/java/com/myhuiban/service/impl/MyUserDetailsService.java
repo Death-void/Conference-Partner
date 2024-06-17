@@ -3,11 +3,14 @@ package com.myhuiban.service.impl;
 import com.myhuiban.mapper.UserMapper;
 import com.myhuiban.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -22,10 +25,10 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found: " + username);
         }
 
-        UserBuilder builder = org.springframework.security.core.userdetails.User.withUsername(username);
-        builder.password(user.getPassword());
-        builder.roles("USER"); // 设置用户角色，可以根据实际需求调整
-
-        return builder.build();
+        return new org.springframework.security.core.userdetails.User(
+                user.getUserName(),
+                user.getPassword(),
+                Collections.singleton(new SimpleGrantedAuthority(user.getRole()))
+        );
     }
 }

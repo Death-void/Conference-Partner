@@ -50,6 +50,25 @@ public class Journal {
 
     private Long viewCount; // 浏览次数
 
+    public String getLastModifiedUser() {
+        return lastModifiedUser;
+    }
+
+    public void setLastModifiedUser(String lastModifiedUser) {
+        this.lastModifiedUser = lastModifiedUser;
+    }
+
+    public LocalDate getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(LocalDate lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    private LocalDate lastModifiedDate; // 最后修改日期
+    private String lastModifiedUser; // 最后修改用户
+
     // Getters 和 Setters 方法
 
     public Long getId() {

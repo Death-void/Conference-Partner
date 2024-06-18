@@ -8,6 +8,7 @@ import React, {
 import { useAsyncError } from "react-router-dom";
 import axios from 'axios'
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { IncrementConferenceViewCount } from "../../../GlobalFunction";
 
 
 const itemsPerPage = 2
@@ -16,7 +17,7 @@ const itemsPerPage = 2
 function CallForPaperPaging(props){
 
     const items = props.confData
-    // //console.log("isPostponed", items)
+    console.log("callforpaper", items)
     
     
     //
@@ -74,7 +75,7 @@ function CallForPaperPaging(props){
                             <th className="text-base">会议地点</th>
                             <th className="text-base">届数</th>
                             <th className="text-base">浏览</th>
-                            {localStorage.getItem("isAdmin") === "true" ? <th className="text-base">删除</th> : null}
+                            {localStorage.getItem("role") === "ROLE_ADMIN" ? <th className="text-base">删除</th> : null}
                         </tr>
                     </thead>
                     <tbody>
@@ -85,7 +86,7 @@ function CallForPaperPaging(props){
                                     <td>{u.core ? <span className="bg-blue-500 badge px-2  text-white">{u.core}</span> : null }</td>
                                     <td>{u.qualis ? <span className="bg-blue-500 badge px-2  text-white">{u.qualis}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementConferenceViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed.toString()}</span> : null }</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.notificationDate}</td>
@@ -93,7 +94,7 @@ function CallForPaperPaging(props){
                                     <td>{u.location}</td>
                                     <td>{u.frequency ? <span className="bg-orange-500 badge px-2 text-white">{u.frequency}</span> : null}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
-                                    {localStorage.getItem("isAdmin") === "true" ? <th><button onClick={()=>confDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
+                                    {localStorage.getItem("role") === "ROLE_ADMIN" ? <th><button onClick={()=>confDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
                                 </tr>
                             )
                         })}

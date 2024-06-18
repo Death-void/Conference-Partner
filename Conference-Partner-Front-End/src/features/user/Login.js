@@ -32,8 +32,8 @@ function Login(){
                 if(res.status === 200){
                     console.log(res)
                     localStorage.setItem("token", res.data.token)
-                    localStorage.setItem("isAdmin", true)
-                    localStorage.setItem("id", 1)
+                    localStorage.setItem("role", res.data.role)
+                    localStorage.setItem("id", res.data.userId)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
 

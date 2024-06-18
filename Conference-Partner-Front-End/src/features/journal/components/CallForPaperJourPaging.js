@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import axios from 'axios'
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { IncrementJournalViewCount } from "../../../GlobalFunction";
 
 const itemsPerPage = 2
 
@@ -56,7 +57,7 @@ function CallForPaperJourPaging(props){
                             <th className="text-base">影响因子</th>
                             <th className="text-base">出版商</th>
                             <th className="text-base">浏览</th>
-                            {localStorage.getItem("isAdmin") === "true" ? <th className="text-base">删除</th> : null}
+                            {localStorage.getItem("role") === "ROLE_ADMIN" ? <th className="text-base">删除</th> : null}
                         </tr>
                     </thead>
                     <tbody>
@@ -64,13 +65,13 @@ function CallForPaperJourPaging(props){
                             return (
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementJournalViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.specialIssue}</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
-                                    {localStorage.getItem("isAdmin") === "true" ? <th><button onClick={()=>jourDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
+                                    {localStorage.getItem("role") === "ROLE_ADMIN" ? <th><button onClick={()=>jourDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
                                 </tr>
                             )
                         })}

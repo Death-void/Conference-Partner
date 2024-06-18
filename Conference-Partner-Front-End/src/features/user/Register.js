@@ -32,7 +32,7 @@ function Register(){
                 //console.log(res)
                 if(res.status === 201){
                     localStorage.setItem("token", res.data.token)
-                    localStorage.setItem("isAdmin", false)
+                    localStorage.setItem("role", false)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
                     window.location.href = '/app/dashboard'

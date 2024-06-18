@@ -17,12 +17,12 @@ function LeftContent(props){
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <CallForPaperContent confData={props.confData} />
             </div>
-            <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
+            {/* <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <RelatedConference confData={props.confData} />
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <RelatedJournal confData={props.confData} />
-            </div>
+            </div> */}
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <Recommend confData={props.confData} />
             </div>

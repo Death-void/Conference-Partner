@@ -32,6 +32,7 @@ function RightContent(props){
                 console.log(err)
             })
             setFollowers(res.data)
+            console.log("followers", res.data)
         }
         f()
 
@@ -67,7 +68,7 @@ function RightContent(props){
         else {
             setLoading(true)
             const f = async () => {
-                const res = await axios.post('/conferences', conferenceObj).catch((err) => {
+                const res = await axios.put(`/conferences/${confData.id}`, conferenceObj).catch((err) => {
                     setLoading(false)
                     dispatch(showNotification({message : "Failed to add conference", status : 0}))
                 })
@@ -75,6 +76,7 @@ function RightContent(props){
             }
             f()
             dispatch(showNotification({message : "Conference Added", status : 1}))
+            window.location.reload()
         }
     }
 
@@ -127,7 +129,7 @@ function RightContent(props){
 
             
 
-            {localStorage.getItem("isAdmin") === "true" && <div>
+            {localStorage.getItem("role") === "ROLE_ADMIN" && <div>
                 
                 <BodyCard>
                     <div className="flex justify-between" >

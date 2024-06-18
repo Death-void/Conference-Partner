@@ -21,7 +21,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/getUserNum")
     public ResponseEntity<Integer> getUserNum() {
         return ResponseEntity.ok(userService.getUserNum());

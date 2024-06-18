@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import CallForPaperContent from "./CallForPaperContent"
 import JournalInfo from "./JournalInfo"
 import Recommend from "./Recommend"
@@ -7,7 +8,10 @@ import SpecialIssues from "./SpecialIssues"
 
 function LeftContent(props){
 
-
+    const updateCount = props.updateCound
+    useEffect(() => {
+        console.log(updateCount)
+    },[updateCount])
 
     return(
         <div>

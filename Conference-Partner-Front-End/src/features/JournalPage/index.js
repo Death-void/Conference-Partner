@@ -24,6 +24,8 @@ function JournalPage(){
     const [confData, setConfData] = useState({})
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
+    const [updateCound, setUpdateCount] = useState(0)
+
 
 
     useEffect(() => {
@@ -39,6 +41,8 @@ function JournalPage(){
     }
     ,[])
 
+    
+
     return(
         <>
 
@@ -46,7 +50,7 @@ function JournalPage(){
         
         <div className="flex justify-between space-x-8">
             <div className="w-4/5">
-                <LeftContent confData={confData} />
+                <LeftContent confData={confData}/>
             </div>
             <div className="w-1/5">
                 <RightContent confData={confData}/>

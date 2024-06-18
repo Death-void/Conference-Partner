@@ -7,6 +7,7 @@ import React, {
   useState
 } from 'react'
 import axios from "axios";
+import { IncrementConferenceViewCount } from "../../../../GlobalFunction";
 
 const itemsPerPage = 2
 
@@ -79,7 +80,7 @@ function JoinedConference(){
                                     <td>{u.core ? <span className="bg-blue-500 badge px-2  text-white">{u.core}</span> : null }</td>
                                     <td>{u.qualis ? <span className="bg-blue-500 badge px-2  text-white">{u.qualis}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementConferenceViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed.toString()}</span> : null }</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.notificationDate}</td>

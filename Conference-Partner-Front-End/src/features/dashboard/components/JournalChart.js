@@ -4,6 +4,7 @@ import TitleCard from "../../../components/Cards/TitleCard"
 import { useState} from "react"
 import axios from "axios"
 import { useEffect } from "react"
+import { IncrementJournalViewCount } from "../../../GlobalFunction"
 
 function JournalChart(){
 
@@ -51,7 +52,7 @@ function JournalChart(){
                             return (
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementJournalViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.specialIssue}</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.impactFactor}</td>

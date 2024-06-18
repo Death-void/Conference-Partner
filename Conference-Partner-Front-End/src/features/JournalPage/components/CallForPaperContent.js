@@ -10,6 +10,7 @@ import React, {
 function CallForPaperContent(props){
 
     const callForPaperInfo = props.confData
+    console.log("callforpaper", callForPaperInfo)
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>

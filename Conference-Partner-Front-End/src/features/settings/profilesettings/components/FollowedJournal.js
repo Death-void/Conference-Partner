@@ -7,6 +7,7 @@ import React, {
   useState
 } from 'react'
 import axios from "axios";
+import { IncrementJournalViewCount } from "../../../../GlobalFunction";
 
 
 const itemsPerPage = 2
@@ -73,7 +74,7 @@ function FollowedJournal(){
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementJournalViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
                                     <td>{u.issn}</td>

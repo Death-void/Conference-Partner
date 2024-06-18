@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState
 } from 'react'
+import axios from "axios";
 
 
 
@@ -27,6 +28,18 @@ function ConferenceInfo(props){
     // }
 
     const confInfo = props.confData
+    const [followerCount, setFollowerCount] = useState(0)
+
+    useEffect(() => {
+        const f = async () => {
+            const res = await axios.get(`/conferences/getFollowersCount?conferenceId=${confInfo.id}`).catch((err) => {
+                console.log(err)
+            })
+            console.log("follower count", res.data)
+        }
+        f()
+    },[])
+            
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>会议信息</>}>

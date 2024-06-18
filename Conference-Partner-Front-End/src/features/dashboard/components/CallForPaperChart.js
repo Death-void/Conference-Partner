@@ -3,6 +3,7 @@ import TitleCard from "../../../components/Cards/TitleCard"
 import { useState} from "react"
 import axios from "axios"
 import { useEffect } from "react"
+import { IncrementConferenceViewCount } from "../../../GlobalFunction";
 
 function CallForPaperChart(props){
 
@@ -53,7 +54,7 @@ function CallForPaperChart(props){
                                     <td>{u.core ? <span className="bg-blue-500 badge px-2  text-white">{u.core}</span> : null }</td>
                                     <td>{u.qualis ? <span className="bg-blue-500 badge px-2  text-white">{u.qualis}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => IncrementConferenceViewCount(u.id)}>{u.name}</button></td>
                                     <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed.toString()}</span> : null }</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.notificationDate}</td>

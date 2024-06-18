@@ -48,7 +48,7 @@ function ConferencePage(){
                 <LeftContent confData={confData} />
             </div>
             <div className="w-1/5">
-                <RightContent />
+                <RightContent confData={confData} />
             </div>
         </div>
         </>

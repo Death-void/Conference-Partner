@@ -41,7 +41,7 @@ function JournalInfo(props){
                                 <td>{jourInfo.publisher}</td>
                             </tr>
                             <tr>
-                                <td>ISSN：</td>
+                                <td>issn：</td>
                                 <td></td>
                                 <td>{jourInfo.issn}</td>
                             </tr>

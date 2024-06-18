@@ -30,6 +30,7 @@ function Login(){
 
             axios.post('/auth/login', loginObj).then((res) => {
                 if(res.status === 200){
+                    console.log(res)
                     localStorage.setItem("token", res.data.token)
                     localStorage.setItem("isAdmin", true)
                     localStorage.setItem("id", 1)

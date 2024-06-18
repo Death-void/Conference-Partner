@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import { showNotification } from '../../../common/headerSlice'
 import axios from 'axios'
 import {useState} from 'react'
+import { useEffect } from 'react'
 
 
 function RightContent(){
@@ -46,9 +47,31 @@ function RightContent(){
     const [errorMessage, setErrorMessage] = useState("")
     const [conferenceObj, setConferenceObj] = useState(CONFERENCE_DATA)
     const [journalObj, setJournalObj] = useState(JOURNAL_DATA)
+    const [basicInfo, setBasicInfo] = useState({})
+    useEffect(() => {
+        // //console.log("BasicInfo")
+        const f = async () => {
+            const res = await axios.get(`/user/getUserInfo/${localStorage.getItem("id")}`).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
+            setBasicInfo(res.data)
+            //console.log("basic info", res.data)
+        }
+        f()
+    }
+    ,[])
 
     // Call API to update profile settings changes
     const updateProfile = () => {
+        const f = async () => {
+            const res = await axios.put(`/user/updateUserInfo/${localStorage.getItem("id")}`, basicInfo).catch((err) => {
+                setLoading(false)
+                dispatch(showNotification({message : "Failed to update profile", status : 0}))
+            })
+            console.log("updateProfile", res)
+        }
+        f()
         dispatch(showNotification({message : "Profile Updated", status : 1}))    
     }
 
@@ -85,7 +108,7 @@ function RightContent(){
         if(journalObj.name.trim() === "")return setErrorMessage("Name is required! (use any value)")
         if(journalObj.ccf.trim() === "")return setErrorMessage("ccf is required! (use any value)")
         if(journalObj.impactFactor === 0)return setErrorMessage("Impact Factor is required! (use any value)")
-        if(journalObj.issn.trim() === "")return setErrorMessage("ISSN is required! (use any value)")
+        if(journalObj.issn.trim() === "")return setErrorMessage("issn is required! (use any value)")
         if(journalObj.publisher.trim() === "")return setErrorMessage("Publisher is required! (use any value)")
         if(journalObj.submissionDeadline.trim() === "")return setErrorMessage("Submission Deadline is required! (use any value)")
         if(journalObj.website.trim() === "")return setErrorMessage("Website is required! (use any value)")
@@ -108,6 +131,11 @@ function RightContent(){
         setErrorMessage("")
         setConferenceObj({...conferenceObj, [updateType] : value})
         setJournalObj({...journalObj, [updateType] : value})
+    }
+
+    const updateInputValue = (updateType, value) => {
+        setErrorMessage("")
+        setBasicInfo({...basicInfo, [updateType] : value})
     }
 
     return(
@@ -134,17 +162,30 @@ function RightContent(){
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <InputText labelTitle="First Name" defaultValue="Yian" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="Last Name" defaultValue="Yang" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="Email Id" defaultValue="alex@Conference Partner.com" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="Institution" defaultValue="ECNU" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="New Password" defaultValue="" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="Verify New Password" defaultValue="" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="Old Password" defaultValue="" updateFormValue={updateFormValue}/>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                        <TextAreaInput labelTitle="My Cv" defaultValue="Doing what I love, part time traveller" updateFormValue={updateFormValue}/>
+                        <div className={`form-control w-full`}>
+                            <label className="label">
+                                <span className={"label-text text-base-content "}>姓名</span>
+                            </label>
+                            <input type={"text"} value={basicInfo.userName} onChange={(e) => updateInputValue("userName", e.target.value)}className="input  input-bordered w-full " />
+                        </div>
+                        <div className={`form-control w-full`}>
+                            <label className="label">
+                                <span className={"label-text text-base-content "}>电子邮箱</span>
+                            </label>
+                            <input type={"text"} value={basicInfo.email} onChange={(e) => updateInputValue("email", e.target.value)}className="input  input-bordered w-full " />
+                        </div>
+                        <div className={`form-control w-full`}>
+                            <label className="label">
+                                <span className={"label-text text-base-content "}>科研机构</span>
+                            </label>
+                            <input type={"text"} value={basicInfo.institution} onChange={(e) => updateInputValue("institution", e.target.value)}className="input  input-bordered w-full " />
+                        </div>
+                        <div className={`form-control w-full`}>
+                            <label className="label">
+                                <span className={"label-text text-base-content "}>更改密码</span>
+                            </label>
+                            <input type={"text"} value={basicInfo.registrationTime} onChange={(e) => updateInputValue("password", e.target.value)}className="input  input-bordered w-full " />
+                        </div>
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
@@ -233,7 +274,7 @@ function RightContent(){
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
                         <InputText labelTitle="ccf" updateType="ccf" placeholder="A" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="影响因子" updateType="impactFactor" placeholder="9.001" updateFormValue={updateFormValue}/>
-                        <InputText labelTitle="ISSN" updateType="issn" placeholder="0972-796X" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="issn" updateType="issn" placeholder="0972-796X" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="出版商" updateType="publisher" placeholder="IEEE" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="截稿日期" updateType="submissionDeadline" placeholder="2024-06-10" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="网址" updateType="website" placeholder="http://infocomm.com" updateFormValue={updateFormValue}/>

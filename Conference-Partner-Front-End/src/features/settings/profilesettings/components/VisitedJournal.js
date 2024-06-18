@@ -8,26 +8,26 @@ import React, {
 } from 'react'
 
 const items = [
-    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", Visit: 100},
+    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", issn: "0972-796X", Visit: 100},
+    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", issn: "0972-796X", Visit: 100},
 ]
 
 
@@ -76,7 +76,7 @@ function VisitedJournal(){
                             <th className="text-base">全称</th>
                             <th className="text-base">影响因子</th>
                             <th className="text-base">出版商</th>
-                            <th className="text-base">ISSN</th>
+                            <th className="text-base">issn</th>
                             <th className="text-base">浏览</th>
                             <th></th>
                         </tr>
@@ -90,7 +90,7 @@ function VisitedJournal(){
                                     <td>{u.name}</td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
-                                    <td>{u.ISSN}</td>
+                                    <td>{u.issn}</td>
                                     <td>{u.Visit ? <span className="bg-green-700 badge px-2 text-white">{u.Visit}</span> : null }</td>
                                     <td><button><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></td>
                                 </tr>

@@ -37,6 +37,15 @@ function FollowedConference(){
         setPage(event.selected);
     };
 
+    const followDelete = async (id) => {
+        const res = await axios.post(`/follow/conference/followDelete`, {conferenceId:id, userId:localStorage.getItem("id")}).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })  
+        setItems(items.filter((item) => item.id !== id))
+    }
+
+
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>关注的会议</>}>
             {/** Table Data */}
@@ -79,7 +88,7 @@ function FollowedConference(){
                                     <td>{u.location}</td>
                                     <td>{u.frequency ? <span className="bg-orange-500 badge px-2 text-white">{u.frequency}</span> : null}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
-                                    <td><button><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></td>
+                                    <td><button onClick={()=>followDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></td>
                                 </tr>
                             )
                         })}

@@ -31,6 +31,14 @@ function FollowedJournal(){
         f()
     }, [])  
 
+    const followDelete = async (id) => {
+        const res = await axios.post(`/follow/journal/followDelete`, {journalId:id, userId:localStorage.getItem("id")}).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })  
+        setItems(items.filter((item) => item.id !== id))
+    }
+
     const [page, setPage] = useState(0);
 
     // Invoke when user click to request another page.
@@ -54,7 +62,7 @@ function FollowedJournal(){
                             <th className="text-base">全称</th>
                             <th className="text-base">影响因子</th>
                             <th className="text-base">出版商</th>
-                            <th className="text-base">ISSN</th>
+                            <th className="text-base">issn</th>
                             <th className="text-base">浏览</th>
                             <th></th>
                         </tr>
@@ -68,9 +76,9 @@ function FollowedJournal(){
                                     <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
-                                    <td>{u.ISSN}</td>
+                                    <td>{u.issn}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
-                                    <td><button><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></td>
+                                    <td><button onClick={()=>followDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></td>
                                 </tr>
                             )
                         })}

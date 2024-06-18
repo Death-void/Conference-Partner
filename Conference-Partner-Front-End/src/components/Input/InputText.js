@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 function InputText({labelTitle, labelStyle, type, containerStyle, defaultValue, placeholder, updateFormValue, updateType}){
@@ -9,6 +9,10 @@ function InputText({labelTitle, labelStyle, type, containerStyle, defaultValue, 
         setValue(val)
         updateFormValue({updateType, value : val})
     }
+
+    useEffect(() => {
+        console.log(defaultValue)
+    }, [])
 
     return(
         <div className={`form-control w-full ${containerStyle}`}>

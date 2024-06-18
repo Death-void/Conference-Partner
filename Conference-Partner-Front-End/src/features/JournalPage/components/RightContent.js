@@ -15,7 +15,7 @@ function RightContent(props){
     const confInfo = props.confData
 
     const userFollow = async(confId, userId) => {
-        const res = await axios.post("/follow/conference/follow", {conferenceId: confId, userId: userId}).catch(err => console.log(err))
+        const res = await axios.post("/follow/journal/follow", {journalId: confId, userId: userId}).catch(err => console.log(err))
         console.log(res)
     }
 

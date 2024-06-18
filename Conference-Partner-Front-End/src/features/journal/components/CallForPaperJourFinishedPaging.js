@@ -67,7 +67,7 @@ function CallForPaperJourFinishedPaging(props){
                             <th className="text-base">全称</th>
                             <th className="text-base">影响因子</th>
                             <th className="text-base">出版商</th>
-                            <th className="text-base">ISSN</th>
+                            <th className="text-base">issn</th>
                             <th className="text-base">浏览</th>
                             {localStorage.getItem("isAdmin") === "true" ? <th className="text-base">删除</th> : null}
                         </tr>

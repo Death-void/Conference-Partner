@@ -2,6 +2,7 @@ package com.myhuiban.controller;
 
 import com.myhuiban.model.Conference;
 import com.myhuiban.model.Journal;
+import com.myhuiban.model.User;
 import com.myhuiban.service.JournalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -122,8 +123,8 @@ public class JournalController {
     }
 
     @GetMapping("/getFollowersInJournal")
-    public ResponseEntity<List<Long>> getFollowersInJournal(@RequestParam Long journalId) {
-        List<Long> followers = journalService.getFollowersInJournal(journalId);
+    public ResponseEntity<List<User>> getFollowersInJournal(@RequestParam Long journalId) {
+        List<User> followers = journalService.getFollowersInJournal(journalId);
         return ResponseEntity.ok(followers);
     }
 

@@ -1,6 +1,7 @@
 package com.myhuiban.controller;
 
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.User;
 import com.myhuiban.service.ConferenceService;
 import com.myhuiban.service.UserService;
 import io.swagger.annotations.Api;
@@ -124,26 +125,26 @@ public class ConferenceController {
     }
 
     @GetMapping("/getFollowersInConference")
-    public ResponseEntity<List<Long>> getFollowersInConference(@RequestParam Long conferenceId) {
-        List<Long> followers = conferenceService.getFollowersInConference(conferenceId);
+    public ResponseEntity<List<User>> getFollowersInConference(@RequestParam Long conferenceId) {
+        List<User> followers = conferenceService.getFollowersInConference(conferenceId);
         return ResponseEntity.ok(followers);
     }
 
     @GetMapping("/getJoinersInConference")
-    public ResponseEntity<List<Long>> getJoinersInConference(@RequestParam Long conferenceId) {
-        List<Long> joiners = conferenceService.getJoinersInConference(conferenceId);
+    public ResponseEntity<List<User>> getJoinersInConference(@RequestParam Long conferenceId) {
+        List<User> joiners = conferenceService.getJoinersInConference(conferenceId);
         return ResponseEntity.ok(joiners);
     }
 
     @GetMapping("/getFollowersCount")
     public ResponseEntity<Integer> getFollowersCount(@RequestParam Long conferenceId) {
-        List<Long> followers = conferenceService.getFollowersInConference(conferenceId);
+        List<User> followers = conferenceService.getFollowersInConference(conferenceId);
         return ResponseEntity.ok(followers.size());
     }
 
     @GetMapping("/getJoinersCount")
     public ResponseEntity<Integer> getJoinersCount(@RequestParam Long conferenceId) {
-        List<Long> joiners = conferenceService.getJoinersInConference(conferenceId);
+        List<User> joiners = conferenceService.getJoinersInConference(conferenceId);
         return ResponseEntity.ok(joiners.size());
     }
 

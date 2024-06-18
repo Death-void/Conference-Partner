@@ -1,12 +1,15 @@
 package com.myhuiban.service.impl;
 
 import com.myhuiban.mapper.ConferenceMapper;
+import com.myhuiban.mapper.UserMapper;
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.User;
 import com.myhuiban.service.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +17,8 @@ public class ConferenceServiceImpl implements ConferenceService {
 
     @Autowired
     private ConferenceMapper conferenceMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public Conference createConference(Conference conference) {
@@ -42,13 +47,24 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public List<Long> getFollowersInConference(Long conferenceId) {
-        return conferenceMapper.getFollowersInConference(conferenceId);
+    public List<User> getFollowersInConference(Long conferenceId) {
+        List<Long> followersId = conferenceMapper.getFollowersInConference(conferenceId);
+        List<User> users = new ArrayList<>();
+        for (Long id : followersId) {
+            users.add(userMapper.findById(id));
+        }
+
+        return users;
     }
 
     @Override
-    public List<Long> getJoinersInConference(Long conferenceId) {
-        return conferenceMapper.getJoinersInConference(conferenceId);
+    public List<User> getJoinersInConference(Long conferenceId) {
+        List<Long> joinersId = conferenceMapper.getJoinersInConference(conferenceId);
+        List<User> users = new ArrayList<>();
+        for (Long id : joinersId) {
+            users.add(userMapper.findById(id));
+        }
+        return users;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.myhuiban.service;
 
 import com.myhuiban.model.Conference;
+import com.myhuiban.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,8 +17,8 @@ public interface ConferenceService {
     int getConferenceVisitedNum();
     List<Conference> getConfInCall(LocalDate currentDate);
     List<Conference> getConfFinished(LocalDate currentDate);
-    List<Long> getFollowersInConference(Long conferenceId);
-    List<Long> getJoinersInConference(Long conferenceId);
+    List<User> getFollowersInConference(Long conferenceId);
+    List<User> getJoinersInConference(Long conferenceId);
     List<Conference> getTopTenVisitConferences();
     List<Conference> getAllVisitConferences();
     void incrementViewCount(Long id);

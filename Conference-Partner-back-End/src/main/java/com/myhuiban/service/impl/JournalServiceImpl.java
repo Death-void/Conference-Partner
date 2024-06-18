@@ -1,12 +1,15 @@
 package com.myhuiban.service.impl;
 
 import com.myhuiban.mapper.JournalMapper;
+import com.myhuiban.mapper.UserMapper;
 import com.myhuiban.model.Journal;
+import com.myhuiban.model.User;
 import com.myhuiban.service.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +17,7 @@ public class JournalServiceImpl implements JournalService {
 
     @Autowired
     private JournalMapper journalMapper;
+    private UserMapper userMapper;
 
     @Override
     public Journal createJournal(Journal journal) {
@@ -69,8 +73,14 @@ public class JournalServiceImpl implements JournalService {
     }
 
     @Override
-    public List<Long> getFollowersInJournal(Long journalId) {
-        return journalMapper.getFollowersInJournal(journalId);
+    public List<User> getFollowersInJournal(Long journalId) {
+        List<Long> followersId = journalMapper.getFollowersInJournal(journalId);
+        List<User> users = new ArrayList<>();
+        for (Long id : followersId) {
+            users.add(userMapper.findById(id));
+        }
+
+        return users;
     }
 
     @Override

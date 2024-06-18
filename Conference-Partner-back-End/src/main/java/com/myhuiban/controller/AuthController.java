@@ -64,9 +64,10 @@ public class AuthController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserName());
+        User foundUser = userService.findByUsername(user.getUserName());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
-        return ResponseEntity.ok().body(new AuthResponse(jwt,user.getId(),user.getRole()));
+        return ResponseEntity.ok().body(new AuthResponse(jwt,foundUser.getId(),foundUser.getRole()));
     }
 
     static class AuthResponse {
@@ -84,6 +85,22 @@ public class AuthController {
 
         public String getToken() {
             return token;
+        }
+
+        public Long getUserId() {
+            return userId;
+        }
+
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
         }
     }
 }

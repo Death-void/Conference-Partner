@@ -103,3 +103,5 @@ CREATE TABLE participate_conference (
 INSERT INTO participate_conference (user_id, conference_id) VALUES
                                                                 (1, 1),
                                                                 (2, 2);
+
+ALTER TABLE journal ADD COLUMN call_for_papers TEXT;

@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -32,6 +34,10 @@ public class JournalController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public Journal createJournal(@RequestBody Journal journal) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        journal.setLastModifiedUser(currentUserName);
+        journal.setLastModifiedDate(LocalDate.now());
         return journalService.createJournal(journal);
     }
 
@@ -45,7 +51,14 @@ public class JournalController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public Journal updateJournal(@PathVariable Long id, @RequestBody Journal journal) {
+
+        // 获取当前认证的用户
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
         journal.setId(id);
+        journal.setLastModifiedUser(currentUserName);
+        journal.setLastModifiedDate(LocalDate.now());
+
         return journalService.updateJournal(journal);
     }
 

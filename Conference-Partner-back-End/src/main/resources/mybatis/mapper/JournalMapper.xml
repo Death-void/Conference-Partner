@@ -19,10 +19,10 @@
     <insert id="insert" parameterType="com.myhuiban.model.Journal" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO journal (
             name, website, special_issue, CCF, submission_deadline, impact_factor,
-            publisher, ISSN, view_count, last_modified_date, last_modified_user
+            publisher, ISSN, view_count, last_modified_date, last_modified_user, call_for_papers
         ) VALUES (
                      #{name}, #{website}, #{specialIssue}, #{CCF}, #{submissionDeadline}, #{impactFactor},
-                     #{publisher}, #{ISSN}, #{viewCount}, #{lastModifiedDate}, #{lastModifiedUser}
+                     #{publisher}, #{ISSN}, #{viewCount}, #{lastModifiedDate}, #{lastModifiedUser}, #{callForPapers}
                  )
     </insert>
 
@@ -39,7 +39,8 @@
             ISSN = #{ISSN},
             view_count = #{viewCount},
             last_modified_date = #{lastModifiedDate},
-            last_modified_user = #{lastModifiedUser}
+            last_modified_user = #{lastModifiedUser},
+            call_for_papers = #{callForPapers}
         WHERE id = #{id}
     </update>
 

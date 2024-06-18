@@ -49,6 +49,15 @@ public class Journal {
     private String ISSN; // 国际标准期刊号
 
     private Long viewCount; // 浏览次数
+    private String callForPapers; // 期刊征稿信息
+
+    public String getCallForPapers() {
+        return callForPapers;
+    }
+
+    public void setCallForPapers(String callForPapers) {
+        this.callForPapers = callForPapers;
+    }
 
     public String getLastModifiedUser() {
         return lastModifiedUser;

@@ -1,55 +1,260 @@
 import BodyCard from "../../../../components/Cards/BodyCard"
 import TitleCard from "../../../../components/Cards/TitleCard"
 import {UserPlusIcon, GlobeAsiaAustraliaIcon, PencilSquareIcon, GiftIcon} from "@heroicons/react/24/outline"
-
-const confInfo = {
-    id : 1,
-    name: "AIR 2024: International Conference on Artificial Intelligence and Robots",
-    url : "https://www.academicx.org/AIR/2024/",
-    submissionDeadline: "2024-06-10",
-    notificationDate: "",
-    conferenceDate: "2024-08-10",
-    location: "Shanghai, China",
-    frequency: 1,
-    viewCount: 100,
-    follow: 100,
-    join: 100,
-    followers: ["张三", "李四", "王五", "赵六"],
-    joiners: [
-        {name: "张三", time: "2024"},
-        {name: "李四", time: "2024"},
-        {name: "王五", time: "2024"},
-        {name: "赵六", time: "2024"},
-    ],
-}
+import InputText from "../../../../components/Input/InputText"
+import TextAreaInput from "../../../../components/Input/TextAreaInput"
+import { useDispatch } from "react-redux"
+import { showNotification } from '../../../common/headerSlice'
+import axios from 'axios'
+import {useState} from 'react'
 
 
 function RightContent(){
 
-    const scrollToBottom = () => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
-    };
+    const dispatch = useDispatch()
+
+    const CONFERENCE_DATA = {
+        name: "",
+        abbreviation: "",
+        ccf: "",
+        core: "",
+        qualis: "",
+        frequency: 0,
+        conferenceDate: "",
+        location: "",
+        notificationDate: "",
+        submissionDeadline: "",
+        website: "",
+        isPostponed: true,
+        // lastModifiedDate: "",
+        // lastModifiedUser: "",
+        callForPapers: ""
+    }
+
+    const JOURNAL_DATA = {
+        name: "",
+        ccf: "",
+        impactFactor: 0,
+        issn: "",
+        publisher: "",
+        submissionDeadline: "",
+        website: "",
+        specialIssue: "",
+    }
+
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [conferenceObj, setConferenceObj] = useState(CONFERENCE_DATA)
+    const [journalObj, setJournalObj] = useState(JOURNAL_DATA)
+
+    // Call API to update profile settings changes
+    const updateProfile = () => {
+        dispatch(showNotification({message : "Profile Updated", status : 1}))    
+    }
+
+    const addConference = () => {   
+        setErrorMessage("")
+
+        if(conferenceObj.name.trim() === "")return setErrorMessage("Name is required! (use any value)")
+        if(conferenceObj.abbreviation.trim() === "")return setErrorMessage("Abbreviation is required! (use any value)")
+        if(conferenceObj.frequency === 0)return setErrorMessage("Frequency is required! (use any value)")
+        if(conferenceObj.conferenceDate.trim() === "")return setErrorMessage("Conference Date is required! (use any value)")
+        if(conferenceObj.location.trim() === "")return setErrorMessage("Location is required! (use any value)")
+        if(conferenceObj.notificationDate.trim() === "")return setErrorMessage("Notification Date is required! (use any value)")
+        if(conferenceObj.submissionDeadline.trim() === "")return setErrorMessage("Submission Deadline is required! (use any value)")
+        if(conferenceObj.website.trim() === "")return setErrorMessage("Website is required! (use any value)")
+        // if(conferenceObj.lastModifiedDate.trim() === "")return setErrorMessage("Last Modified Date is required! (use any value)")
+        // if(conferenceObj.lastModifiedUser.trim() === "")return setErrorMessage("Last Modified User is required! (use any value)")
+        if(conferenceObj.callForPapers.trim() === "")return setErrorMessage("Call For Papers is required! (use any value)")
+        else {
+            setLoading(true)
+            const f = async () => {
+                const res = await axios.post('/conferences', conferenceObj).catch((err) => {
+                    setLoading(false)
+                    dispatch(showNotification({message : "Failed to add conference", status : 0}))
+                })
+                //console.log("addCOnference", res)
+            }
+            f()
+            dispatch(showNotification({message : "Conference Added", status : 1}))
+        }
+    }
+
+    const addJournal = () => {
+        setErrorMessage("")
+        if(journalObj.name.trim() === "")return setErrorMessage("Name is required! (use any value)")
+        if(journalObj.ccf.trim() === "")return setErrorMessage("ccf is required! (use any value)")
+        if(journalObj.impactFactor === 0)return setErrorMessage("Impact Factor is required! (use any value)")
+        if(journalObj.issn.trim() === "")return setErrorMessage("ISSN is required! (use any value)")
+        if(journalObj.publisher.trim() === "")return setErrorMessage("Publisher is required! (use any value)")
+        if(journalObj.submissionDeadline.trim() === "")return setErrorMessage("Submission Deadline is required! (use any value)")
+        if(journalObj.website.trim() === "")return setErrorMessage("Website is required! (use any value)")
+        if(journalObj.specialIssue.trim() === "")return setErrorMessage("Special Issue is required! (use any value)")
+        else {
+            setLoading(true)
+            const f = async () => {
+                const res = await axios.post('/journals', journalObj).catch((err) => {
+                    setLoading(false)
+                    dispatch(showNotification({message : "Failed to add journal", status : 0}))
+                })
+                //console.log("addJournal", res)
+            }
+            f()
+            dispatch(showNotification({message : "Journal Added", status : 1}))
+        }
+    }
+
+    const updateFormValue = ({updateType, value}) => {
+        setErrorMessage("")
+        setConferenceObj({...conferenceObj, [updateType] : value})
+        setJournalObj({...journalObj, [updateType] : value})
+    }
 
     return(
         <div>
 
         {/** ---------------------- User source channels table  ------------------------- */}
 
-            <div>
+            <div className="mt-6">
                 <BodyCard>
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
                             <PencilSquareIcon className="h-6 w-6"/>
-                            <button className="" onClick={scrollToBottom}>编辑账户</button>
+                            <button className="" onClick={()=>document.getElementById('update_profile_modal').showModal()}>编辑账户</button>
                         </div>
                     </div>
                 </BodyCard>
             </div>
+
+            <dialog id="update_profile_modal" className="modal">
+                <div>
+                    <TitleCard title="Profile Settings">
+                    <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <InputText labelTitle="First Name" defaultValue="Yian" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="Last Name" defaultValue="Yang" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="Email Id" defaultValue="alex@Conference Partner.com" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="Institution" defaultValue="ECNU" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="New Password" defaultValue="" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="Verify New Password" defaultValue="" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="Old Password" defaultValue="" updateFormValue={updateFormValue}/>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <TextAreaInput labelTitle="My Cv" defaultValue="Doing what I love, part time traveller" updateFormValue={updateFormValue}/>
+                    </div>
+
+                    <form method="dialog" className="modal-backdrop">
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={()=> updateProfile()}>Update</button></div>
+                    </form>
+                    
+                    </TitleCard>
+                </div>
+            </dialog>
+
+            <div className="mt-6">
+                <BodyCard>
+                    <div className="flex justify-between" >
+                        <div className="flex justify-start space-x-3">
+                            <PencilSquareIcon className="h-6 w-6"/>
+                            <button className="" onClick={()=>document.getElementById('add_conference_modal').showModal()}>添加会议</button>
+                        </div>
+                    </div>
+                </BodyCard>
+            </div>
+
+            <dialog id="add_conference_modal" className="modal">
+                <div>
+                    <TitleCard title="添加会议">
+                    <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <InputText labelTitle="全称" updateType="name" placeholder="Public Key Cryptography" updateFormValue={updateFormValue}/>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <InputText labelTitle="简称" updateType="abbreviation" placeholder="PKC" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="ccf" updateType="ccf" placeholder="A" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="core" updateType="core" placeholder="B" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="qualis" updateType="qualis" placeholder="C" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="界数" updateType="frequency" placeholder="1" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="会议日期" updateType="conferenceDate" placeholder="2024-10-10" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="地点" updateType="location" placeholder="Shanghai, China" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="通知日期" updateType="notificationDate" placeholder="2024-09-10" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="截稿日期" updateType="submissionDeadline" placeholder="2024-06-10" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="网址" updateType="website" placeholder="http://infocomm.com" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="延期" updateType="isPostponed" placeholder="true" updateFormValue={updateFormValue}/>
+                        {/* <InputText labelTitle="最后修改日期" updateType="lastModifiedDate" placeholder="2024-01-01" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="最后修改者" updateType="lastModifiedUser" placeholder="Tom" updateFormValue={updateFormValue}/> */}
+                        
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <TextAreaInput labelTitle="征稿" updateType="callForPapers" placeholder="Call For Papers" updateFormValue={updateFormValue}/>
+                    </div>
+
+                    <form method="dialog" className="modal-backdrop">
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addConference()}>Update</button></div>
+                    </form>
+                    
+                    </TitleCard>
+                </div>
+            </dialog>
+
+            <div className="mt-6">
+                <BodyCard>
+                    <div className="flex justify-between" >
+                        <div className="flex justify-start space-x-3">
+                            <PencilSquareIcon className="h-6 w-6"/>
+                            <button className="" onClick={()=>document.getElementById('add_journal_modal').showModal()}>添加期刊</button>
+                        </div>
+                    </div>
+                </BodyCard>
+            </div>
+
+            <dialog id="add_journal_modal" className="modal">
+                <div>
+                    <TitleCard title="添加期刊">
+                    <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <InputText labelTitle="全称" updateType="name" placeholder="Public Key Cryptography" updateFormValue={updateFormValue}/>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                        <InputText labelTitle="ccf" updateType="ccf" placeholder="A" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="影响因子" updateType="impactFactor" placeholder="9.001" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="ISSN" updateType="issn" placeholder="0972-796X" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="出版商" updateType="publisher" placeholder="IEEE" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="截稿日期" updateType="submissionDeadline" placeholder="2024-06-10" updateFormValue={updateFormValue}/>
+                        <InputText labelTitle="网址" updateType="website" placeholder="http://infocomm.com" updateFormValue={updateFormValue}/>
+                        {/* <InputText labelTitle="SpecialIssue" updateType="specialIssue" placeholder="specialIssue ..." updateFormValue={updateFormValue}/> */}
+                        {/* <InputText labelTitle="最后修改者" updateType="lastModifiedUser" placeholder="Tom" updateFormValue={updateFormValue}/> */}
+                        
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <TextAreaInput labelTitle="SpecialIssue" updateType="specialIssue" placeholder="Special Issue ..." updateFormValue={updateFormValue}/>
+                    </div>
+
+                    <form method="dialog" className="modal-backdrop">
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addJournal()}>Update</button></div>
+                    </form>
+                    
+                    </TitleCard>
+                </div>
+            </dialog>
             
-            <div className="mt-10">
+            <div className="mt-4">
                 <TitleCard title={<><GiftIcon className="h-6 w-6 inline-block mr-2"/>惊喜</>}>
                     
                 </TitleCard>

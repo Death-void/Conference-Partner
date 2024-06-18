@@ -5,7 +5,7 @@ import RelatedConference from "./RelatedConference"
 import RelatedJournal from "./RelatedJournal"
 import SpecialIssues from "./SpecialIssues"
 
-function LeftContent(){
+function LeftContent(props){
 
 
 
@@ -15,20 +15,20 @@ function LeftContent(){
         {/** ---------------------- User source channels table  ------------------------- */}
         
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <JournalInfo />
+                <JournalInfo confData={props.confData}/>
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <CallForPaperContent />
+                <CallForPaperContent  confData={props.confData}/>
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <SpecialIssues />
+                <SpecialIssues confData={props.confData} />
             </div>
-            <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
+            {/* <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <RelatedJournal />
             </div>
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <RelatedConference />
-            </div>
+            </div> */}
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
                 <Recommend />
             </div>

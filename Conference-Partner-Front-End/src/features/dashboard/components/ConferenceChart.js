@@ -6,26 +6,9 @@ import { useEffect } from "react"
 
 
 
-function ConferenceChart(){
+function ConferenceChart(props){
 
-    const [confData, setConfData] = useState({})
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
-    const [userSourceData, setUserSourceData] = useState([])
-
-
-    useEffect(() => {
-        // Call API to get conference details
-        axios.get(`/conferences/visit/topTen`).then((res) => {
-            if(res.status === 200){
-                setUserSourceData(res.data)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
-    }
-    ,[])
+    const userSourceData = props.confData
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>会议</>}>

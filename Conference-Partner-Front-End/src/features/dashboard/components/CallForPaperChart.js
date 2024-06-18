@@ -4,26 +4,13 @@ import { useState} from "react"
 import axios from "axios"
 import { useEffect } from "react"
 
-function CallForPaperChart(){
+function CallForPaperChart(props){
 
-    const [confData, setConfData] = useState({})
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
-    const [userSourceData, setUserSourceData] = useState([])
+    const userSourceData = props.callForPaperData
 
 
-    useEffect(() => {
-        // Call API to get conference details
-        axios.get(`/conferences/visit/topTen`).then((res) => {
-            if(res.status === 200){
-                setUserSourceData(res.data)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
-    }
-    ,[])
+
+    
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
@@ -67,7 +54,7 @@ function CallForPaperChart(){
                                     <td>{u.qualis ? <span className="bg-blue-500 badge px-2  text-white">{u.qualis}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
                                     <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
-                                    <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed}</span> : null }</td>
+                                    <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed.toString()}</span> : null }</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.notificationDate}</td>
                                     <td>{u.conferenceDate}</td>

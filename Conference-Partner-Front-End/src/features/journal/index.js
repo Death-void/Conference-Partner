@@ -16,6 +16,8 @@ import DoughnutChart from './components/DoughnutChart'
 import { useState } from 'react'
 import CallForPaperJourPaging from './components/CallForPaperJourPaging'
 import CallForPaperJourFinishedPaging from './components/CallForPaperJourFinishedPaging'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 const statsData = [
     {title : "会议", value : "34.7k", icon : <UserGroupIcon className='w-8 h-8'/>, description : ""},
@@ -27,6 +29,24 @@ const statsData = [
 
 
 function Journal(){
+
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [confData, setConfData] = useState([])
+
+    useEffect(() => {
+        //ConferenceChart
+        axios.get(`/journals/visit/all`).then((res) => {
+            if(res.status === 200){
+                setConfData(res.data)
+                //console.log(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+
+    }, []);
 
     const dispatch = useDispatch()
  
@@ -42,7 +62,7 @@ function Journal(){
         {/** ---------------------- User source channels table  ------------------------- */}
         
             <div className="grid lg:grid-cols-1 mt-4 grid-cols-1 gap-6">
-                <CallForPaperJourPaging />
+                <CallForPaperJourPaging confData={confData}/>
                 <CallForPaperJourFinishedPaging />
             </div>
         </>

@@ -6,29 +6,7 @@ import React, {
   useEffect,
   useState
 } from 'react'
-
-const items = [
-    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "", abbreviation: "", name: "Materials Science and Engineering: R: Reports", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "a", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "c", abbreviation: "", name: "IEEE Software", impactFactor: "2.586", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-    {ccf: "b", abbreviation: "", name: "IEEE Transactions on Software Engineering", impactFactor: "3.286", publisher: "IEEE", ISSN: "0972-796X", viewCount: 100},
-]
+import axios from "axios";
 
 
 const itemsPerPage = 2
@@ -36,36 +14,36 @@ const itemsPerPage = 2
 
 
 function FollowedJournal(){
-    // We start with an empty list of items.
-    const [currentItems, setCurrentItems] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemCount, setItemCount] = useState(items.length);
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
+
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [items, setItems] = useState([])
 
     useEffect(() => {
-        // Fetch items from another resources.
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        console.log(items.slice(itemOffset, endOffset))
-        setCurrentItems(items.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
+        // //console.log("BasicInfo")
+        const f = async () => {
+            const res = await axios.get(`/follow/journal/user/${localStorage.getItem("id")}`).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })  
+            setItems(res.data)
+        }
+        f()
+    }, [])  
+
+    const [page, setPage] = useState(0);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = event.selected * itemsPerPage % items.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-        setItemOffset(newOffset);
+        setPage(event.selected);
     };
 
-    console.log(currentItems)
+
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>关注的期刊</>}>
             {/** Table Data */}
             <div className="flex justify-end">
-                <p className="text-sm">第{itemOffset ? itemOffset*itemsPerPage-itemsPerPage+1 : 1}-{itemOffset+itemsPerPage}条, 共{itemCount}条</p>
+                <p className="text-sm">第{page ? (page+1)*itemsPerPage-1 : 1}-{(page+1)*itemsPerPage}条, 共{items.length}条</p>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -82,12 +60,12 @@ function FollowedJournal(){
                         </tr>
                     </thead>
                     <tbody>
-                        {currentItems && currentItems.map((u, k) => {
+                        {items.slice(page*itemsPerPage, page*itemsPerPage+itemsPerPage).map((u, k) => {
                             return (
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td>{u.name}</td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
                                     <td>{u.ISSN}</td>
@@ -106,7 +84,7 @@ function FollowedJournal(){
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
-                    pageCount={pageCount}
+                    pageCount={Math.ceil(items.length/itemsPerPage)}
                     previousLabel="< previous"
                     pageClassName="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
                     pageLinkClassName="page-link"

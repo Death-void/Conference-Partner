@@ -54,7 +54,7 @@ function MostConfVisit(){
                 </table>
             </div>
             <div className="flex justify-center">
-                <button className="text-blue-500"> 更多>></button>
+                <button className="text-blue-500" onClick={() => window.location.href = `/app/conference/confSortByVisit`}> 更多>></button>
             </div>
         </TitleCard>
     )

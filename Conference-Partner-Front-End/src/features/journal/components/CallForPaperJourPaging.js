@@ -5,51 +5,35 @@ import React, {
   useEffect,
   useState
 } from 'react'
-
-const items = [
-    {ccf: "", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
-    {ccf: "a", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "c", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "a", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
-    {ccf: "c", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "a", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-    {ccf: "c", name: "IEEE Software", specialIssue: "Creativity in Software Engineering", submissionDeadline: "2024-06-10", impactFactor: "2.586", publisher: "IEEE", viewCount: 100},
-    {ccf: "b", name: "IEEE Transactions on Software Engineering", specialIssue: "Software Engineering for AI-Driven Systems", submissionDeadline: "2024-06-10", impactFactor: "3.286", publisher: "IEEE", viewCount: 100},
-]
-
+import axios from 'axios'
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 const itemsPerPage = 2
 
 
 
-function CallForPaperJourPaging(){
+function CallForPaperJourPaging(props){
+
+    const items = props.confData
+    
+     //
     // We start with an empty list of items.
-    const [currentItems, setCurrentItems] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemCount, setItemCount] = useState(items.length);
+    const [page, setPage] = useState(0);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
-
-    useEffect(() => {
-        // Fetch items from another resources.
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        console.log(items.slice(itemOffset, endOffset))
-        setCurrentItems(items.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = event.selected * itemsPerPage % items.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-        setItemOffset(newOffset);
+        setPage(event.selected)
     };
 
-    console.log(currentItems)
+    const jourDelete = async (id) => {
+        const res = await axios.delete(`/conferences/${id}`).catch((err) => {
+            console.log(err)
+        })
+        console.log(res)
+    }
+
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
             {/** Table Data */}
@@ -58,8 +42,9 @@ function CallForPaperJourPaging(){
                 <p className="ml-2">Journal Rank (A, B, C) from China Computer Federation (2022)</p>
             </div>
             <div className="flex justify-end">
-                <p className="text-sm">第{itemOffset ? itemOffset*itemsPerPage-itemsPerPage+1 : 1}-{itemOffset+itemsPerPage}条, 共{itemCount}条</p>
+                <p className="text-sm">第{page ? (page+1)*itemsPerPage-1 : 1}-{(page+1)*itemsPerPage}条, 共{items.length}条</p>
             </div>
+            
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -71,19 +56,21 @@ function CallForPaperJourPaging(){
                             <th className="text-base">影响因子</th>
                             <th className="text-base">出版商</th>
                             <th className="text-base">浏览</th>
+                            {localStorage.getItem("isAdmin") === "true" ? <th className="text-base">删除</th> : null}
                         </tr>
                     </thead>
                     <tbody>
-                        {currentItems && currentItems.map((u, k) => {
+                        {items.slice(page*itemsPerPage, page*itemsPerPage+itemsPerPage).map((u, k) => {
                             return (
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
-                                    <td>{u.name}</td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
                                     <td>{u.specialIssue}</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.impactFactor}</td>
                                     <td>{u.publisher}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
+                                    {localStorage.getItem("isAdmin") === "true" ? <th><button onClick={()=>jourDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
                                 </tr>
                             )
                         })}
@@ -97,7 +84,7 @@ function CallForPaperJourPaging(){
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
-                    pageCount={pageCount}
+                    pageCount={Math.ceil(items.length / itemsPerPage)}
                     previousLabel="< previous"
                     pageClassName="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
                     pageLinkClassName="page-link"

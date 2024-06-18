@@ -23,6 +23,7 @@ springfox:
         path: /api-docs
 
 
+
 mybatis:
   # 指定全局配置文件位置
   config-location: classpath:mybatis/mybatis-config.xml
@@ -31,7 +32,7 @@ mybatis:
 
 jwt:
   secret: your_jwt_secret
-  expiration: 3600000
+  expiration: 360000000
 
 # application.properties
 cors:

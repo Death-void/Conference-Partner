@@ -15,9 +15,9 @@ function MostConfJoin(){
 
     useEffect(() => {
         // Call API to get conference details
-        axios.get(`/follow/conference/topTen`).then((res) => {
+        axios.get(`/participate/conference/allParticipate`).then((res) => {
             if(res.status === 200){
-                setUserSourceData(res.data)
+                setUserSourceData(res.data.length > 10 ? res.data.slice(0, 10) : res.data)
             }
         }).catch((err) => {
             setLoading(false)
@@ -45,7 +45,7 @@ function MostConfJoin(){
                                     <tr key={k}>
                                         <th>{k+1}</th>
                                         <td>{u.conference.abbreviation}</td>
-                                        <td>{u.join ?  <span className="bg-green-700 badge px-2 text-white">{u.join}</span> : null}</td>
+                                        <td>{u.participateNum ?  <span className="bg-green-700 badge px-2 text-white">{u.participateNum}</span> : null}</td>
                                     </tr>
                                 )
                             })
@@ -54,7 +54,7 @@ function MostConfJoin(){
                 </table>
             </div>
             <div className="flex justify-center">
-                <button className="text-blue-500"> 更多>></button>
+                <button className="text-blue-500" onClick={() => window.location.href = `/app/conference/confSortByJoin`}> 更多>></button>
             </div>
         </TitleCard>
     )

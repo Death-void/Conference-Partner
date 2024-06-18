@@ -32,7 +32,6 @@ const confInfo = {
 function RightContent(){
 
 
-
     return(
         <div>
 
@@ -66,7 +65,7 @@ function RightContent(){
                 </BodyCard>
             </div>
 
-            <div>
+            {localStorage.getItem("isAdmin") === "true" && <div>
                 <BodyCard>
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
@@ -75,7 +74,7 @@ function RightContent(){
                         </div>
                     </div>
                 </BodyCard>
-            </div>
+            </div>}
 
             <div className="mt-10">
                 <BodyCard>

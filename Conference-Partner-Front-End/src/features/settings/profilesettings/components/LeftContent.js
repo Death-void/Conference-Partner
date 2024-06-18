@@ -23,7 +23,7 @@ function LeftContent(){
     }
 
     const updateFormValue = ({updateType, value}) => {
-        console.log(updateType)
+        //console.log(updateType)
     }
 
     return(
@@ -32,26 +32,9 @@ function LeftContent(){
             <FollowedConference />
             <JoinedConference />
             <FollowedJournal />
-            <VisitedConference />
-            <VisitedJournal />
-            <TitleCard title="Profile Settings" topMargin="mt-2">
+            {/* <VisitedConference />
+            <VisitedJournal /> */}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <InputText labelTitle="First Name" defaultValue="Yian" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Last Name" defaultValue="Yang" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Email Id" defaultValue="alex@Conference Partner.com" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Institution" defaultValue="ECNU" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="New Password" defaultValue="" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Verify New Password" defaultValue="" updateFormValue={updateFormValue}/>
-                    <InputText labelTitle="Old Password" defaultValue="" updateFormValue={updateFormValue}/>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-                    <TextAreaInput labelTitle="My Cv" defaultValue="Doing what I love, part time traveller" updateFormValue={updateFormValue}/>
-                </div>
-
-                <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => updateProfile()}>Update</button></div>
-            </TitleCard>
         </>
     )
 }

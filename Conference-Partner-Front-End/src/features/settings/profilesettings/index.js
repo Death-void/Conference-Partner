@@ -21,7 +21,7 @@ function ProfileSettings(){
         {/** ---------------------- User source channels table  ------------------------- */}
         
         <div className="flex justify-between space-x-8">
-            <div className="w-4/5">
+            <div className="w-4.5/5">
                 <LeftContent />
             </div>
             <div className="w-1/5">

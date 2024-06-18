@@ -54,7 +54,7 @@ function MostConfFollow(){
                 </table>
             </div>
             <div className="flex justify-center">
-                <button className="text-blue-500"> 更多>></button>
+                <button className="text-blue-500" onClick={() => window.location.href = `/app/conference/confSortByFollow`}> 更多>></button>
             </div>
         </TitleCard>
     )

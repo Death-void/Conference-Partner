@@ -5,7 +5,7 @@ import { useState} from "react"
 import axios from "axios"
 import { useEffect } from "react"
 
-function MostJourVisit(){
+function  MostJourVisit(){
 
     const [confData, setConfData] = useState({})
     const [loading, setLoading] = useState(false)
@@ -16,7 +16,6 @@ function MostJourVisit(){
     useEffect(() => {
         // Call API to get conference details
         axios.get(`/journals/visit/topTen`).then((res) => {
-            console.log(res.data)
             if(res.status === 200){
                 setUserSourceData(res.data)
             }
@@ -55,7 +54,7 @@ function MostJourVisit(){
                 </table>
             </div>
             <div className="flex justify-center">
-                <button className="text-blue-500"> 更多>></button>
+                <button className="text-blue-500" onClick={() => window.location.href = `/app/journal/jourSortByVisit`}> 更多>></button>
             </div>
         </TitleCard>
     )

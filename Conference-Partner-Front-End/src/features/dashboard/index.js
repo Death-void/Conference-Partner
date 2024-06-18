@@ -40,6 +40,9 @@ function Dashboard(){
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
+    const [callForPaperData, setCallForPaperData] = useState([])
+    const [confData, setConfData] = useState([])
+
     useEffect(() => {
         let newStatsData = [...statsData];
 
@@ -77,6 +80,27 @@ function Dashboard(){
             if(res.status === 200){
                 newStatsData[2].value = res.data
                 setStateData(newStatsData)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+
+        //CallForPaperChart
+        axios.get(`/conferences/visit/topTen`).then((res) => {
+            if(res.status === 200){
+                setCallForPaperData(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+
+        //ConferenceChart
+        axios.get(`/conferences/visit/topTen`).then((res) => {
+            if(res.status === 200){
+                setConfData(res.data)
+                
             }
         }).catch((err) => {
             setLoading(false)
@@ -136,13 +160,12 @@ function Dashboard(){
             </div> */}
 
             <div className="grid mt-4 grid-cols-1 gap-6">
-                <CallForPaperChart />
+                <CallForPaperChart callForPaperData = {callForPaperData} />
                 {/* <DoughnutChart /> */}
             </div>
 
             <div className="grid mt-4 grid-cols-1 gap-6">
-                < ConferenceChart/>
-                {/* <DoughnutChart /> */}
+                < ConferenceChart confData = {confData} />
             </div>
 
             <div className="grid mt-4 grid-cols-1 gap-6">

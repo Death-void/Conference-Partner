@@ -47,8 +47,8 @@ function VisitedJournal(){
     useEffect(() => {
         // Fetch items from another resources.
         const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        console.log(items.slice(itemOffset, endOffset))
+        //console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+        //console.log(items.slice(itemOffset, endOffset))
         setCurrentItems(items.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(items.length / itemsPerPage));
     }, [itemOffset, itemsPerPage]);
@@ -56,11 +56,11 @@ function VisitedJournal(){
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = event.selected * itemsPerPage % items.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
+        //console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
 
-    console.log(currentItems)
+    //console.log(currentItems)
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>浏览的期刊</>}>
             {/** Table Data */}

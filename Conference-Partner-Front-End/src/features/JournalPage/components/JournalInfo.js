@@ -6,21 +6,12 @@ import React, {
   useState
 } from 'react'
 
-const jourInfo = {
-    id : 1,
-    name: "IEEE Software",
-    url : "https://www.computer.org/csdl/magazine/so",
-    impactFactor: "9.088",
-    publisher: "IEEE",
-    ISSN: "0740-7459",
-    viewCount: 100,
-    follow: 100,
-
-}
 
 
+function JournalInfo(props){
 
-function JournalInfo(){
+    const jourInfo = props.confData
+
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>期刊信息</>}>
@@ -52,18 +43,18 @@ function JournalInfo(){
                             <tr>
                                 <td>ISSN：</td>
                                 <td></td>
-                                <td>{jourInfo.ISSN}</td>
+                                <td>{jourInfo.issn}</td>
                             </tr>
                             <tr>
                                 <td>浏览：</td>
                                 <td></td>
                                 <td>{jourInfo.viewCount ? <span className="bg-green-700 badge px-2 text-white">{jourInfo.viewCount}</span> : null }</td>    
                             </tr>
-                            <tr>
+                            {/* <tr>
                                 <td>关注：</td>
                                 <td></td>
                                 <td>{jourInfo.follow ? <span className="bg-blue-700 badge px-2 text-white">{jourInfo.follow}</span> : null }</td>     
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>

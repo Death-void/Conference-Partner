@@ -29,9 +29,10 @@ function Register(){
             setLoading(true)
             // Call API to check user credentials and save token in localstorage
             axios.post('/auth/register', registerObj).then((res) => {
-                console.log(res)
+                //console.log(res)
                 if(res.status === 201){
                     localStorage.setItem("token", res.data.token)
+                    localStorage.setItem("isAdmin", false)
                     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
                     setLoading(false)
                     window.location.href = '/app/dashboard'

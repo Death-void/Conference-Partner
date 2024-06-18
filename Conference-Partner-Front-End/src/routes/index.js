@@ -21,6 +21,11 @@ const Conference = lazy(() => import('../pages/protected/Conference'))
 const Journal = lazy(() => import('../pages/protected/Journal'))
 const ConferencePage = lazy(() => import('../pages/protected/ConferencePage'))
 const JournalPage = lazy(() => import('../pages/protected/JournalPage'))
+const ConfSortByVisit = lazy(() => import('../features/conference/confSortByVisit'))
+const ConfSortByFollow = lazy(() => import('../features/conference/confSortByFollow'))
+const ConfSortByJoin = lazy(() => import('../features/conference/confSortByJoin'))
+const JourSortByVisit = lazy(() => import('../features/journal/jourSortByVisit'))
+const JourSortByFollow = lazy(() => import('../features/journal/jourSortByFollow'))
 
 
 const routes = [
@@ -33,12 +38,32 @@ const routes = [
     component: Conference, // view rendered
   },
   {
+    path: '/conference/confSortByVisit', // the url
+    component: ConfSortByVisit, // view rendered
+  },
+  {
+    path: '/conference/confSortByFollow', // the url
+    component: ConfSortByFollow, // view rendered
+  },
+  {
+    path: '/conference/confSortByJoin', // the url
+    component: ConfSortByJoin, // view rendered
+  },
+  {
     path: '/conferencePage/:id', // the url
     component: ConferencePage, // view rendered
   },
   {
     path: '/journal', // the url
     component: Journal, // view rendered
+  },
+  {
+    path: '/journal/jourSortByVisit', // the url
+    component: JourSortByVisit, // view rendered
+  },
+  {
+    path: '/journal/jourSortByFollow', // the url
+    component: JourSortByFollow, // view rendered
   },
   {
     path: '/journalPage/:id', // the url

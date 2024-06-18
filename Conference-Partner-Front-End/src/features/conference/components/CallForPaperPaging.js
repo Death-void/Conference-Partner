@@ -5,61 +5,40 @@ import React, {
   useEffect,
   useState
 } from 'react'
-
-const items = [
-    {ccf: "", core: "c", qualis: "", abbreviation: "AIR", name: "International Conference on Artificial Intelligence and Robots", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A1", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B2", abbreviation: "ICCV", name: "International Conference on Computer Vision", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B3", abbreviation: "ICRA", name: "International Conference on Robotics and Automation", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A2", abbreviation: "CVPR", name: "Computer Vision and Pattern Recognition", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B4", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B5", abbreviation: "ICCV", name: "International Conference on Computer Vision", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A1", abbreviation: "ICRA", name: "International Conference on Robotics and Automation", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B2", abbreviation: "CVPR", name: "Computer Vision and Pattern Recognition", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B3", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "", core: "c", qualis: "", abbreviation: "AIR", name: "International Conference on Artificial Intelligence and Robots", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A1", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B2", abbreviation: "ICCV", name: "International Conference on Computer Vision", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B3", abbreviation: "ICRA", name: "International Conference on Robotics and Automation", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A2", abbreviation: "CVPR", name: "Computer Vision and Pattern Recognition", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B4", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B5", abbreviation: "ICCV", name: "International Conference on Computer Vision", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "a", core: "a", qualis: "A1", abbreviation: "ICRA", name: "International Conference on Robotics and Automation", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "c", core: "b", qualis: "B2", abbreviation: "CVPR", name: "Computer Vision and Pattern Recognition", delay: "", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-    {ccf: "b", core: "c", qualis: "B3", abbreviation: "ICML", name: "International Conference on Machine Learning", delay: "Delay", submissionDeadline: "2024-06-10", notificationDate: "2024-07-10", conferenceDate: "2024-08-10", location: "Shanghai, China", frequency: 7, viewCount: 100},
-]
+import { useAsyncError } from "react-router-dom";
+import axios from 'axios'
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 
 const itemsPerPage = 2
 
 
+function CallForPaperPaging(props){
 
-function CallForPaperPaging(){
+    const items = props.confData
+    // //console.log("isPostponed", items)
+    
+    
+    //
     // We start with an empty list of items.
-    const [currentItems, setCurrentItems] = useState(null);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemCount, setItemCount] = useState(items.length);
+    const [page, setPage] = useState(0);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
-    const [itemOffset, setItemOffset] = useState(0);
-
-    useEffect(() => {
-        // Fetch items from another resources.
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        console.log(items.slice(itemOffset, endOffset))
-        setCurrentItems(items.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = event.selected * itemsPerPage % items.length;
-        console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
-        setItemOffset(newOffset);
+        setPage(event.selected)
+        
     };
 
-    console.log(currentItems)
+    const confDelete = async (id) => {
+        const res = await axios.delete(`/conferences/${id}`).catch((err) => {
+            console.log(err)
+        })
+        console.log(res)
+    }
+
+    // //console.log(currentItems)
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
             {/** Table Data */}
@@ -76,7 +55,7 @@ function CallForPaperPaging(){
                 <p className="ml-2">Conference Rank (A1, A2, B1, B2, B3, B4, B5) from Brazilian Classification System for Conferences and Journals (2016)</p>
             </div>
             <div className="flex justify-end">
-                <p className="text-sm">第{itemOffset ? itemOffset*itemsPerPage-itemsPerPage+1 : 1}-{itemOffset+itemsPerPage}条, 共{itemCount}条</p>
+                <p className="text-sm">第{page ? (page+1)*itemsPerPage-1 : 1}-{(page+1)*itemsPerPage}条, 共{items.length}条</p>
             </div>
 
             <div className="overflow-x-auto">
@@ -88,31 +67,33 @@ function CallForPaperPaging(){
                             <th className="text-base">qualis</th>
                             <th className="text-base">简称</th>
                             <th className="text-base">全称</th>
-                            <th className="text-base">Delay</th>
+                            <th className="text-base">isPostponed</th>
                             <th className="text-base">截稿日期</th>
                             <th className="text-base">通知日期</th>
                             <th className="text-base">会议日期</th>
                             <th className="text-base">会议地点</th>
                             <th className="text-base">届数</th>
                             <th className="text-base">浏览</th>
+                            {localStorage.getItem("isAdmin") === "true" ? <th className="text-base">删除</th> : null}
                         </tr>
                     </thead>
                     <tbody>
-                        {currentItems && currentItems.map((u, k) => {
+                        {items.slice(page*itemsPerPage, page*itemsPerPage+itemsPerPage).map((u, k) => {
                             return (
                                 <tr key={k}>
                                     <td>{u.ccf ? <span className="bg-blue-500 badge px-2 text-white">{u.ccf}</span> : null }</td>
                                     <td>{u.core ? <span className="bg-blue-500 badge px-2  text-white">{u.core}</span> : null }</td>
                                     <td>{u.qualis ? <span className="bg-blue-500 badge px-2  text-white">{u.qualis}</span> : null }</td>
                                     <td>{u.abbreviation}</td>
-                                    <td>{u.name}</td>
-                                    <td>{u.delay ? <span className="bg-red-700 badge px-2 text-white">{u.delay}</span> : null }</td>
+                                    <td><button className="text-blue-500 hover:underline" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.name}</button></td>
+                                    <td>{u.isPostponed ? <span className="bg-red-700 badge px-2 text-white">{u.isPostponed.toString()}</span> : null }</td>
                                     <td>{u.submissionDeadline}</td>
                                     <td>{u.notificationDate}</td>
                                     <td>{u.conferenceDate}</td>
                                     <td>{u.location}</td>
                                     <td>{u.frequency ? <span className="bg-orange-500 badge px-2 text-white">{u.frequency}</span> : null}</td>
                                     <td>{u.viewCount ? <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null }</td>
+                                    {localStorage.getItem("isAdmin") === "true" ? <th><button onClick={()=>confDelete(u.id)}><TrashIcon className="h-6 w-6 inline-block mr-2 text-red-500" /></button></th> : null}
                                 </tr>
                             )
                         })}
@@ -126,7 +107,7 @@ function CallForPaperPaging(){
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
-                    pageCount={pageCount}
+                    pageCount={Math.ceil(items.length / itemsPerPage)}
                     previousLabel="< previous"
                     pageClassName="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
                     pageLinkClassName="page-link"

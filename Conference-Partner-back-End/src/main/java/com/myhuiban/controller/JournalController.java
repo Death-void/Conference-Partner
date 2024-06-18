@@ -39,6 +39,7 @@ public class JournalController {
         String currentUserName = authentication.getName();
         journal.setLastModifiedUser(currentUserName);
         journal.setLastModifiedDate(LocalDate.now());
+        journal.setViewCount(0L);
         return journalService.createJournal(journal);
     }
 

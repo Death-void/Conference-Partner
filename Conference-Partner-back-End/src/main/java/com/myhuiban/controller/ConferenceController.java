@@ -42,6 +42,7 @@ public class ConferenceController {
         String currentUserName = authentication.getName();
         conference.setLastModifiedDate(LocalDate.now());
         conference.setLastModifiedUser(currentUserName);
+        conference.setViewCount(0L);
         return conferenceService.createConference(conference);
     }
 

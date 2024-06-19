@@ -13,22 +13,39 @@ import {useDispatch} from "react-redux"
 import { showNotification } from '../../common/headerSlice'
 import InputText from "../../../components/Input/InputText"
 import TextAreaInput from "../../../components/Input/TextAreaInput"
+import { useParams } from "react-router-dom"
 
 
-function RightContent(props){
-    const confData = props.confData
+function RightContent(){
+    const [confData, setConfData] = useState([])
+    const {id} = useParams();
+    const [conferenceObj, setConferenceObj] = useState([])
+
+
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/conferences/${id}`).then((res) => {
+            if(res.status === 200){
+                setConferenceObj(res.data)
+                setConfData(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
     const dispatch = useDispatch()
 
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
-    const [conferenceObj, setConferenceObj] = useState({})
+    
     const [followers, setFollowers] = useState([])
     const [joiners, setJoiners] = useState([])
 
     useEffect(() => {
-        setConferenceObj(props.confData)
         const f = async () => {
-            const res = await axios.get(`/conferences/getFollowersInConference?conferenceId=${props.confData.id}`, ).catch((err) => {
+            const res = await axios.get(`/conferences/getFollowersInConference?conferenceId=${id}`, ).catch((err) => {
                 console.log(err)
             })
             setFollowers(res.data)
@@ -37,14 +54,14 @@ function RightContent(props){
         f()
 
         const f2 = async () => {
-            const res = await axios.get(`/conferences/getJoinersInConference?conferenceId=${props.confData.id}`, ).catch((err) => {
+            const res = await axios.get(`/conferences/getJoinersInConference?conferenceId=${id}`, ).catch((err) => {
                 console.log(err)
             })
             setJoiners(res.data)
             console.log("joiners", res.data)
         }
         f2()
-    }, [props.confData])
+    }, [confData])
 
     const updateFormValue = (updateType, value) => {
         setErrorMessage("")
@@ -235,7 +252,7 @@ function RightContent(props){
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
-                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => updateConference()}>Update</button></div>
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => updateConference()}>Confirm</button></div>
                     </form>
                     
                     </TitleCard>
@@ -254,7 +271,7 @@ function RightContent(props){
                             {followers && followers.map((f, k) => {
                                 return (
                                     <tr key={k}>
-                                        <td>{f}</td>
+                                        <td>{f.userName}</td>
                                     </tr>
                                 )
                             })}
@@ -275,7 +292,7 @@ function RightContent(props){
                             {joiners && joiners.map((f, k) => {
                                 return (
                                     <tr key={k}>
-                                        <td>{f}</td>
+                                        <td>{f.userName}</td>
                                     </tr>
                                 )
                             })}

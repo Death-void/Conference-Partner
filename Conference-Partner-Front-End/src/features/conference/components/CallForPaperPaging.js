@@ -17,6 +17,7 @@ const itemsPerPage = 2
 function CallForPaperPaging(props){
 
     const items = props.confData
+    const title = props.title
     console.log("callforpaper", items)
     
     
@@ -41,7 +42,7 @@ function CallForPaperPaging(props){
 
     // //console.log(currentItems)
     return (
-        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
+        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>{title?title:"征稿"}</>}>
             {/** Table Data */}
             <div className="flex items-center text-sm">
                 <button className="text-blue-500">ccf:</button>

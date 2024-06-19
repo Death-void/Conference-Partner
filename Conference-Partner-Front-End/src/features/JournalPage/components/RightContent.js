@@ -189,7 +189,7 @@ function RightContent(props){
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
-                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => updateJournal()}>Update</button></div>
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => updateJournal()}>Confirm</button></div>
                     </form>
                     
                     </TitleCard>

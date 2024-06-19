@@ -33,8 +33,8 @@ function Dashboard(){
     const [statsData, setStateData] = useState([
         {title : "会议", value : "34.7k", icon : <UserGroupIcon className='w-8 h-8'/>, description : ""},
         {title : "期刊", value : "345", icon : <CreditCardIcon className='w-8 h-8'/>, description : ""},
-        {title : "科研人员", value : "450", icon : <CircleStackIcon className='w-8 h-8'/>, description : ""},
-        {title : "页面浏览", value : 0, icon : <UsersIcon className='w-8 h-8'/>, description : ""},
+        {title : "科研人员", value : "450", icon : <UsersIcon className='w-8 h-8'/>, description : ""},
+        {title : "页面浏览", value : 0, icon : <CircleStackIcon className='w-8 h-8'/>, description : ""},
     ])
 
     const [loading, setLoading] = useState(false)

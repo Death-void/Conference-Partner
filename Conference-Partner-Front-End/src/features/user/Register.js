@@ -30,16 +30,18 @@ function Register(){
             // Call API to check user credentials and save token in localstorage
             axios.post('/auth/register', registerObj).then((res) => {
                 //console.log(res)
+                
                 if(res.status === 201){
-                    localStorage.setItem("token", res.data.token)
-                    localStorage.setItem("role", false)
-                    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+                    // localStorage.setItem("token", res.data.token)
+                    // localStorage.setItem("role", res.data.role)
+                    // localStorage.setItem("id", res.data.userId)
                     setLoading(false)
-                    window.location.href = '/app/dashboard'
+                    window.location.href = '/login'
                 }
-            }).catch((err) => {
+            }).catch((res) => {
                 setLoading(false)
-                setErrorMessage("Invalid credentials")
+                setErrorMessage(res.response.data)
+
             })
         }
     }

@@ -120,7 +120,7 @@ function RightContent(){
                     setLoading(false)
                     dispatch(showNotification({message : "Failed to add journal", status : 0}))
                 })
-                //console.log("addJournal", res)
+                console.log("addJournal", res)
             }
             f()
             dispatch(showNotification({message : "Journal Added", status : 1}))
@@ -184,12 +184,12 @@ function RightContent(){
                             <label className="label">
                                 <span className={"label-text text-base-content "}>更改密码</span>
                             </label>
-                            <input type={"text"} value={basicInfo.registrationTime} onChange={(e) => updateInputValue("password", e.target.value)}className="input  input-bordered w-full " />
+                            <input type={"text"}  onChange={(e) => updateInputValue("password", e.target.value)}className="input  input-bordered w-full " />
                         </div>
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
-                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={()=> updateProfile()}>Update</button></div>
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={()=> updateProfile()}>Confirm</button></div>
                     </form>
                     
                     </TitleCard>
@@ -241,7 +241,7 @@ function RightContent(){
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
-                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addConference()}>Update</button></div>
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addConference()}>Confirm</button></div>
                     </form>
                     
                     </TitleCard>
@@ -278,17 +278,18 @@ function RightContent(){
                         <InputText labelTitle="出版商" updateType="publisher" placeholder="IEEE" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="截稿日期" updateType="submissionDeadline" placeholder="2024-06-10" updateFormValue={updateFormValue}/>
                         <InputText labelTitle="网址" updateType="website" placeholder="http://infocomm.com" updateFormValue={updateFormValue}/>
-                        {/* <InputText labelTitle="SpecialIssue" updateType="specialIssue" placeholder="specialIssue ..." updateFormValue={updateFormValue}/> */}
-                        {/* <InputText labelTitle="最后修改者" updateType="lastModifiedUser" placeholder="Tom" updateFormValue={updateFormValue}/> */}
                         
                     </div>
 
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <InputText labelTitle="callForPapers" updateType="callForPapers" placeholder="callForPapers..." updateFormValue={updateFormValue}/>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         <TextAreaInput labelTitle="SpecialIssue" updateType="specialIssue" placeholder="Special Issue ..." updateFormValue={updateFormValue}/>
                     </div>
 
                     <form method="dialog" className="modal-backdrop">
-                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addJournal()}>Update</button></div>
+                    <div className="mt-16"><button className="btn btn-primary float-right" onClick={() => addJournal()}>Confirm</button></div>
                     </form>
                     
                     </TitleCard>

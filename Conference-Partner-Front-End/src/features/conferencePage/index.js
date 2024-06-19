@@ -19,24 +19,7 @@ import { useState } from 'react'
 
 function ConferencePage(){
 
-    const [confData, setConfData] = useState({})
-    const {id} = useParams();
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
-
-
-    useEffect(() => {
-        // Call API to get conference details
-        axios.get(`/conferences/${id}`).then((res) => {
-            if(res.status === 200){
-                setConfData(res.data)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
-    }
-    ,[])
+    
 
     return(
         <>
@@ -45,10 +28,10 @@ function ConferencePage(){
         
         <div className="flex justify-between space-x-8">
             <div className="w-4/5">
-                <LeftContent confData={confData} />
+                <LeftContent  />
             </div>
             <div className="w-1/5">
-                <RightContent confData={confData} />
+                <RightContent/>
             </div>
         </div>
         </>

@@ -5,11 +5,30 @@ import React, {
   useEffect,
   useState
 } from 'react'
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
-function CallForPaperContent(props){
+function CallForPaperContent(){
 
-    const confInfo = props.confData
+    const [confInfo, setConfInfo] = useState({})
+    const {id} = useParams();
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+
+
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/conferences/${id}`).then((res) => {
+            if(res.status === 200){
+                setConfInfo(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>

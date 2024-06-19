@@ -6,33 +6,37 @@ import React, {
   useState
 } from 'react'
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 
 
+function ConferenceInfo(){
 
-function ConferenceInfo(props){
+    const [confInfo, setConfInfo] = useState({})
+    const {id} = useParams();
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
-    // const confInfo = {
-    //     id : 1,
-    //     name: "AIR 2024: International Conference on Artificial Intelligence and Robots",
-    //     website : "https://www.academicx.org/AIR/2024/",
-    //     submissionDeadline: "2024-06-10",
-    //     notificationDate: "",
-    //     conferenceDate: "2024-08-10",
-    //     location: "Shanghai, China",
-    //     frequency: 1,
-    //     viewCount: 100,
-    //     followCount: 100,
-    //     joinCount: 100,
-    // }
 
-    const confInfo = props.confData
+    useEffect(() => {
+        // Call API to get conference details
+        axios.get(`/conferences/${id}`).then((res) => {
+            if(res.status === 200){
+                setConfInfo(res.data)
+            }
+        }).catch((err) => {
+            setLoading(false)
+            setErrorMessage("Invalid credentials")
+        })
+    }
+    ,[])
+
     const [followerCount, setFollowerCount] = useState(0)
 
     useEffect(() => {
         const f = async () => {
-            const res = await axios.get(`/conferences/getFollowersCount?conferenceId=${confInfo.id}`).catch((err) => {
+            const res = await axios.get(`/conferences/getFollowersCount?conferenceId=${id}`).catch((err) => {
                 console.log(err)
             })
             console.log("follower count", res.data)

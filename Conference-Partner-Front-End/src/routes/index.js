@@ -26,6 +26,7 @@ const ConfSortByFollow = lazy(() => import('../features/conference/confSortByFol
 const ConfSortByJoin = lazy(() => import('../features/conference/confSortByJoin'))
 const JourSortByVisit = lazy(() => import('../features/journal/jourSortByVisit'))
 const JourSortByFollow = lazy(() => import('../features/journal/jourSortByFollow'))
+const SearchResult = lazy(() => import('../containers/SearchResult'))
 
 
 const routes = [
@@ -52,6 +53,10 @@ const routes = [
   {
     path: '/conferencePage/:id', // the url
     component: ConferencePage, // view rendered
+  },
+  {
+    path: '/search/:search', // the url
+    component: SearchResult, // view rendered
   },
   {
     path: '/journal', // the url

@@ -9,9 +9,15 @@ import { openRightDrawer } from '../features/common/rightDrawerSlice';
 import { RIGHT_DRAWER_TYPES } from '../utils/globalConstantUtil'
 
 import { NavLink,  Routes, Link , useLocation} from 'react-router-dom'
+import axios from 'axios'
 
 
 function Header(){
+
+    const [searchText, setSearchText] = useState("")
+    const updateInputValue = (key, value) => {
+        setSearchText(value)
+    }
 
     const dispatch = useDispatch()
     const {noOfNotifications, pageTitle} = useSelector(state => state.header)
@@ -35,6 +41,9 @@ function Header(){
         dispatch(openRightDrawer({header : "Notifications", bodyType : RIGHT_DRAWER_TYPES.NOTIFICATION}))
     }
 
+    const Search = () => {
+        window.location.href = `/app/search/${searchText}`
+    }
 
     function logoutUser(){
         localStorage.clear();
@@ -53,12 +62,22 @@ function Header(){
                     <label htmlFor="left-sidebar-drawer" className="btn btn-primary drawer-button lg:hidden">
                     <Bars3Icon className="h-5 inline-block w-5"/></label>
                     <h1 className="text-2xl font-semibold ml-2">{pageTitle}</h1>
-                </div>
+            </div>
 
-                
+            <div className="navbar  top-0 bg-base-100 z-10  flex items-center justify-center">
+                {/* Other content */}
+                    <div className="flex justify-center">
+                    <div className={` flex justify-between`}>
+                                <input type={"text"}  onChange={(e) => updateInputValue("password", e.target.value)} className="input  input-bordered w-full " />
+                                <button  className="btn btn-primary float-right ml-2" onClick={()=> Search()}>Search</button>
+                            </div>
+                    </div>
+                {/* Other content */}
+            </div>
 
             <div className="flex-none ">
 
+            
                 {/* Multiple theme selection, uncomment this if you want to enable multiple themes selection, 
                 also includes corporate and retro themes in tailwind.config file */}
                 

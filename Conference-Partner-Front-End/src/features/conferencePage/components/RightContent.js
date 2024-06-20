@@ -42,6 +42,8 @@ function RightContent(){
     
     const [followers, setFollowers] = useState([])
     const [joiners, setJoiners] = useState([])
+    const [isFollowed, setIsFollowed] = useState(false)
+    const [isJoined, setIsJoined] = useState(false)
 
     useEffect(() => {
         const f = async () => {
@@ -49,6 +51,10 @@ function RightContent(){
                 console.log(err)
             })
             setFollowers(res.data)
+            for(let i = 0; i < res.data.length; i++){
+                if(res.data[i].id.toString() == localStorage.getItem("id"))setIsFollowed(true)
+            }
+
             console.log("followers", res.data)
         }
         f()
@@ -58,6 +64,10 @@ function RightContent(){
                 console.log(err)
             })
             setJoiners(res.data)
+            for(let i = 0; i < res.data.length; i++){
+                if(res.data[i].id.toString() == localStorage.getItem("id"))setIsJoined(true)
+            }
+
             console.log("joiners", res.data)
         }
         f2()
@@ -101,10 +111,12 @@ function RightContent(){
 
     const userFollow = async(confId, userId) => {
         const res = await axios.post("/follow/conference/follow", {conferenceId: confId, userId: userId}).catch(err => console.log(err))
+        window.location.reload()
     }
 
     const userPaticipated = async(confId, userId) => {
         const res = await axios.post("/participate/conference/participate", {conferenceId: confId, userId: userId}).catch(err => console.log(err))
+        window.location.reload()
     }
 
     return(
@@ -118,7 +130,7 @@ function RightContent(){
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
                             <UserPlusIcon className="h-6 w-6"/>
-                            <p className="">我要关注</p>
+                            <p className="">{isFollowed?"已关注":"我要关注"}</p>
                         </div>
                         {/* <div>
                             {conferenceObj.follow ? <span className="bg-blue-500 badge px-2 text-white">{conferenceObj.follow}</span> : null }
@@ -134,7 +146,7 @@ function RightContent(){
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
                             <GlobeAsiaAustraliaIcon className="h-6 w-6"/>
-                            <p className="">我要参加</p>
+                            <p className="">{isJoined?"已参加":"我要参加"}</p>
                         </div>
                         {/* <div>
                             {conferenceObj.join ? <span className="bg-green-500 badge px-2 text-white">{conferenceObj.join}</span> : null }
@@ -264,7 +276,7 @@ function RightContent(){
                     <table className="table text-center">
                         <thead>
                             <tr>
-                                <th>关注者ID</th>
+                                <th>关注者</th>
                             </tr>   
                         </thead>
                         <tbody>
@@ -285,7 +297,7 @@ function RightContent(){
                     <table className="table w-full text-center">
                         <thead>
                             <tr>
-                                <th>参加者ID</th>
+                                <th>参加者</th>
                             </tr>   
                         </thead>
                         <tbody>

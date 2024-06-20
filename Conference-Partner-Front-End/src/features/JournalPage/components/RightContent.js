@@ -11,6 +11,7 @@ import {UserPlusIcon, GlobeAsiaAustraliaIcon, PencilSquareIcon, GiftIcon} from "
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { showNotification } from '../../common/headerSlice'
+import { useParams } from "react-router-dom"
 
 
 
@@ -19,24 +20,31 @@ function RightContent(props){
 
     const jourInfo = props.confData
     const dispatch = useDispatch()
+    const {id} = useParams()
 
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const [journalObj, setJournalObj] = useState({})
     const [followers, setFollowers] = useState([])
+    const [isFollowed, setIsFollowed] = useState(false)
 
     useEffect(() => {
         setJournalObj(props.confData)
         const f = async () => {
-            const res = await axios.get(`/journals/getFollowersInJournal?journalId=${props.confData.id}`, ).catch((err) => {
+            const res = await axios.get(`/journals/getFollowersInJournal?journalId=${id}`, ).catch((err) => {
                 console.log(err)
             })
             setFollowers(res.data)
-            console.log("followers", res.data)
+            for (let i = 0; i < res.data.length; i++) {
+                if(res.data[i].id.toString() === localStorage.getItem("id")){
+                    setIsFollowed(true)
+                    break
+                }
+            }
         }
         f()
         console.log("confData", props.confData)
-    }, [props.confData])
+    }, [isFollowed])
 
     const updateFormValue = (updateType, value) => {
         setErrorMessage("")
@@ -72,7 +80,7 @@ function RightContent(props){
 
     const userFollow = async(confId, userId) => {
         const res = await axios.post("/follow/journal/follow", {journalId: confId, userId: userId}).catch(err => console.log(err))
-        console.log(res)
+        window.location.reload()
     }
 
     return(
@@ -86,7 +94,7 @@ function RightContent(props){
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
                             <UserPlusIcon className="h-6 w-6"/>
-                            <p className="">我要关注</p>
+                            <p className="">{isFollowed?"已关注":"我要关注"}</p>
                         </div>
                         <div>
                             {jourInfo.follow ? <span className="bg-blue-500 badge px-2 text-white">{jourInfo.follow}</span> : null }
@@ -206,10 +214,10 @@ function RightContent(props){
                             </tr>   
                         </thead>
                         <tbody>
-                            {jourInfo.followers && jourInfo.followers.map((f, k) => {
+                            {followers && followers.map((f, k) => {
                                 return (
                                     <tr key={k}>
-                                        <td>{f}</td>
+                                        <td>{f.userName}</td>
                                     </tr>
                                 )
                             })}

@@ -17,6 +17,8 @@ function ConferenceInfo(){
     const {id} = useParams();
     const [loading, setLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
+    const [followerLength, setFollowerLength] = useState(0)
+    const [joinerLength, setJoinerLength] = useState(0)
 
 
     useEffect(() => {
@@ -29,21 +31,24 @@ function ConferenceInfo(){
             setLoading(false)
             setErrorMessage("Invalid credentials")
         })
-    }
-    ,[])
 
-    const [followerCount, setFollowerCount] = useState(0)
-
-    useEffect(() => {
         const f = async () => {
-            const res = await axios.get(`/conferences/getFollowersCount?conferenceId=${id}`).catch((err) => {
+            const res = await axios.get(`/conferences/getFollowersInConference?conferenceId=${id}`, ).catch((err) => {
                 console.log(err)
             })
-            console.log("follower count", res.data)
+            setFollowerLength(res.data.length)
         }
         f()
-    },[])
-            
+
+        const f2 = async () => {
+            const res = await axios.get(`/conferences/getJoinersInConference?conferenceId=${id}`, ).catch((err) => {
+                console.log(err)
+            })
+            setJoinerLength(res.data.length)
+        }
+        f2()
+    }
+    ,[])
 
     return (
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>会议信息</>}>
@@ -89,8 +94,8 @@ function ConferenceInfo(){
                             </tr>
                             <tr>
                                 <td>浏览：{confInfo.viewCount ? <span className="bg-green-700 badge px-2 text-white">{confInfo.viewCount}</span> : null }</td>
-                                <td>关注：{confInfo.follow ? <span className="bg-blue-700 badge px-2 text-white">{confInfo.follow}</span> : null }</td>
-                                <td>参加：{confInfo.join ? <span className="bg-red-700 badge px-2 text-white">{confInfo.join}</span> : null}</td> 
+                                <td>关注：{<span className="bg-blue-700 badge px-2 text-white">{followerLength}</span>  }</td>
+                                <td>参加：{<span className="bg-red-700 badge px-2 text-white">{joinerLength}</span>}</td> 
                             </tr>
                         </tbody>
                     </table>

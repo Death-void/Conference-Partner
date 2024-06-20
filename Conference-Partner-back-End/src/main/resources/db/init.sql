@@ -71,7 +71,7 @@ CREATE TABLE follow_journal (
                                 id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                 user_id BIGINT NOT NULL,
                                 journal_id BIGINT NOT NULL,
-                                FOREIGN KEY (user_id) REFERENCES user(id),
+                                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
                                 FOREIGN KEY (journal_id) REFERENCES journal(id) ON DELETE CASCADE
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE follow_conference (
                                    id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                    user_id BIGINT NOT NULL,
                                    conference_id BIGINT NOT NULL,
-                                   FOREIGN KEY (user_id) REFERENCES user(id),
+                                   FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
                                    FOREIGN KEY (conference_id) REFERENCES conference(id) ON DELETE CASCADE
 );
 
@@ -96,8 +96,8 @@ CREATE TABLE participate_conference (
                                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                         user_id BIGINT NOT NULL,
                                         conference_id BIGINT NOT NULL,
-                                        FOREIGN KEY (user_id) REFERENCES user(id),
-                                        FOREIGN KEY (conference_id) REFERENCES conference(id)
+                                        FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+                                        FOREIGN KEY (conference_id) REFERENCES conference(id) ON DELETE CASCADE
 );
 
 INSERT INTO participate_conference (user_id, conference_id) VALUES

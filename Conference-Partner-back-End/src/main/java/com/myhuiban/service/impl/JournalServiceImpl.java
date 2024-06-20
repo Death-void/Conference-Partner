@@ -17,6 +17,7 @@ public class JournalServiceImpl implements JournalService {
 
     @Autowired
     private JournalMapper journalMapper;
+    @Autowired
     private UserMapper userMapper;
 
     @Override
@@ -77,9 +78,9 @@ public class JournalServiceImpl implements JournalService {
         List<Long> followersId = journalMapper.getFollowersInJournal(journalId);
         List<User> users = new ArrayList<>();
         for (Long id : followersId) {
+            System.out.println(id);
             users.add(userMapper.findById(id));
         }
-
         return users;
     }
 

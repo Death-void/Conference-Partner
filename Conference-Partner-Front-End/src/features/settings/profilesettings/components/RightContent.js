@@ -207,7 +207,7 @@ function RightContent(){
                 </BodyCard>
             </div>}
 
-            {localStorage.getItem("role") === "ROLE_ADMIN" && <dialog id="add_conference_modal" className="modal">
+            <dialog id="add_conference_modal" className="modal">
                 <div>
                     <TitleCard title="添加会议">
                     <form method="dialog">
@@ -246,9 +246,9 @@ function RightContent(){
                     
                     </TitleCard>
                 </div>
-            </dialog> }
+            </dialog> 
 
-            <div className="mt-6">
+            {localStorage.getItem("role") === "ROLE_ADMIN" &&  <div className="mt-6">
                 <BodyCard>
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
@@ -257,7 +257,7 @@ function RightContent(){
                         </div>
                     </div>
                 </BodyCard>
-            </div>
+            </div> }
 
             <dialog id="add_journal_modal" className="modal">
                 <div>

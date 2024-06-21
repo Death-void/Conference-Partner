@@ -93,7 +93,7 @@ function RightContent(){
         // if(conferenceObj.lastModifiedUser.trim() === "")return setErrorMessage("Last Modified User is required! (use any value)")
         if(conferenceObj.callForPapers.trim() === "")return setErrorMessage("Call For Papers is required! (use any value)")
         else {
-            setLoading(true)
+            //setLoading(true)
             const f = async () => {
                 const res = await axios.put(`/conferences/${confData.id}`, conferenceObj).catch((err) => {
                     setLoading(false)

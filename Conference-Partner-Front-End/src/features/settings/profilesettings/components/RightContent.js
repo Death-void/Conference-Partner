@@ -90,7 +90,7 @@ function RightContent(){
         // if(conferenceObj.lastModifiedUser.trim() === "")return setErrorMessage("Last Modified User is required! (use any value)")
         if(conferenceObj.callForPapers.trim() === "")return setErrorMessage("Call For Papers is required! (use any value)")
         else {
-            setLoading(true)
+            //setLoading(true)
             const f = async () => {
                 const res = await axios.post('/conferences', conferenceObj).catch((err) => {
                     setLoading(false)
@@ -114,7 +114,7 @@ function RightContent(){
         if(journalObj.website.trim() === "")return setErrorMessage("Website is required! (use any value)")
         if(journalObj.specialIssue.trim() === "")return setErrorMessage("Special Issue is required! (use any value)")
         else {
-            setLoading(true)
+            //setLoading(true)
             const f = async () => {
                 const res = await axios.post('/journals', journalObj).catch((err) => {
                     setLoading(false)
@@ -196,7 +196,7 @@ function RightContent(){
                 </div>
             </dialog>
 
-            <div className="mt-6">
+            { localStorage.getItem("role") === "ROLE_ADMIN" && <div className="mt-6">
                 <BodyCard>
                     <div className="flex justify-between" >
                         <div className="flex justify-start space-x-3">
@@ -205,9 +205,9 @@ function RightContent(){
                         </div>
                     </div>
                 </BodyCard>
-            </div>
+            </div>}
 
-            <dialog id="add_conference_modal" className="modal">
+            {localStorage.getItem("role") === "ROLE_ADMIN" && <dialog id="add_conference_modal" className="modal">
                 <div>
                     <TitleCard title="添加会议">
                     <form method="dialog">
@@ -246,7 +246,7 @@ function RightContent(){
                     
                     </TitleCard>
                 </div>
-            </dialog>
+            </dialog> }
 
             <div className="mt-6">
                 <BodyCard>

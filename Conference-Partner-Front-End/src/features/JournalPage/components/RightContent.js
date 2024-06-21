@@ -64,7 +64,7 @@ function RightContent(props){
         if(journalObj.callForPapers.trim() === "")return setErrorMessage("Call For Papers is required! (use any value)")
         if(journalObj.specialIssue.trim() === "")return setErrorMessage("Special Issue is required! (use any value)")
         else {
-            setLoading(true)
+            //setLoading(true)
             const f = async () => {
                 const res = await axios.put(`/journals/${jourInfo.id}`, journalObj).catch((err) => {
                     setLoading(false)

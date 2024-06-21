@@ -22,7 +22,7 @@ function ForgotPassword(){
 
         if(userObj.emailId.trim() === "")return setErrorMessage("Email Id is required! (use any value)")
         else{
-            setLoading(true)
+            //setLoading(true)
             // Call API to send password reset link
             setLoading(false)
             setLinkSent(true)

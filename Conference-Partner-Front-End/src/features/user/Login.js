@@ -72,7 +72,7 @@ function Login(){
 
                         <div className="mb-4">
 
-                            <InputText type="userName" defaultValue={loginObj.userName} updateType="userName" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue}/>
+                            <InputText type="userName" defaultValue={loginObj.userName} updateType="userName" containerStyle="mt-4" labelTitle="User Name" updateFormValue={updateFormValue}/>
 
                             <InputText defaultValue={loginObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue}/>
 

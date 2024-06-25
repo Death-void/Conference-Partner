@@ -15,8 +15,22 @@ const itemsPerPage = 5
 
 function CallForPaperJourPaging(props){
 
-    const items = props.confData
     const title = props.title
+
+    const [items , setItems] = useState([])
+
+    useEffect(() => {
+        // //console.log("BasicInfo")
+        const f = async () => {
+            const res = await axios.get(`/journals/getJourInCall`).catch((err) => {
+                console.log(err)
+            })  
+            setItems(res.data)
+            console.log(res.data)
+        }
+        f()
+        
+    }, [])
     
      //
     // We start with an empty list of items.

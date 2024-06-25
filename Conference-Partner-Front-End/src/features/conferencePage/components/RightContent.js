@@ -71,7 +71,8 @@ function RightContent(){
             console.log("joiners", res.data)
         }
         f2()
-    }, [confData])
+        dispatch(showNotification({message : errorMessage, status : 1}))
+    }, [confData, errorMessage])
 
     const updateFormValue = (updateType, value) => {
         setErrorMessage("")

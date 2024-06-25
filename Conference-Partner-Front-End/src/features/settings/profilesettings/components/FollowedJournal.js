@@ -10,7 +10,7 @@ import axios from "axios";
 import { IncrementJournalViewCount } from "../../../../GlobalFunction";
 
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 

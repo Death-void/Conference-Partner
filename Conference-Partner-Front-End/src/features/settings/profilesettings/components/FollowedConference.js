@@ -9,7 +9,7 @@ import React, {
 import axios from 'axios'
 import { IncrementConferenceViewCount } from "../../../../GlobalFunction";
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 

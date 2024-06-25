@@ -59,8 +59,10 @@ function RightContent(){
             //console.log("basic info", res.data)
         }
         f()
+
+        dispatch(showNotification({message : errorMessage, status : 1}))
     }
-    ,[])
+    ,[errorMessage])
 
     // Call API to update profile settings changes
     const updateProfile = () => {

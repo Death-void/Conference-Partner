@@ -31,7 +31,7 @@ const items = [
 ]
 
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 

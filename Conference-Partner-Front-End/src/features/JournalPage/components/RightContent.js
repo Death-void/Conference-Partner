@@ -44,7 +44,8 @@ function RightContent(props){
         }
         f()
         console.log("confData", props.confData)
-    }, [isFollowed])
+        dispatch(showNotification({message : errorMessage, status : 1}))
+    }, [isFollowed, errorMessage])
 
     const updateFormValue = (updateType, value) => {
         setErrorMessage("")

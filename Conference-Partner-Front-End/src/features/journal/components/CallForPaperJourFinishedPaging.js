@@ -9,7 +9,7 @@ import axios from 'axios'
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { IncrementJournalViewCount } from "../../../GlobalFunction";
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 

@@ -11,7 +11,7 @@ import { TrashIcon } from "@heroicons/react/24/outline";
 import { IncrementConferenceViewCount } from "../../../GlobalFunction";
 
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 function CallForPaperPaging(props){

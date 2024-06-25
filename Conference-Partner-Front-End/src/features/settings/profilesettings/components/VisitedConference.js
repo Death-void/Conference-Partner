@@ -9,7 +9,7 @@ import React, {
 import axios from "axios";
 
 
-const itemsPerPage = 2
+const itemsPerPage = 5
 
 
 

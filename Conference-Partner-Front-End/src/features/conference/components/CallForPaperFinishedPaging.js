@@ -58,7 +58,7 @@ function CallForPaperFinishedPaging(props){
                 <p className="ml-2">Conference Rank (A1, A2, B1, B2, B3, B4, B5) from Brazilian Classification System for Conferences and Journals (2016)</p>
             </div>
             <div className="flex justify-end">
-                <p className="text-sm">第{page ? (page+1)*itemsPerPage-1 : 1}-{(page+1)*itemsPerPage < items.length ? (page+1)*itemsPerPage :items.length}条, 共{items.length}条</p>
+                <p className="text-sm">第{page ? page*itemsPerPage+1 : 1}-{(page+1)*itemsPerPage < items.length ? (page+1)*itemsPerPage :items.length}条, 共{items.length}条</p>
             </div>
 
             <div className="overflow-x-auto">

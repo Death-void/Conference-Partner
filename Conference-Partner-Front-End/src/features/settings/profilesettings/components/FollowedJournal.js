@@ -52,7 +52,7 @@ function FollowedJournal(){
         <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>关注的期刊</>}>
             {/** Table Data */}
             <div className="flex justify-end">
-                <p className="text-sm">第{page ? (page+1)*itemsPerPage-1 : 1}-{(page+1)*itemsPerPage < items.length ? (page+1)*itemsPerPage :items.length}条, 共{items.length}条</p>
+                <p className="text-sm">第{page ? page*itemsPerPage+1 : 1}-{(page+1)*itemsPerPage < items.length ? (page+1)*itemsPerPage :items.length}条, 共{items.length}条</p>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">

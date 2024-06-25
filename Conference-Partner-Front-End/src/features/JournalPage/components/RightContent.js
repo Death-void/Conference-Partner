@@ -15,10 +15,10 @@ import { useParams } from "react-router-dom"
 
 
 
-function RightContent(props){
+function RightContent(){
 
 
-    const jourInfo = props.confData
+    const [jourInfo, setJourInfo] = useState({})
     const dispatch = useDispatch()
     const {id} = useParams()
 
@@ -29,7 +29,14 @@ function RightContent(props){
     const [isFollowed, setIsFollowed] = useState(false)
 
     useEffect(() => {
-        setJournalObj(props.confData)
+
+        axios.get(`/journals/${id}`).then((res) => {
+            setJourInfo(res.data)
+            setJournalObj(res.data)
+        }).catch((err) => {
+            console.log(err)
+        })
+
         const f = async () => {
             const res = await axios.get(`/journals/getFollowersInJournal?journalId=${id}`, ).catch((err) => {
                 console.log(err)
@@ -43,7 +50,6 @@ function RightContent(props){
             }
         }
         f()
-        console.log("confData", props.confData)
         dispatch(showNotification({message : errorMessage, status : 1}))
     }, [isFollowed, errorMessage])
 
@@ -121,7 +127,7 @@ function RightContent(props){
 
             <dialog id="add_conference_modal" className="modal">
                 <div>
-                    <TitleCard title="更新会议">
+                    <TitleCard title="更新期刊">
                     <form method="dialog">
                     {/* if there is a button in form, it will close the modal */}
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

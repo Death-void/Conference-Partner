@@ -44,7 +44,7 @@ function MostConfVisit(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.abbreviation}</td>
+                                        <td><button className="text-blue-500" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.abbreviation}</button></td>
                                         <td>{u.viewCount ?  <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null}</td>
                                     </tr>
                                 )

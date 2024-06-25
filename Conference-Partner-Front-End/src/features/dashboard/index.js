@@ -87,9 +87,9 @@ function Dashboard(){
         })
 
         //CallForPaperChart
-        axios.get(`/conferences/visit/topTen`).then((res) => {
+        axios.get(`/conferences/getConfInCall`).then((res) => {
             if(res.status === 200){
-                setCallForPaperData(res.data)
+                setCallForPaperData(res.data.slice(0, 10))   
             }
         }).catch((err) => {
             setLoading(false)
@@ -97,9 +97,9 @@ function Dashboard(){
         })
 
         //ConferenceChart
-        axios.get(`/conferences/visit/topTen`).then((res) => {
+        axios.get(`/conferences/getConfFinished`).then((res) => {
             if(res.status === 200){
-                setConfData(res.data)
+                setConfData(res.data.slice(0,10))
                 
             }
         }).catch((err) => {

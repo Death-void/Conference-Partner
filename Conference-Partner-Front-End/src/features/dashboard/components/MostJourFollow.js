@@ -44,7 +44,7 @@ function MostJourFollow(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.journal.name}</td>
+                                        <td><button className="text-blue-500" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.journal.name}</button></td>
                                         <td>{u.followNum ?  <span className="bg-green-700 badge px-2 text-white">{u.followNum}</span> : null}</td>
                                     </tr>
                                 )

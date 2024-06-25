@@ -16,9 +16,9 @@ function JournalChart(){
 
     useEffect(() => {
         // Call API to get conference details
-        axios.get(`/journals/visit/topTen`).then((res) => {
+        axios.get(`/journals/getJourInCall`).then((res) => {
             if(res.status === 200){
-                setUserSourceData(res.data)
+                setUserSourceData(res.data.slice(0,10))
             }
         }).catch((err) => {
             setLoading(false)
@@ -28,7 +28,7 @@ function JournalChart(){
     ,[])
 
     return (
-        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
+        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>期刊征稿</>}>
             {/** Table Data */}
             <div className="flex items-center text-sm">
                 <button className="text-blue-500">ccf:</button>

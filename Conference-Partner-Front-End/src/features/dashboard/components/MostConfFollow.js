@@ -44,7 +44,7 @@ function MostConfFollow(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.conference.abbreviation}</td>
+                                        <td><button className="text-blue-500" onClick={() => window.location.href = `/app/conferencePage/${u.id}`}>{u.conference.abbreviation}</button></td>
                                         <td>{u.followNum ?  <span className="bg-green-700 badge px-2 text-white">{u.followNum}</span> : null}</td>
                                     </tr>
                                 )

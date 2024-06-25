@@ -14,7 +14,7 @@ function CallForPaperChart(props){
     
 
     return (
-        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>征稿</>}>
+        <TitleCard title={<><InboxArrowDownIcon className="h-6 w-6 inline-block mr-2"/>会议征稿</>}>
             {/** Table Data */}
             <div className="flex items-center text-sm">
                 <button className="text-blue-500">ccf:</button>

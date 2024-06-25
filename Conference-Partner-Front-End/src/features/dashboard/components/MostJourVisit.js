@@ -44,7 +44,7 @@ function  MostJourVisit(){
                                 return(
                                     <tr key={k}>
                                         <th>{k+1}</th>
-                                        <td>{u.name}</td>
+                                        <td><button className="text-blue-500" onClick={() => window.location.href = `/app/journalPage/${u.id}`}>{u.name}</button></td>
                                         <td>{u.viewCount ?  <span className="bg-green-700 badge px-2 text-white">{u.viewCount}</span> : null}</td>
                                     </tr>
                                 )

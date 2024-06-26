@@ -34,7 +34,7 @@ function Dashboard(){
         {title : "会议", value : "0", icon : <UserGroupIcon className='w-8 h-8'/>, description : ""},
         {title : "期刊", value : "0", icon : <CreditCardIcon className='w-8 h-8'/>, description : ""},
         {title : "科研人员", value : "0", icon : <UsersIcon className='w-8 h-8'/>, description : ""},
-        {title : "页面浏览", value : 0, icon : <CircleStackIcon className='w-8 h-8'/>, description : ""},
+        {title : "页面浏览", value : "0", icon : <CircleStackIcon className='w-8 h-8'/>, description : ""},
     ])
 
     const [loading, setLoading] = useState(false)
@@ -46,45 +46,63 @@ function Dashboard(){
     useEffect(() => {
         let newStatsData = [...statsData];
 
-        axios.get('/api/getPageVisitedNum').then((res) => {
-            if(res.status === 200){
-                newStatsData[3].value = res.data    
-                setStateData(newStatsData)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
+        const f1 = async () => {
+            await axios.get('/api/getPageVisitedNum').then((res) => {
+            
 
-        axios.get('/journals/getJournalNum').then((res) => {
-            if(res.status === 200){
-                newStatsData[1].value = res.data    
-                setStateData(newStatsData)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
+                if(res.status === 200){
+                    newStatsData[3].value = res.data    
+                    setStateData(newStatsData)
+                }
+            }).catch((err) => {
+                console.log(err)
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
+        }
+        f1()
 
-        axios.get('/conferences/getConferenceNum').then((res) => {
-            if(res.status === 200){
-                newStatsData[0].value = res.data    
-                setStateData(newStatsData)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
+        const f2 = async () => {
+            axios.get('/journals/getJournalNum').then((res) => {
+                if(res.status === 200){
+                    newStatsData[1].value = res.data    
+                    setStateData(newStatsData)
+                }
+            }).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
+        }
+        f2()
 
-        axios.get('/user/getUserNum').then((res) => {
-            if(res.status === 200){
-                newStatsData[2].value = res.data
-                setStateData(newStatsData)
-            }
-        }).catch((err) => {
-            setLoading(false)
-            setErrorMessage("Invalid credentials")
-        })
+        const f3 = async () => {
+            axios.get('/conferences/getConferenceNum').then((res) => {
+                if(res.status === 200){
+                    newStatsData[0].value = res.data    
+                    setStateData(newStatsData)
+                }
+            }).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
+        }
+        f3()
+
+        const f4 = async () => {
+            axios.get('/user/getUserNum').then((res) => {
+                if(res.status === 200){
+                    newStatsData[2].value = res.data
+                    setStateData(newStatsData)
+                }
+            }).catch((err) => {
+                setLoading(false)
+                setErrorMessage("Invalid credentials")
+            })
+
+        }
+        f4()
+
+        
 
         //CallForPaperChart
         axios.get(`/conferences/getConfInCall`).then((res) => {

@@ -47,9 +47,10 @@ function CallForPaperJourFinishedPaging(props){
     }
 
     const jourDelete = async (id) => {
-        const res = await axios.delete(`/conferences/${id}`).catch((err) => {
+        const res = await axios.delete(`/journals/${id}`).catch((err) => {
             console.log(err)
         })
+        setItems(items.filter((item) => item.id !== id))
         console.log(res)
     }
 

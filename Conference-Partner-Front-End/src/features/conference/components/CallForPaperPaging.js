@@ -16,7 +16,11 @@ const itemsPerPage = 5
 
 function CallForPaperPaging(props){
 
-    const items = props.confData
+    // const items = props.confData
+    const [items , setItems] = useState([])
+    useEffect(() => {
+        setItems(props.confData)
+    }, [props.confData])
     const title = props.title
     console.log("callforpaper", items)
     
@@ -37,6 +41,7 @@ function CallForPaperPaging(props){
         const res = await axios.delete(`/conferences/${id}`).catch((err) => {
             console.log(err)
         })
+        setItems(items.filter((item) => item.id !== id))
         console.log(res)
     }
 

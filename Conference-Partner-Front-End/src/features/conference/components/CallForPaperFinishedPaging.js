@@ -15,7 +15,13 @@ const itemsPerPage = 5
 
 
 function CallForPaperFinishedPaging(props){
-    const items = props.confFinishedData
+    // const items = props.confFinishedData
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        setItems(props.confFinishedData)
+    }
+    , [props.confFinishedData])
     
     //
     // We start with an empty list of items.
@@ -38,6 +44,7 @@ function CallForPaperFinishedPaging(props){
         const res = await axios.delete(`/conferences/${id}`).catch((err) => {
             console.log(err)
         })
+        setItems(items.filter((item) => item.id !== id))
         console.log(res)
     }
 
